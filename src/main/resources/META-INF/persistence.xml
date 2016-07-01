@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+
+    <persistence-unit name="NewPersistenceUnit">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>hu.kniznertamas.adminsystem.db.entity.BalanceEntity</class>
+        <class>hu.kniznertamas.adminsystem.db.entity.ProjectsEntity</class>
+        <class>hu.kniznertamas.adminsystem.db.entity.StatusEntity</class>
+        <class>hu.kniznertamas.adminsystem.db.entity.UploadEntity</class>
+        <class>hu.kniznertamas.adminsystem.db.entity.UsersEntity</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/adminsystem_test"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+        </properties>
+    </persistence-unit>
+</persistence>
