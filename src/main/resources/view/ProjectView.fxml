@@ -1,0 +1,4 @@
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane fx:controller="hu.kniznertamas.adminsystem.gui.controllers.ProjectViewController" xmlns:fx="http://javafx.com/fxml/1">
+
+</BorderPane>

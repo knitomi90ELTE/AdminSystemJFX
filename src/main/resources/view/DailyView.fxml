@@ -1,0 +1,19 @@
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<BorderPane fx:controller="hu.kniznertamas.adminsystem.gui.controllers.DailyViewController" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+    <top>
+        <HBox alignment="CENTER">
+            <Button onAction="#decreaseDate"> - </Button>
+            <DatePicker fx:id="datePicker"></DatePicker>
+            <Button onAction="#increaseDate"> + </Button>
+        </HBox>
+    </top>
+    <center>
+
+    </center>
+
+</BorderPane>
