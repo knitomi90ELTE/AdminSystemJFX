@@ -4,20 +4,15 @@ import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
+import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.gui.elements.CustomMenuItem;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
-
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-/**
- * Created by Knizner Tamás on 2016. 07. 02..
- */
 public class MenuBarController implements Initializable {
 
     @FXML

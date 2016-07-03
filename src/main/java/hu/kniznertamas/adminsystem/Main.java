@@ -4,9 +4,6 @@ import hu.kniznertamas.adminsystem.helper.ChangeContent;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-/**
- * Created by Knizner Tamás on 2016. 07. 01..
- */
 public class Main extends Application{
 
     private static Main instance;

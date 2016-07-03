@@ -2,9 +2,6 @@ package hu.kniznertamas.adminsystem.db.dao;
 
 import hu.kniznertamas.adminsystem.db.entity.*;
 
-/**
- * Created by Knizner Tamás on 2016. 07. 01..
- */
 public class DaoManager {
 
     private GenericDao<BalanceEntity> balanceDao;

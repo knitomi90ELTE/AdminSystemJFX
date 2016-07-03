@@ -7,9 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * Created by Knizner Tamás on 2016. 07. 01..
- */
 public class ChangeContent {
 
     private final Main instance;
@@ -22,7 +19,7 @@ public class ChangeContent {
 
     public void replaceSceneContent(String fxml) {
         try {
-            Parent page = (Parent) FXMLLoader.load(instance.getClass().getResource(fxml), null, new JavaFXBuilderFactory());
+            Parent page = FXMLLoader.load(instance.getClass().getResource(fxml), null, new JavaFXBuilderFactory());
             Scene scene = stage.getScene();
             if (scene == null) {
                 scene = new Scene(page);

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="hu.kniznertamas.adminsystem.gui.controllers.BalanceTableController">
+    <Label alignment="CENTER" text="Pénzügy" textAlignment="CENTER">
+        <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+        </padding>
+    </Label>
+    <TableView fx:id="balanceTable" prefHeight="300">
+        <columns>
+            <TableColumn prefWidth="100.0" text="Nettó">
+                <cellValueFactory>
+                    <PropertyValueFactory property="netto"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Bruttó">
+                <cellValueFactory>
+                    <PropertyValueFactory property="brutto"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="ÁFA">
+                <cellValueFactory>
+                    <PropertyValueFactory property="afa"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="ÁFA értéke">
+                <cellValueFactory>
+                    <PropertyValueFactory property="afaValue"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Dátum">
+                <cellValueFactory>
+                    <PropertyValueFactory property="created"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Kategória">
+                <cellValueFactory>
+                    <PropertyValueFactory property="status_name"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Kapcsolat">
+                <cellValueFactory>
+                    <PropertyValueFactory property="display_name"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Készpénzes">
+                <cellValueFactory>
+                    <PropertyValueFactory property="cash"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Megjegyzés">
+                <cellValueFactory>
+                    <PropertyValueFactory property="note"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+</VBox>

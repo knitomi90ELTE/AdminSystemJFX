@@ -3,23 +3,30 @@ package hu.kniznertamas.adminsystem.db.entity;
 import javax.persistence.*;
 import java.sql.Date;
 
-/**
- * Created by Knizner Tamás on 2016. 07. 01..
- */
 @Entity
 @Table(name = "balance", schema = "adminsystem_test", catalog = "")
 public class BalanceEntity extends PersistentEntity {
 
-    private Integer netto;
-    private Integer brutto;
-    private Integer afa;
-    private Integer afaValue;
-    private Date created;
-    private Integer statusId;
-    private String modelName;
-    private Integer modelId;
-    private Byte cash;
-    private String note;
+    @Column(name = "netto")
+    Integer netto;
+    @Column(name = "brutto")
+    Integer brutto;
+    @Column(name = "afa")
+    Integer afa;
+    @Column(name = "afa_value")
+    Integer afaValue;
+    @Column(name = "created")
+    Date created;
+    @Column(name = "status_id")
+    Integer statusId;
+    @Column(name = "model_name")
+    String modelName;
+    @Column(name = "model_id")
+    Integer modelId;
+    @Column(name = "cash")
+    Boolean cash;
+    @Column(name = "note")
+    String note;
 
     @Basic
     @Column(name = "netto")
@@ -103,11 +110,11 @@ public class BalanceEntity extends PersistentEntity {
 
     @Basic
     @Column(name = "cash")
-    public Byte getCash() {
+    public Boolean getCash() {
         return cash;
     }
 
-    public void setCash(Byte cash) {
+    public void setCash(Boolean cash) {
         this.cash = cash;
     }
 
@@ -154,7 +161,7 @@ public class BalanceEntity extends PersistentEntity {
         result = 31 * result + statusId;
         result = 31 * result + (modelName != null ? modelName.hashCode() : 0);
         result = 31 * result + (modelId != null ? modelId.hashCode() : 0);
-        result = 31 * result + (int) cash;
+        result = 31 * result + ((cash) ? 1 : 0);
         result = 31 * result + (note != null ? note.hashCode() : 0);
         return result;
     }
@@ -221,7 +228,7 @@ public class BalanceEntity extends PersistentEntity {
                 setModelId((Integer) value);
                 break;
             case 9:
-                setCash((Byte) value);
+                setCash((Boolean) value);
                 break;
             case 10:
                 setNote((String) value);

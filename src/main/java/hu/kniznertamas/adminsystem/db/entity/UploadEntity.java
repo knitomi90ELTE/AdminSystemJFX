@@ -3,18 +3,20 @@ package hu.kniznertamas.adminsystem.db.entity;
 import javax.persistence.*;
 import java.sql.Date;
 
-/**
- * Created by Knizner Tamás on 2016. 07. 01..
- */
 @Entity
 @Table(name = "upload", schema = "adminsystem_test", catalog = "")
 public class UploadEntity extends PersistentEntity {
 
-    private Integer userId;
-    private Integer projectId;
-    private Date created;
-    private Double hour;
-    private String note;
+    @Column(name = "user_id")
+    Integer userId;
+    @Column(name = "project_id")
+    Integer projectId;
+    @Column(name = "created")
+    Date created;
+    @Column(name = "hour")
+    Double hour;
+    @Column(name = "note")
+    String note;
 
     @Basic
     @Column(name = "user_id")

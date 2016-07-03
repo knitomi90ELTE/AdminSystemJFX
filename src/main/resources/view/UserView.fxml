@@ -1,55 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.UserViewController">
+<BorderPane prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hu.kniznertamas.adminsystem.gui.controllers.UserViewController">
     <center>
         <TableView prefHeight="NaN" prefWidth="NaN" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn prefWidth="100.0" text="Munka" />
-                <TableColumn prefWidth="100.0" text="Óraszám" />
-                <TableColumn prefWidth="100.0" text="Dátum" />
-                <TableColumn prefWidth="100.0" text="Megjegyzés" />
+                <TableColumn prefWidth="100.0" text="Munka"/>
+                <TableColumn prefWidth="100.0" text="Óraszám"/>
+                <TableColumn prefWidth="100.0" text="Dátum"/>
+                <TableColumn prefWidth="100.0" text="Megjegyzés"/>
             </columns>
         </TableView>
     </center>
-   <top>
-       <VBox>
-          <children>
-              <Label fx:id="nameLabel" text="Név: " BorderPane.alignment="CENTER_LEFT">
-                  <BorderPane.margin>
-                      <Insets left="20.0" top="20.0" />
-                  </BorderPane.margin>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="10.0" />
-               </padding>
-              </Label>
-              <Label fx:id="wageLabel" text="Órabér: " BorderPane.alignment="CENTER_LEFT">
-                  <BorderPane.margin>
-                      <Insets left="20.0" top="20.0" />
-                  </BorderPane.margin>
-               <padding>
-                  <Insets bottom="10.0" />
-               </padding>
-              </Label>
-              <Label fx:id="noteLabel" text="Megjegyzés: " BorderPane.alignment="CENTER_LEFT">
-                  <BorderPane.margin>
-                      <Insets bottom="20.0" left="20.0" top="20.0" />
-                  </BorderPane.margin>
-              </Label>
-          </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="10.0" left="10.0" top="10.0" />
-         </padding>
-       </VBox>
-   </top>
+    <top>
+        <VBox>
+            <Label fx:id="nameLabel" text="Név: " BorderPane.alignment="CENTER_LEFT">
+                <BorderPane.margin>
+                    <Insets left="20.0" top="20.0"/>
+                </BorderPane.margin>
+                <VBox.margin>
+                    <Insets/>
+                </VBox.margin>
+                <padding>
+                    <Insets bottom="10.0"/>
+                </padding>
+            </Label>
+            <Label fx:id="wageLabel" text="Órabér: " BorderPane.alignment="CENTER_LEFT">
+                <BorderPane.margin>
+                    <Insets left="20.0" top="20.0"/>
+                </BorderPane.margin>
+                <padding>
+                    <Insets bottom="10.0"/>
+                </padding>
+            </Label>
+            <Label fx:id="noteLabel" text="Megjegyzés: " BorderPane.alignment="CENTER_LEFT">
+                <BorderPane.margin>
+                    <Insets bottom="20.0" left="20.0" top="20.0"/>
+                </BorderPane.margin>
+            </Label>
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="10.0" left="10.0" top="10.0"/>
+            </padding>
+        </VBox>
+    </top>
 </BorderPane>

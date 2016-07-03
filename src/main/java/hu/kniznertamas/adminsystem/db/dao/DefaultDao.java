@@ -1,7 +1,6 @@
 package hu.kniznertamas.adminsystem.db.dao;
 
 import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -9,9 +8,6 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-/**
- * Created by Knizner Tamás on 2016. 07. 01..
- */
 public class DefaultDao<T extends PersistentEntity> implements GenericDao<T> {
 
     protected Class<T> CLASS;

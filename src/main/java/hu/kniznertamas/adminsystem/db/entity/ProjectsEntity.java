@@ -2,9 +2,6 @@ package hu.kniznertamas.adminsystem.db.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by Knizner Tamás on 2016. 07. 01..
- */
 @Entity
 @Table(name = "projects", schema = "adminsystem_test", catalog = "")
 public class ProjectsEntity extends PersistentEntity {

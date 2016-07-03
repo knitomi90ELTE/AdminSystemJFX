@@ -1,16 +1,13 @@
 package hu.kniznertamas.adminsystem.gui.controllers;
 
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
+import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Created by Knizner Tamás on 2016. 07. 02..
- */
 public class UserViewController implements Initializable {
 
     @FXML

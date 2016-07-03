@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="hu.kniznertamas.adminsystem.gui.controllers.UploadTableController">
+    <Label text="Órák">
+        <padding>
+            <Insets bottom="5.0" right="5.0" top="5.0"/>
+        </padding>
+    </Label>
+    <TableView fx:id="uploadTable" prefHeight="270">
+        <columns>
+            <TableColumn prefWidth="100.0" text="Alkalmazott">
+                <cellValueFactory>
+                    <PropertyValueFactory property="user_name"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Munka">
+                <cellValueFactory>
+                    <PropertyValueFactory property="project_name"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Óraszám">
+                <cellValueFactory>
+                    <PropertyValueFactory property="hour"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Dátum">
+                <cellValueFactory>
+                    <PropertyValueFactory property="created"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Megjegyzés">
+                <cellValueFactory>
+                    <PropertyValueFactory property="note"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+</VBox>
