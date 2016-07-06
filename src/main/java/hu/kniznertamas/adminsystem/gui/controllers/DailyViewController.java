@@ -53,7 +53,7 @@ public class DailyViewController implements Initializable {
     }
 
     private void updateTables(){
-        ControllerMediator.getInstance().refreshTableData(currentDate);
+        ControllerMediator.getInstance().refreshDailyTableData(currentDate);
     }
 
 }

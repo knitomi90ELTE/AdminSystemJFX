@@ -1,10 +1,14 @@
 package hu.kniznertamas.adminsystem.gui.controllers.mediator;
 
+import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
-import hu.kniznertamas.adminsystem.gui.controllers.BalanceTableController;
-import hu.kniznertamas.adminsystem.gui.controllers.MenuBarController;
-import hu.kniznertamas.adminsystem.gui.controllers.UploadTableController;
-import hu.kniznertamas.adminsystem.gui.controllers.UserViewController;
+import hu.kniznertamas.adminsystem.gui.controllers.*;
+import hu.kniznertamas.adminsystem.gui.controllers.dailytables.BalanceTableController;
+import hu.kniznertamas.adminsystem.gui.controllers.dailytables.UploadTableController;
+import hu.kniznertamas.adminsystem.gui.controllers.projecttables.FinancesTableController;
+import hu.kniznertamas.adminsystem.gui.controllers.projecttables.HoursTableController;
+import javafx.application.Platform;
+import javafx.fxml.Initializable;
 
 import java.time.LocalDate;
 
@@ -14,6 +18,9 @@ public class ControllerMediator implements IMediateControllers {
     private UserViewController userViewController;
     private UploadTableController uploadTableController;
     private BalanceTableController balanceTableController;
+    private ProjectViewController projectViewController;
+    private FinancesTableController financesTableController;
+    private HoursTableController hoursTableController;
 
     @Override
     public void registerControllerMenu(MenuBarController controller) {
@@ -31,17 +38,28 @@ public class ControllerMediator implements IMediateControllers {
     }
 
     @Override
-    public void registerControllerBalanceTable(BalanceTableController controller) {
-        balanceTableController = controller;
+    public void registerControllerBalanceTable(BalanceTableController controller) { balanceTableController = controller; }
+
+    @Override
+    public void registerControlerProjects(ProjectViewController controller) { projectViewController = controller; }
+
+    @Override
+    public void registerControlerHoursTable(HoursTableController controller) { hoursTableController = controller; }
+
+    @Override
+    public void registerControlerFinancesTable(FinancesTableController controller) { financesTableController = controller; }
+
+    @Override
+    public void loadUserDataToController(UsersEntity usersEntity) { userViewController.loadUserData(usersEntity); }
+
+    @Override
+    public void loadProjectDataToController(ProjectsEntity projectsEntity) {
+        Platform.runLater(() -> projectViewController.loadProjectData(projectsEntity));
+        Platform.runLater(() -> hoursTableController.refreshTableData(projectsEntity));
     }
 
     @Override
-    public void loadUserDataToController(UsersEntity usersEntity) {
-        userViewController.loadUserData(usersEntity);
-    }
-
-    @Override
-    public void refreshTableData(LocalDate currentDate) {
+    public void refreshDailyTableData(LocalDate currentDate) {
         new Thread() {
             @Override
             public void run() {

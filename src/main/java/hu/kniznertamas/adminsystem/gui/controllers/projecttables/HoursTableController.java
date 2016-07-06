@@ -1,0 +1,85 @@
+package hu.kniznertamas.adminsystem.gui.controllers.projecttables;
+
+import hu.kniznertamas.adminsystem.db.dao.DaoManager;
+import hu.kniznertamas.adminsystem.db.dao.GenericDao;
+import hu.kniznertamas.adminsystem.db.entity.ExtendedUploadEntity;
+import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
+import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
+import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
+import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+import java.net.URL;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class HoursTableController implements Initializable {
+
+    @FXML
+    private TableView<ExtendedUploadEntity> hoursTable;
+
+    @FXML
+    private Label sumHoursLabel;
+
+    private GenericDao<UsersEntity> userDao;
+    private GenericDao<UploadEntity> uploadDao;
+    private GenericDao<ProjectsEntity> projectsDao;
+
+    public HoursTableController() {
+        userDao = DaoManager.getInstance().getUserDao();
+        uploadDao = DaoManager.getInstance().getUploadDao();
+        projectsDao = DaoManager.getInstance().getProjectsDao();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ControllerMediator.getInstance().registerControlerHoursTable(this);
+    }
+
+    public void refreshTableData(ProjectsEntity projectsEntity) {
+        Stream<UploadEntity> uploadList = uploadDao.findAll().stream();
+        List<UploadEntity> filteredList = uploadList.filter(item -> item.getProjectId().equals(projectsEntity.getId())).collect(Collectors.toList());
+        System.out.println(filteredList.toString());
+
+        Map<Date, List<UploadEntity>> mappedList = filteredList.stream().collect(Collectors.groupingBy(UploadEntity::getCreated));
+        List<ExtendedUploadEntity> extendedList = new ArrayList<>();
+        final double[] hours = {0};
+        mappedList.forEach((k,v)->{
+            ExtendedUploadEntity eue = new ExtendedUploadEntity();
+            eue.setCreated(k);
+            eue.setHour(0.0);
+            for(UploadEntity ue : v) {
+                eue.setHour(eue.getHour() + ue.getHour());
+            }
+            extendedList.add(eue);
+            hours[0] += eue.getHour();
+        });
+
+        hoursTable.setItems(FXCollections.observableArrayList(extendedList));
+        hoursTable.refresh();
+        sumHoursLabel.setText("Összesen: " + Double.toString(hours[0]) +" óra");
+
+        /*
+        List<ExtendedUploadEntity> extendedList = new ArrayList<>();
+        double hours = 0;
+        for (UploadEntity ue : filteredList){
+            ExtendedUploadEntity eue = new ExtendedUploadEntity(ue);
+            eue.setProject_name(projectsDao.findById(ue.getProjectId()).getName());
+            eue.setUser_name(userDao.findById(ue.getUserId()).getName());
+            extendedList.add(eue);
+            hours += ue.getHour();
+        }
+        hoursTable.setItems(FXCollections.observableArrayList(extendedList));
+        hoursTable.refresh();
+        sumHoursLabel.setText("Összesen: " + Double.toString(hours) +" óra");*/
+    }
+
+}

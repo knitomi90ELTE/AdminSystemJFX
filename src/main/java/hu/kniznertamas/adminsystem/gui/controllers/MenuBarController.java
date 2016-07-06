@@ -54,7 +54,7 @@ public class MenuBarController implements Initializable {
                 List<ProjectsEntity> allProjects = projectsDao.findAll();
                 for(ProjectsEntity p : allProjects){
                     CustomMenuItem cmi = new CustomMenuItem(p.getName(), p.getId());
-                    cmi.setOnAction(event -> System.out.println(cmi.getText()));
+                    cmi.setOnAction(event -> ControllerMediator.getInstance().loadProjectDataToController(projectsDao.findById(cmi.getItemID())));
                     projectsMenu.getItems().add(cmi);
                 }
             }

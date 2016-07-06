@@ -20,8 +20,8 @@
     </top>
     <center>
         <VBox>
-            <fx:include source="UploadTable.fxml"/>
-            <fx:include source="BalanceTable.fxml"/>
+            <fx:include source="dailytables/UploadTable.fxml"/>
+            <fx:include source="dailytables/BalanceTable.fxml"/>
         </VBox>
     </center>
 
