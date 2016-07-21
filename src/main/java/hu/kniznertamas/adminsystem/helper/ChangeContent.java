@@ -27,6 +27,7 @@ public class ChangeContent {
             } else {
                 stage.getScene().setRoot(page);
             }
+            stage.setMaximized(true);
             stage.sizeToScene();
         } catch (Exception e) {
             e.printStackTrace();

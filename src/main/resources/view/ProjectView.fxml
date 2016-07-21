@@ -5,8 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.geometry.Insets?>
 
-<BorderPane fx:controller="hu.kniznertamas.adminsystem.gui.controllers.ProjectViewController" prefHeight="768"
-            prefWidth="1366" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="hu.kniznertamas.adminsystem.gui.controllers.ProjectViewController" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <VBox>
             <Label fx:id="nameLabel" text="Név: " BorderPane.alignment="CENTER_LEFT">

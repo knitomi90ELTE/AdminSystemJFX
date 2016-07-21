@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="hu.kniznertamas.adminsystem.gui.controllers.UserViewController">
     <center>
         <TableView prefHeight="NaN" prefWidth="NaN" BorderPane.alignment="CENTER">

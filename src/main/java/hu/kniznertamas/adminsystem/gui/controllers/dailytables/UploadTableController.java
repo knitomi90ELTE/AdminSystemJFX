@@ -5,8 +5,10 @@ import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import java.net.URL;
 import java.sql.Date;
@@ -35,6 +37,13 @@ public class UploadTableController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ControllerMediator.getInstance().registerControllerUploadTable(this);
+    }
+
+    @FXML
+    private void addNewAction(ActionEvent event){
+
+
+
     }
 
     public void refreshTableData(LocalDate currentDate){

@@ -56,6 +56,7 @@ public class ControllerMediator implements IMediateControllers {
     public void loadProjectDataToController(ProjectsEntity projectsEntity) {
         Platform.runLater(() -> projectViewController.loadProjectData(projectsEntity));
         Platform.runLater(() -> hoursTableController.refreshTableData(projectsEntity));
+        Platform.runLater(() -> financesTableController.refreshTableData(projectsEntity));
     }
 
     @Override

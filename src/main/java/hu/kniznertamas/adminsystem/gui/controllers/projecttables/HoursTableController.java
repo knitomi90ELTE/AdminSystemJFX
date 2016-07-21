@@ -29,14 +29,10 @@ public class HoursTableController implements Initializable {
     @FXML
     private Label sumHoursLabel;
 
-    private GenericDao<UsersEntity> userDao;
     private GenericDao<UploadEntity> uploadDao;
-    private GenericDao<ProjectsEntity> projectsDao;
 
     public HoursTableController() {
-        userDao = DaoManager.getInstance().getUserDao();
         uploadDao = DaoManager.getInstance().getUploadDao();
-        projectsDao = DaoManager.getInstance().getProjectsDao();
     }
 
     @Override
@@ -66,20 +62,6 @@ public class HoursTableController implements Initializable {
         hoursTable.setItems(FXCollections.observableArrayList(extendedList));
         hoursTable.refresh();
         sumHoursLabel.setText("Összesen: " + Double.toString(hours[0]) +" óra");
-
-        /*
-        List<ExtendedUploadEntity> extendedList = new ArrayList<>();
-        double hours = 0;
-        for (UploadEntity ue : filteredList){
-            ExtendedUploadEntity eue = new ExtendedUploadEntity(ue);
-            eue.setProject_name(projectsDao.findById(ue.getProjectId()).getName());
-            eue.setUser_name(userDao.findById(ue.getUserId()).getName());
-            extendedList.add(eue);
-            hours += ue.getHour();
-        }
-        hoursTable.setItems(FXCollections.observableArrayList(extendedList));
-        hoursTable.refresh();
-        sumHoursLabel.setText("Összesen: " + Double.toString(hours) +" óra");*/
     }
 
 }

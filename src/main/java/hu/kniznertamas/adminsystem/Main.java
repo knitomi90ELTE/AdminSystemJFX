@@ -22,10 +22,10 @@ public class Main extends Application{
     }
 
     @Override
-    public void start(Stage stage) {
-        changeContent = new ChangeContent(instance, stage);
+    public void start(Stage primaryStage) {
+        changeContent = new ChangeContent(instance, primaryStage);
         changeContent.replaceSceneContent("/view/Main.fxml");
-        stage.show();
+        primaryStage.show();
     }
 
     public static void main(String[] args) {

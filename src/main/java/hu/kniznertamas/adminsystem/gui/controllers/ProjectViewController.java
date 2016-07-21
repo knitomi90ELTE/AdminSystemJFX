@@ -2,8 +2,6 @@ package hu.kniznertamas.adminsystem.gui.controllers;
 
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
-import hu.kniznertamas.adminsystem.gui.controllers.projecttables.FinancesTableController;
-import hu.kniznertamas.adminsystem.gui.controllers.projecttables.HoursTableController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
