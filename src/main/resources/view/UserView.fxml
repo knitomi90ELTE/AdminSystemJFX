@@ -1,53 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="hu.kniznertamas.adminsystem.gui.controllers.UserViewController">
-    <center>
-        <TableView prefHeight="NaN" prefWidth="NaN" BorderPane.alignment="CENTER">
-            <columns>
-                <TableColumn prefWidth="100.0" text="Munka"/>
-                <TableColumn prefWidth="100.0" text="Óraszám"/>
-                <TableColumn prefWidth="100.0" text="Dátum"/>
-                <TableColumn prefWidth="100.0" text="Megjegyzés"/>
-            </columns>
-        </TableView>
-    </center>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.UserViewController">
     <top>
-        <VBox>
+        <VBox spacing="5.0">
+            <ComboBox fx:id="comboBox" promptText="Válassz alkalmazottat!" />
             <Label fx:id="nameLabel" text="Név: " BorderPane.alignment="CENTER_LEFT">
-                <BorderPane.margin>
-                    <Insets left="20.0" top="20.0"/>
-                </BorderPane.margin>
-                <VBox.margin>
-                    <Insets/>
-                </VBox.margin>
-                <padding>
-                    <Insets bottom="10.0"/>
-                </padding>
+
             </Label>
             <Label fx:id="wageLabel" text="Órabér: " BorderPane.alignment="CENTER_LEFT">
-                <BorderPane.margin>
-                    <Insets left="20.0" top="20.0"/>
-                </BorderPane.margin>
-                <padding>
-                    <Insets bottom="10.0"/>
-                </padding>
+
             </Label>
             <Label fx:id="noteLabel" text="Megjegyzés: " BorderPane.alignment="CENTER_LEFT">
-                <BorderPane.margin>
-                    <Insets bottom="20.0" left="20.0" top="20.0"/>
-                </BorderPane.margin>
+
             </Label>
-            <BorderPane.margin>
-                <Insets/>
-            </BorderPane.margin>
             <padding>
-                <Insets bottom="10.0" left="10.0" top="10.0"/>
+                <Insets bottom="5.0" left="10.0" top="5.0" />
             </padding>
         </VBox>
     </top>
+    <center>
+        <TableView fx:id="userTable" prefHeight="NaN" prefWidth="NaN" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn prefWidth="150.0" text="Alkalmazott">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="user_name" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="150.0" text="Munka">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="project_name" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="100.0" text="Óraszám">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="hour" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="100.0" text="Dátum">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="created" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="100.0" text="Megjegyzés">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="note" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </center>
 </BorderPane>

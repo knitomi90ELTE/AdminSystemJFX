@@ -3,17 +3,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tab?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.MainController" >
-    <fx:include source="MenuBar.fxml" fx:id="menuBar"></fx:include>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.MainController" prefWidth="1366.0" prefHeight="768.0">
+    <fx:include source="MenuBar.fxml"></fx:include>
     <TabPane tabClosingPolicy="UNAVAILABLE">
         <Tab text="Napi nézet">
-            <fx:include source="DailyView.fxml" fx:id="dailyView"></fx:include>
+            <fx:include source="DailyView.fxml"></fx:include>
         </Tab>
         <Tab text="Alkalmazottak">
-            <fx:include source="UserView.fxml" fx:id="userView"></fx:include>
+            <fx:include source="UserView.fxml"></fx:include>
         </Tab>
         <Tab text="Munkák">
-            <fx:include source="ProjectView.fxml" fx:id="projectView"></fx:include>
+            <fx:include source="ProjectView.fxml"></fx:include>
         </Tab>
     </TabPane>
 

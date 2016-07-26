@@ -1,12 +1,22 @@
 package hu.kniznertamas.adminsystem.gui.controllers;
 
+import hu.kniznertamas.adminsystem.db.dao.DaoManager;
+import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.util.Callback;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProjectViewController implements Initializable {
@@ -21,9 +31,10 @@ public class ProjectViewController implements Initializable {
     private Label noteLabel;
 
     @FXML
-    private Label sumHoursLabel;
+    private ComboBox<ProjectsEntity> comboBox;
 
     public ProjectViewController() {
+        loadProjects();
     }
 
     @Override
@@ -31,11 +42,44 @@ public class ProjectViewController implements Initializable {
         ControllerMediator.getInstance().registerControlerProjects(this);
     }
 
-    public void loadProjectData(ProjectsEntity projectsEntity){
+    public void loadProjectData(ProjectsEntity projectsEntity) {
         nameLabel.setText("Név: " + projectsEntity.getName());
         retentionLabel.setText("Garanciális visszatartás: " + projectsEntity.getRetention().toString() + " Ft");
         noteLabel.setText("Megjegyzés: " + projectsEntity.getNote());
-        //sumHoursLabel.setText(Double.toString(hoursTableController.refreshTableData(projectsEntity)) + " óra");
+    }
+
+    private void loadProjects() {
+        new Thread() {
+            @Override
+            public void run() {
+                GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
+                List<ProjectsEntity> allProjects = projectsDao.findAll();
+                comboBox.setItems(FXCollections.observableArrayList(allProjects));
+                comboBox.setCellFactory(new Callback<ListView<ProjectsEntity>, ListCell<ProjectsEntity>>() {
+                    @Override
+                    public ListCell<ProjectsEntity> call(ListView<ProjectsEntity> param) {
+                        return new ListCell<ProjectsEntity>() {
+                            @Override
+                            public void updateItem(ProjectsEntity item, boolean empty) {
+                                super.updateItem(item, empty);
+                                if (!empty) {
+                                    setText(item.getName());
+                                    setGraphic(null);
+                                } else {
+                                    setText(null);
+                                }
+                            }
+                        };
+                    }
+                });
+                comboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ProjectsEntity>() {
+                    @Override
+                    public void changed(ObservableValue<? extends ProjectsEntity> observable, ProjectsEntity oldValue, ProjectsEntity newValue) {
+                        ControllerMediator.getInstance().loadProjectDataToController(newValue);
+                    }
+                });
+            }
+        }.start();
     }
 
 

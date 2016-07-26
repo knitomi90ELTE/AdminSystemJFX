@@ -5,10 +5,10 @@ import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
-
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -64,5 +64,10 @@ public class BalanceTableController implements Initializable {
         }
         balanceTable.setItems(FXCollections.observableArrayList(extendedList));
         balanceTable.refresh();
+    }
+
+    @FXML
+    private void addNewAction(ActionEvent event){
+
     }
 }

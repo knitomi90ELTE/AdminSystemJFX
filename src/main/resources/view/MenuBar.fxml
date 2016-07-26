@@ -4,13 +4,17 @@
 <?import javafx.scene.control.MenuItem?>
 <MenuBar xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.MenuBarController">
     <menus>
-        <Menu text="Új hozzáadása">
+        <!--Menu text="Új hozzáadása">
             <items>
                 <MenuItem text="Alkalmazott"></MenuItem>
                 <MenuItem text="Munka"></MenuItem>
             </items>
+        </Menu-->
+        <!--Menu text="Alkalmazottak" fx:id="usersMenu"></Menu>
+        <Menu text="Munkák" fx:id="projectsMenu"></Menu-->
+        <Menu text="Fájl">
+            <MenuItem text="Új hozzáadása" onAction="#addNewData"></MenuItem>
+            <MenuItem text="Alapnézet" onAction="#showMain"></MenuItem>
         </Menu>
-        <Menu text="Alkalmazottak" fx:id="usersMenu"></Menu>
-        <Menu text="Munkák" fx:id="projectsMenu"></Menu>
     </menus>
 </MenuBar>

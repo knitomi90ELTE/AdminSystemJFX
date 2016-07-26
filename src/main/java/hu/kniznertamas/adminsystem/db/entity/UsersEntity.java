@@ -100,10 +100,6 @@ public class UsersEntity extends PersistentEntity {
 
     @Override
     public String toString() {
-        return "UsersEntity{" +
-                "name='" + name + '\'' +
-                ", wage=" + wage +
-                ", note='" + note + '\'' +
-                '}';
+        return name;
     }
 }

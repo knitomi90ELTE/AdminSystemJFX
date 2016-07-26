@@ -1,47 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.geometry.Insets?>
 
-<BorderPane fx:controller="hu.kniznertamas.adminsystem.gui.controllers.ProjectViewController" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hu.kniznertamas.adminsystem.gui.controllers.ProjectViewController">
     <top>
-        <VBox>
+        <VBox spacing="5.0">
+            <ComboBox fx:id="comboBox" promptText="Válassz munkát!">
+
+            </ComboBox>
             <Label fx:id="nameLabel" text="Név: " BorderPane.alignment="CENTER_LEFT">
-                <BorderPane.margin>
-                    <Insets left="20.0" top="20.0"/>
-                </BorderPane.margin>
-                <VBox.margin>
-                    <Insets/>
-                </VBox.margin>
-                <padding>
-                    <Insets bottom="10.0"/>
-                </padding>
+
             </Label>
             <Label fx:id="retentionLabel" text="Garanciális visszatartás: " BorderPane.alignment="CENTER_LEFT">
-                <BorderPane.margin>
-                    <Insets left="20.0" top="20.0"/>
-                </BorderPane.margin>
-                <padding>
-                    <Insets bottom="10.0"/>
-                </padding>
+
             </Label>
             <Label fx:id="noteLabel" text="Megjegyzés: " BorderPane.alignment="CENTER_LEFT">
-                <BorderPane.margin>
-                    <Insets bottom="20.0" left="20.0" top="20.0"/>
-                </BorderPane.margin>
+
             </Label>
-            <BorderPane.margin>
-                <Insets/>
-            </BorderPane.margin>
             <padding>
-                <Insets bottom="10.0" left="10.0" top="10.0"/>
+                <Insets bottom="5.0" left="10.0" top="5.0"/>
             </padding>
         </VBox>
     </top>
     <center>
-        <VBox>
+        <VBox spacing="5.0">
+            <Separator/>
             <fx:include source="projecttables/HoursTable.fxml"/>
             <fx:include source="projecttables/FinancesTable.fxml"/>
         </VBox>

@@ -100,10 +100,6 @@ public class ProjectsEntity extends PersistentEntity {
 
     @Override
     public String toString() {
-        return "ProjectsEntity{" +
-                "name='" + name + '\'' +
-                ", retention=" + retention +
-                ", note='" + note + '\'' +
-                '}';
+        return name;
     }
 }

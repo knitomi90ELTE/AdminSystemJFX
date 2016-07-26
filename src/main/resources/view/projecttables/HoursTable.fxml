@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.control.Label?>
 <?import javafx.geometry.Insets?>
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="hu.kniznertamas.adminsystem.gui.controllers.projecttables.HoursTableController">
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="5.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.projecttables.HoursTableController">
     <Label alignment="CENTER" text="Órák">
         <padding>
-            <Insets left="5.0" right="5.0" top="5.0"/>
+            <Insets left="10.0" />
         </padding>
     </Label>
-    <Label alignment="CENTER" fx:id="sumHoursLabel" text="Összesen: ">
+    <Label fx:id="sumHoursLabel" alignment="CENTER" text="Összesen: ">
         <padding>
-            <Insets top="5.0" left="5.0" right="5.0" bottom="5.0"/>
+            <Insets left="10.0" />
         </padding>
     </Label>
     <TableView fx:id="hoursTable" prefHeight="270">
         <columns>
             <TableColumn prefWidth="100.0" text="Dátum">
                 <cellValueFactory>
-                    <PropertyValueFactory property="created"/>
+                    <PropertyValueFactory property="created" />
                 </cellValueFactory>
             </TableColumn>
             <TableColumn prefWidth="100.0" text="Óraszám">
                 <cellValueFactory>
-                    <PropertyValueFactory property="hour"/>
+                    <PropertyValueFactory property="hour" />
                 </cellValueFactory>
             </TableColumn>
         </columns>
