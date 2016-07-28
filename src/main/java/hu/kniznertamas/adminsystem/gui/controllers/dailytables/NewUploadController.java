@@ -48,14 +48,31 @@ public class NewUploadController implements Initializable {
         loadProjects();
     }
 
+    private boolean validForm() {
+        if("".equals(hoursField.getText())) return false;
+        try{
+            Integer.parseInt(hoursField.getText());
+        } catch (NumberFormatException e){
+            return false;
+        }
+        return true;
+    }
+
     @FXML
     private void onSaveAction(ActionEvent event) {
+        if(!validForm()){
+            /*Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setHeaderText("Hiba a bevitt adatokban!");
+            errorAlert.showAndWait();*/
+            hoursField.setText("HIBÁS ÉRTÉK");
+            return;
+        }
         UploadEntity newUpload = new UploadEntity();
         newUpload.setUserId(((UsersEntity)userBox.getSelectionModel().getSelectedItem()).getId());
         newUpload.setProjectId(((ProjectsEntity)projectBox.getSelectionModel().getSelectedItem()).getId());
         newUpload.setHour(Double.parseDouble(hoursField.getText()));
         newUpload.setCreated(Date.valueOf(createdPicker.getValue()));
-        newUpload.setNote(noteField.getText());
+        newUpload.setNote((noteField.getText().length() == 0) ? "" : noteField.getText());
         GenericDao<UploadEntity> uploadDao = DaoManager.getInstance().getUploadDao();
         uploadDao.create(newUpload);
         ControllerMediator.getInstance().refreshDailyTableData(createdPicker.getValue());

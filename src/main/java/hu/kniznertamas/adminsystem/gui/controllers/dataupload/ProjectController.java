@@ -44,8 +44,26 @@ public class ProjectController implements Initializable {
         projectTable.setItems(FXCollections.observableArrayList(projectDao.findAll()));
     }
 
+    private boolean validForm() {
+        if("".equals(nameField.getText())) return false;
+        if("".equals(retentionField.getText())) return false;
+        try{
+            Integer.parseInt(retentionField.getText());
+        } catch (NumberFormatException e){
+            return false;
+        }
+        return true;
+    }
+
     @FXML
     private void onSaveAction(ActionEvent event) {
+        if(!validForm()){
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setHeaderText("Hiba a bevitt adatokban!");
+            errorAlert.showAndWait();
+            clearFields();
+            return;
+        }
         ProjectsEntity newProject = new ProjectsEntity();
         newProject.setName(nameField.getText());
         newProject.setRetention(Integer.parseInt(retentionField.getText()));

@@ -37,8 +37,20 @@ public class StatusController implements Initializable {
         statusTable.setItems(FXCollections.observableArrayList(statusDao.findAll()));
     }
 
+    private boolean validForm() {
+        if("".equals(nameField.getText())) return false;
+        return true;
+    }
+
     @FXML
     private void onSaveAction(ActionEvent event) {
+        if(!validForm()){
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setHeaderText("Hiba a bevitt adatokban!");
+            errorAlert.showAndWait();
+            clearFields();
+            return;
+        }
         StatusEntity newStatus = new StatusEntity();
         newStatus.setName(nameField.getText());
         statusDao.create(newStatus);

@@ -43,8 +43,26 @@ public class UserController implements Initializable {
         userTable.setItems(FXCollections.observableArrayList(userDao.findAll()));
     }
 
+    private boolean validForm() {
+        if("".equals(nameField.getText())) return false;
+        if("".equals(wageField.getText())) return false;
+        try{
+            Integer.parseInt(wageField.getText());
+        } catch (NumberFormatException e){
+            return false;
+        }
+        return true;
+    }
+
     @FXML
     private void onSaveAction(ActionEvent event) {
+        if(!validForm()){
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setHeaderText("Hiba a bevitt adatokban!");
+            errorAlert.showAndWait();
+            clearFields();
+            return;
+        }
         UsersEntity newUser = new UsersEntity();
         newUser.setName(nameField.getText());
         newUser.setWage(Integer.parseInt(wageField.getText()));
