@@ -1,5 +1,6 @@
 package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 
+import hu.kniznertamas.adminsystem.Main;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
@@ -7,8 +8,11 @@ import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
+import org.controlsfx.control.PopOver;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -68,6 +72,25 @@ public class BalanceTableController implements Initializable {
 
     @FXML
     private void addNewAction(ActionEvent event){
-
+        PopOver popover = new PopOver();
+        popover.setAutoHide(false);
+        FXMLLoader loader = Main.getInstance().getChangeContent().getContentNode("/view/dailytables/NewBalanceView.fxml");
+        try {
+            popover.setContentNode(loader.load());
+            NewBalanceController controller = loader.getController();
+            controller.setParent(popover);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        popover.show(Main.getInstance().getChangeContent().getMainStage());
     }
+
+    @FXML
+    private void removeSelectedAction(ActionEvent event) {
+        ExtendedBalanceEntity ebe = balanceTable.getSelectionModel().getSelectedItem();
+        if(ebe == null) return;
+        balanceDao.delete(balanceDao.findById(ebe.getId()));
+        ControllerMediator.getInstance().refreshDailyTableData(ebe.getCreated().toLocalDate());
+    }
+
 }

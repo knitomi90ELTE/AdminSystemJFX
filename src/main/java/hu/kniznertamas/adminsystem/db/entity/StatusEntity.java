@@ -64,8 +64,6 @@ public class StatusEntity extends PersistentEntity {
 
     @Override
     public String toString() {
-        return "StatusEntity{" +
-                "name='" + name + '\'' +
-                '}';
+        return name;
     }
 }

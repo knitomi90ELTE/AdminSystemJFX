@@ -5,16 +5,12 @@ import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
-import hu.kniznertamas.adminsystem.helper.ChangeContent;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
-import javafx.util.Duration;
 import org.controlsfx.control.PopOver;
 
 import java.io.IOException;
@@ -75,5 +71,13 @@ public class UploadTableController implements Initializable {
         }
         uploadTable.setItems(FXCollections.observableArrayList(extendedList));
         uploadTable.refresh();
+    }
+
+    @FXML
+    private void removeSelectedAction(ActionEvent event) {
+        ExtendedUploadEntity eue = uploadTable.getSelectionModel().getSelectedItem();
+        if(eue == null) return;
+        uploadDao.delete(uploadDao.findById(eue.getId()));
+        ControllerMediator.getInstance().refreshDailyTableData(eue.getCreated().toLocalDate());
     }
 }

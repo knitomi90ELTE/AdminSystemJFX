@@ -38,23 +38,33 @@ public class ControllerMediator implements IMediateControllers {
     }
 
     @Override
-    public void registerControllerBalanceTable(BalanceTableController controller) { balanceTableController = controller; }
+    public void registerControllerBalanceTable(BalanceTableController controller) {
+        balanceTableController = controller;
+    }
 
     @Override
-    public void registerControlerProjects(ProjectViewController controller) { projectViewController = controller; }
+    public void registerControlerProjects(ProjectViewController controller) {
+        projectViewController = controller;
+    }
 
     @Override
-    public void registerControlerHoursTable(HoursTableController controller) { hoursTableController = controller; }
+    public void registerControlerHoursTable(HoursTableController controller) {
+        hoursTableController = controller;
+    }
 
     @Override
-    public void registerControlerFinancesTable(FinancesTableController controller) { financesTableController = controller; }
+    public void registerControlerFinancesTable(FinancesTableController controller) {
+        financesTableController = controller;
+    }
 
     @Override
-    public void loadUserDataToController(UsersEntity usersEntity) { userViewController.loadUserData(usersEntity); }
+    public void loadUserDataToController(UsersEntity usersEntity) {
+        userViewController.loadUserData(usersEntity);
+    }
 
     @Override
     public void loadProjectDataToController(ProjectsEntity projectsEntity) {
-        Platform.runLater(() -> projectViewController.loadProjectData(projectsEntity));
+        Platform.runLater(() ->  projectViewController.loadProjectData(projectsEntity));
         Platform.runLater(() -> hoursTableController.refreshTableData(projectsEntity));
         Platform.runLater(() -> financesTableController.refreshTableData(projectsEntity));
     }

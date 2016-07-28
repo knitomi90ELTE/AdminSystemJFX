@@ -20,11 +20,16 @@ public class DailyViewController implements Initializable {
 
     }
 
+    public LocalDate getCurrentDate() {
+        return currentDate;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         LocalDate ld = LocalDate.now();
         datePicker.setValue(ld);
         currentDate = ld;
+        updateTables();
     }
 
     public void decreaseDate(){
@@ -32,7 +37,6 @@ public class DailyViewController implements Initializable {
         ld = ld.minusDays(1);
         datePicker.setValue(ld);
         currentDate = ld;
-        updateTables();
     }
 
     public void increaseDate(){
@@ -40,7 +44,6 @@ public class DailyViewController implements Initializable {
         ld = ld.plusDays(1);
         datePicker.setValue(ld);
         currentDate = ld;
-        updateTables();
     }
 
     public void onDateChangeAction(ActionEvent event){

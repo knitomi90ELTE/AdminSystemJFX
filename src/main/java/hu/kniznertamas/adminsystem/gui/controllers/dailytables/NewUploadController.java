@@ -13,7 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.Callback;
 import org.controlsfx.control.PopOver;
-
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -131,7 +130,7 @@ public class NewUploadController implements Initializable {
         }.start();
     }
 
-    public void setParent(PopOver parent){
+    void setParent(PopOver parent){
         this.parent = parent;
     }
 }
