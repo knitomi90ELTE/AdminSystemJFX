@@ -21,11 +21,11 @@ import java.util.stream.Stream;
 public class FinancesTableController implements Initializable {
 
     @FXML
-    private TableView financesTable;
+    private TableView<ExtendedBalanceEntity> financesTable;
 
-    private GenericDao<BalanceEntity> balanceDao;
-    private GenericDao<StatusEntity> statusDao;
-    private GenericDao<ProjectsEntity> projectsDao;
+    private final GenericDao<BalanceEntity> balanceDao;
+    private final GenericDao<StatusEntity> statusDao;
+    private final GenericDao<ProjectsEntity> projectsDao;
 
     //Megjeleníteni:
     //összes bevétel, kiadás

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "balance", schema = "adminsystem_test", catalog = "")
+@Table(name = "balance", schema = "adminsystem_test")
 public class BalanceEntity extends PersistentEntity {
 
     @Column(name = "netto")
@@ -17,6 +17,8 @@ public class BalanceEntity extends PersistentEntity {
     Integer afaValue;
     @Column(name = "created")
     Date created;
+    @Column(name = "completed")
+    Date completed;
     @Column(name = "status_id")
     Integer statusId;
     @Column(name = "model_name")
@@ -79,6 +81,16 @@ public class BalanceEntity extends PersistentEntity {
     }
 
     @Basic
+    @Column(name = "completed")
+    public Date getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(Date completed) {
+        this.completed = completed;
+    }
+
+    @Basic
     @Column(name = "status_id")
     public Integer getStatusId() {
         return statusId;
@@ -131,37 +143,34 @@ public class BalanceEntity extends PersistentEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof BalanceEntity)) return false;
 
         BalanceEntity that = (BalanceEntity) o;
 
-        if (id != that.id) return false;
-        if (netto != that.netto) return false;
-        if (brutto != that.brutto) return false;
-        if (afa != that.afa) return false;
-        if (afaValue != that.afaValue) return false;
-        if (statusId != that.statusId) return false;
-        if (cash != that.cash) return false;
-        if (created != null ? !created.equals(that.created) : that.created != null) return false;
+        if (!netto.equals(that.netto)) return false;
+        if (!brutto.equals(that.brutto)) return false;
+        if (!afa.equals(that.afa)) return false;
+        if (!afaValue.equals(that.afaValue)) return false;
+        if (!created.equals(that.created)) return false;
+        if (completed != null ? !completed.equals(that.completed) : that.completed != null) return false;
+        if (!statusId.equals(that.statusId)) return false;
         if (modelName != null ? !modelName.equals(that.modelName) : that.modelName != null) return false;
-        if (modelId != null ? !modelId.equals(that.modelId) : that.modelId != null) return false;
-        if (note != null ? !note.equals(that.note) : that.note != null) return false;
+        return modelId != null ? modelId.equals(that.modelId) : that.modelId == null && cash.equals(that.cash) && (note != null ? note.equals(that.note) : that.note == null);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + netto;
-        result = 31 * result + brutto;
-        result = 31 * result + afa;
-        result = 31 * result + afaValue;
-        result = 31 * result + (created != null ? created.hashCode() : 0);
-        result = 31 * result + statusId;
+        int result = netto.hashCode();
+        result = 31 * result + brutto.hashCode();
+        result = 31 * result + afa.hashCode();
+        result = 31 * result + afaValue.hashCode();
+        result = 31 * result + created.hashCode();
+        result = 31 * result + (completed != null ? completed.hashCode() : 0);
+        result = 31 * result + statusId.hashCode();
         result = 31 * result + (modelName != null ? modelName.hashCode() : 0);
         result = 31 * result + (modelId != null ? modelId.hashCode() : 0);
-        result = 31 * result + ((cash) ? 1 : 0);
+        result = 31 * result + cash.hashCode();
         result = 31 * result + (note != null ? note.hashCode() : 0);
         return result;
     }
@@ -182,14 +191,16 @@ public class BalanceEntity extends PersistentEntity {
             case 5:
                 return created;
             case 6:
-                return statusId;
+                return completed;
             case 7:
-                return modelName;
+                return statusId;
             case 8:
-                return modelId;
+                return modelName;
             case 9:
-                return cash;
+                return modelId;
             case 10:
+                return cash;
+            case 11:
                 return note;
             default:
                 return null;
@@ -219,18 +230,21 @@ public class BalanceEntity extends PersistentEntity {
                 setCreated((Date) value);
                 break;
             case 6:
-                setStatusId((Integer) value);
+                setCompleted((Date) value);
                 break;
             case 7:
-                setModelName((String) value);
+                setStatusId((Integer) value);
                 break;
             case 8:
-                setModelId((Integer) value);
+                setModelName((String) value);
                 break;
             case 9:
-                setCash((Boolean) value);
+                setModelId((Integer) value);
                 break;
             case 10:
+                setCash((Boolean) value);
+                break;
+            case 11:
                 setNote((String) value);
                 break;
         }
@@ -244,6 +258,7 @@ public class BalanceEntity extends PersistentEntity {
                 ", afa=" + afa +
                 ", afaValue=" + afaValue +
                 ", created=" + created +
+                ", created=" + completed +
                 ", statusId=" + statusId +
                 ", modelName='" + modelName + '\'' +
                 ", modelId=" + modelId +

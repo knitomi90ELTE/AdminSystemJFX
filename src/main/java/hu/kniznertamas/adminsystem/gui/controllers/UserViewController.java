@@ -7,8 +7,6 @@ import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,7 +14,6 @@ import javafx.scene.control.*;
 import javafx.util.Callback;
 
 import java.net.URL;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -35,7 +32,7 @@ public class UserViewController implements Initializable {
     private Label noteLabel;
 
     @FXML
-    private TableView userTable;
+    private TableView<ExtendedUploadEntity> userTable;
 
     @FXML
     private ComboBox<UsersEntity> comboBox;
@@ -97,12 +94,7 @@ public class UserViewController implements Initializable {
                         };
                     }
                 });
-                comboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<UsersEntity>() {
-                    @Override
-                    public void changed(ObservableValue<? extends UsersEntity> observable, UsersEntity oldValue, UsersEntity newValue) {
-                        ControllerMediator.getInstance().loadUserDataToController(newValue);
-                    }
-                });
+                comboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> ControllerMediator.getInstance().loadUserDataToController(newValue));
             }
         }.start();
     }

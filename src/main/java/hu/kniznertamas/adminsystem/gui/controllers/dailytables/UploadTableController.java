@@ -28,9 +28,9 @@ public class UploadTableController implements Initializable {
     @FXML
     private TableView<ExtendedUploadEntity> uploadTable;
 
-    private GenericDao<UsersEntity> userDao;
-    private GenericDao<UploadEntity> uploadDao;
-    private GenericDao<ProjectsEntity> projectsDao;
+    private final GenericDao<UsersEntity> userDao;
+    private final GenericDao<UploadEntity> uploadDao;
+    private final GenericDao<ProjectsEntity> projectsDao;
 
     public UploadTableController() {
         userDao = DaoManager.getInstance().getUserDao();

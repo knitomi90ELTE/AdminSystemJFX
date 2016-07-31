@@ -10,7 +10,7 @@ import hu.kniznertamas.adminsystem.gui.controllers.projecttables.HoursTableContr
 import java.time.LocalDate;
 
 interface IMediateControllers {
-    void registerControllerMenu(MenuBarController controller);
+    //void registerControllerMenu(MenuBarController controller);
     void registerControllerUser(UserViewController controller);
     void registerControllerUploadTable(UploadTableController controller);
     void registerControllerBalanceTable(BalanceTableController controller);

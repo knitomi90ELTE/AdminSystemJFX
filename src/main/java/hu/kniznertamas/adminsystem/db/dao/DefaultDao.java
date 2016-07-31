@@ -8,12 +8,12 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-public class DefaultDao<T extends PersistentEntity> implements GenericDao<T> {
+class DefaultDao<T extends PersistentEntity> implements GenericDao<T> {
 
-    protected Class<T> CLASS;
-    protected EntityManagerFactory EMF;
+    private final Class<T> CLASS;
+    private final EntityManagerFactory EMF;
 
-    public DefaultDao(Class<T> CLASS) {
+    DefaultDao(Class<T> CLASS) {
         this.CLASS = CLASS;
         this.EMF = Persistence.createEntityManagerFactory("NewPersistenceUnit");
     }
@@ -53,11 +53,11 @@ public class DefaultDao<T extends PersistentEntity> implements GenericDao<T> {
         return getEntityManager().find(CLASS, id);
     }
 
-    protected EntityManager getEntityManager() {
+    private EntityManager getEntityManager() {
         return EMF.createEntityManager();
     }
 
-    protected List<T> findEntities(boolean all, int firstResult, int maxResult) {
+    private List<T> findEntities(boolean all, int firstResult, int maxResult) {
         EntityManager entityManager = getEntityManager();
         CriteriaQuery criteriaQuery = entityManager.getCriteriaBuilder().createQuery();
         criteriaQuery.select(criteriaQuery.from(CLASS));

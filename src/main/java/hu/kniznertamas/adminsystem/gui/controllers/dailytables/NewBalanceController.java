@@ -4,24 +4,25 @@ import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 import org.controlsfx.control.PopOver;
-
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
-
+/*
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+*/
 public class NewBalanceController implements Initializable {
 
     @FXML
@@ -37,7 +38,7 @@ public class NewBalanceController implements Initializable {
     private TextField bruttoField;
 
     @FXML
-    private ComboBox afaBox;
+    private ComboBox<String> afaBox;
 
     @FXML
     private TextField afaValueField;
@@ -46,10 +47,13 @@ public class NewBalanceController implements Initializable {
     private DatePicker createdPicker;
 
     @FXML
-    private ComboBox modelNameBox;
+    private CheckBox paidBox;
 
     @FXML
-    private ComboBox statusIdBox;
+    private ComboBox<String> modelNameBox;
+
+    @FXML
+    private ComboBox<StatusEntity> statusIdBox;
 
     @FXML
     private CheckBox cashBox;
@@ -59,9 +63,10 @@ public class NewBalanceController implements Initializable {
 
     private TextField customAfa;
     private boolean customAfaAdded = false;
-    private ComboBox userBox;
-    private ComboBox projectBox;
-    private LocalDate currentDate;
+    private ComboBox<UsersEntity> userBox;
+    private ComboBox<ProjectsEntity> projectBox;
+    private DatePicker paidPicker;
+    //private LocalDate currentDate;
     private PopOver parent;
 
     public NewBalanceController() {
@@ -73,10 +78,40 @@ public class NewBalanceController implements Initializable {
         initCustomAfaField();
         initAfaBox();
         initStatusBox();
+        initPaidPicker();
+        initPaidBox();
         initUserBox();
         initProjectBox();
         initModelNameBox();
         initTextFields();
+    }
+
+    private void initPaidBox() {
+        paidBox.setOnAction(event -> {
+            if (paidBox.isSelected()) {
+                showPaidPicker();
+            } else {
+                hidePaidPicker();
+            }
+        });
+    }
+
+    private void initPaidPicker() {
+        paidPicker = new DatePicker(LocalDate.now());
+        paidPicker.setPrefHeight(36.0);
+        paidPicker.setPrefWidth(200.0);
+    }
+
+    private void hidePaidPicker() {
+        if (mainGridPane.getChildren().contains(paidPicker)) {
+            mainGridPane.getChildren().removeAll(paidPicker);
+        }
+    }
+
+    private void showPaidPicker() {
+        if (!mainGridPane.getChildren().contains(paidPicker)) {
+            mainGridPane.add(paidPicker, 2, 6);
+        }
     }
 
     private void initDatePicker() {
@@ -91,7 +126,7 @@ public class NewBalanceController implements Initializable {
 
         nettoField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (bruttoField.isFocused() || "".equals(nettoField.getText())) return;
-            double multi = 1.0 + (((customAfaAdded) ? Double.parseDouble(customAfa.getText()) : Double.parseDouble(afaBox.getSelectionModel().getSelectedItem().toString())) / 100);
+            double multi = 1.0 + (((customAfaAdded) ? Double.parseDouble(customAfa.getText()) : Double.parseDouble(afaBox.getSelectionModel().getSelectedItem())) / 100);
             double bruttoValue = (Integer.parseInt(nettoField.getText())) * multi;
             bruttoField.setText(Integer.toString((int) bruttoValue));
             setAfaValueField();
@@ -99,7 +134,7 @@ public class NewBalanceController implements Initializable {
 
         bruttoField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (nettoField.isFocused() || "".equals(bruttoField.getText())) return;
-            double multi = 1.0 + (((customAfaAdded) ? Double.parseDouble(customAfa.getText()) : Double.parseDouble(afaBox.getSelectionModel().getSelectedItem().toString())) / 100);
+            double multi = 1.0 + (((customAfaAdded) ? Double.parseDouble(customAfa.getText()) : Double.parseDouble(afaBox.getSelectionModel().getSelectedItem())) / 100);
             double nettoValue = (Integer.parseInt(bruttoField.getText())) / multi;
             nettoField.setText(Integer.toString((int) nettoValue));
             setAfaValueField();
@@ -115,7 +150,7 @@ public class NewBalanceController implements Initializable {
         if (mainGridPane.getChildren().contains(projectBox)) {
             mainGridPane.getChildren().removeAll(projectBox);
         }
-        mainGridPane.add(userBox, 1, 7);
+        mainGridPane.add(userBox, 1, 8);
         statusIdBox.getSelectionModel().select(1);
         modelIDLabel.setText("Alkalmazottak");
     }
@@ -125,7 +160,7 @@ public class NewBalanceController implements Initializable {
         if (mainGridPane.getChildren().contains(userBox)) {
             mainGridPane.getChildren().removeAll(userBox);
         }
-        mainGridPane.add(projectBox, 1, 7);
+        mainGridPane.add(projectBox, 1, 8);
         statusIdBox.getSelectionModel().select(0);
         modelIDLabel.setText("Munkák");
     }
@@ -143,7 +178,7 @@ public class NewBalanceController implements Initializable {
 
     private void initUserBox() {
         //Platform.runLater(() -> {
-        userBox = new ComboBox();
+        userBox = new ComboBox<>();
         userBox.setPrefHeight(36.0);
         userBox.setPrefWidth(200.0);
         GenericDao<UsersEntity> usersDao = DaoManager.getInstance().getUserDao();
@@ -172,7 +207,7 @@ public class NewBalanceController implements Initializable {
 
     private void initProjectBox() {
         //Platform.runLater(() -> {
-        projectBox = new ComboBox();
+        projectBox = new ComboBox<>();
         projectBox.setPrefHeight(36.0);
         projectBox.setPrefWidth(200.0);
         GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
@@ -200,16 +235,13 @@ public class NewBalanceController implements Initializable {
     }
 
     private void initModelNameBox() {
-        modelNameBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                if ("Alkalmazott".equals(newValue)) {
-                    showUserBox();
-                } else if ("Munka".equals(newValue)) {
-                    showProjectBox();
-                } else {
-                    hideBoxes();
-                }
+        modelNameBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if ("Alkalmazott".equals(newValue)) {
+                showUserBox();
+            } else if ("Munka".equals(newValue)) {
+                showProjectBox();
+            } else {
+                hideBoxes();
             }
         });
         modelNameBox.getSelectionModel().select(1);
@@ -245,7 +277,7 @@ public class NewBalanceController implements Initializable {
         afaBox.getItems().addAll("0", "27", "egyéb");
         afaBox.getSelectionModel().select(1);
         afaBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if ("egyéb".equals((String) newValue)) {
+            if ("egyéb".equals(newValue)) {
                 if (!customAfaAdded) {
                     mainGridPane.add(customAfa, 2, 3);
                     customAfaAdded = true;
@@ -262,24 +294,24 @@ public class NewBalanceController implements Initializable {
     }
 
     @FXML
-    private void onSaveAction(ActionEvent event) {
+    private void onSaveAction() {
         BalanceEntity balanceEntity = createEntityFromForm();
         GenericDao<BalanceEntity> balanceDao = DaoManager.getInstance().getBalanceDao();
         balanceDao.create(balanceEntity);
         ControllerMediator.getInstance().refreshDailyTableData(createdPicker.getValue());
-        onCancelAction(null);
+        onCancelAction();
     }
 
     private BalanceEntity setModelProperties(BalanceEntity balanceEntity) {
-        String modelName = (String) modelNameBox.getSelectionModel().getSelectedItem();
+        String modelName = modelNameBox.getSelectionModel().getSelectedItem();
         switch (modelName) {
             case "Alkalmazott":
                 balanceEntity.setModelName("user");
-                balanceEntity.setModelId(((PersistentEntity) userBox.getSelectionModel().getSelectedItem()).getId());
+                balanceEntity.setModelId(( userBox.getSelectionModel().getSelectedItem()).getId());
                 break;
             case "Munka":
                 balanceEntity.setModelName("project");
-                balanceEntity.setModelId(((PersistentEntity) projectBox.getSelectionModel().getSelectedItem()).getId());
+                balanceEntity.setModelId(( projectBox.getSelectionModel().getSelectedItem()).getId());
                 break;
             case "Egyéb":
                 balanceEntity.setModelName(null);
@@ -297,10 +329,11 @@ public class NewBalanceController implements Initializable {
         BalanceEntity balanceEntity = new BalanceEntity();
         balanceEntity.setNetto(Integer.parseInt(nettoField.getText()));
         balanceEntity.setBrutto(Integer.parseInt(bruttoField.getText()));
-        balanceEntity.setAfa(Integer.parseInt((customAfaAdded) ? customAfa.getText() : afaBox.getSelectionModel().getSelectedItem().toString()));
+        balanceEntity.setAfa(Integer.parseInt((customAfaAdded) ? customAfa.getText() : afaBox.getSelectionModel().getSelectedItem()));
         balanceEntity.setAfaValue(Integer.parseInt(afaValueField.getText()));
         balanceEntity.setCreated(Date.valueOf(createdPicker.getValue()));
-        balanceEntity.setStatusId(((StatusEntity) statusIdBox.getSelectionModel().getSelectedItem()).getId());
+        balanceEntity.setCompleted((paidBox.isSelected()) ? Date.valueOf(paidPicker.getValue()) : null);
+        balanceEntity.setStatusId((statusIdBox.getSelectionModel().getSelectedItem()).getId());
         balanceEntity.setCash(cashBox.isSelected());
         balanceEntity.setNote(noteField.getText());
         balanceEntity = setModelProperties(balanceEntity);
@@ -308,13 +341,11 @@ public class NewBalanceController implements Initializable {
     }
 
     @FXML
-    private void onCancelAction(ActionEvent event) {
+    private void onCancelAction() {
         parent.hide();
     }
 
-    public void setCurrentDate(LocalDate currentDate) {
-        this.currentDate = currentDate;
-    }
+    //public void setCurrentDate(LocalDate currentDate) { this.currentDate = currentDate;}
 
     void setParent(PopOver parent) {
         this.parent = parent;

@@ -11,13 +11,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-import javax.swing.text.TabableView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ProjectController implements Initializable {
 
-    private GenericDao<ProjectsEntity> projectDao;
+    private final GenericDao<ProjectsEntity> projectDao;
 
     @FXML
     private TextField nameField;

@@ -54,6 +54,11 @@
                     <PropertyValueFactory property="created"/>
                 </cellValueFactory>
             </TableColumn>
+            <TableColumn prefWidth="100.0" text="Kifizetve">
+                <cellValueFactory>
+                    <PropertyValueFactory property="completed"/>
+                </cellValueFactory>
+            </TableColumn>
             <TableColumn prefWidth="100.0" text="Kategória">
                 <cellValueFactory>
                     <PropertyValueFactory property="status_name"/>

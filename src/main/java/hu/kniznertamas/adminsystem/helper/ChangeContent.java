@@ -3,12 +3,9 @@ package hu.kniznertamas.adminsystem.helper;
 import hu.kniznertamas.adminsystem.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class ChangeContent {
 

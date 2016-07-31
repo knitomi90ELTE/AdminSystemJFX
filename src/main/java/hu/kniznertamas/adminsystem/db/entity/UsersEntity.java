@@ -3,7 +3,7 @@ package hu.kniznertamas.adminsystem.db.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users", schema = "adminsystem_test", catalog = "")
+@Table(name = "users", schema = "adminsystem_test")
 public class UsersEntity extends PersistentEntity {
 
     private String name;
@@ -50,9 +50,8 @@ public class UsersEntity extends PersistentEntity {
         if (id != that.id) return false;
         if (wage != that.wage) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (note != null ? !note.equals(that.note) : that.note != null) return false;
+        return note != null ? note.equals(that.note) : that.note == null;
 
-        return true;
     }
 
     @Override

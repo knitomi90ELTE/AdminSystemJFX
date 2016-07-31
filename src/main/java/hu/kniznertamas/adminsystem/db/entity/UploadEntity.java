@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "upload", schema = "adminsystem_test", catalog = "")
+@Table(name = "upload", schema = "adminsystem_test")
 public class UploadEntity extends PersistentEntity {
 
     @Column(name = "user_id")
@@ -80,9 +80,8 @@ public class UploadEntity extends PersistentEntity {
         if (projectId != that.projectId) return false;
         if (Double.compare(that.hour, hour) != 0) return false;
         if (created != null ? !created.equals(that.created) : that.created != null) return false;
-        if (note != null ? !note.equals(that.note) : that.note != null) return false;
+        return note != null ? note.equals(that.note) : that.note == null;
 
-        return true;
     }
 
     @Override

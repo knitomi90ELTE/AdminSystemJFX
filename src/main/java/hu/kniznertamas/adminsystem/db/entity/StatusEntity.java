@@ -3,7 +3,7 @@ package hu.kniznertamas.adminsystem.db.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "status", schema = "adminsystem_test", catalog = "")
+@Table(name = "status", schema = "adminsystem_test")
 public class StatusEntity extends PersistentEntity {
 
     private String name;
@@ -26,9 +26,8 @@ public class StatusEntity extends PersistentEntity {
         StatusEntity that = (StatusEntity) o;
 
         if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        return name != null ? name.equals(that.name) : that.name == null;
 
-        return true;
     }
 
     @Override

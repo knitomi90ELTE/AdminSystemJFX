@@ -4,8 +4,6 @@ import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -72,12 +70,7 @@ public class ProjectViewController implements Initializable {
                         };
                     }
                 });
-                comboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ProjectsEntity>() {
-                    @Override
-                    public void changed(ObservableValue<? extends ProjectsEntity> observable, ProjectsEntity oldValue, ProjectsEntity newValue) {
-                        ControllerMediator.getInstance().loadProjectDataToController(newValue);
-                    }
-                });
+                comboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> ControllerMediator.getInstance().loadProjectDataToController(newValue));
             }
         }.start();
     }

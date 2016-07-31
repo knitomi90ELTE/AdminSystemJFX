@@ -8,13 +8,12 @@ import hu.kniznertamas.adminsystem.gui.controllers.dailytables.UploadTableContro
 import hu.kniznertamas.adminsystem.gui.controllers.projecttables.FinancesTableController;
 import hu.kniznertamas.adminsystem.gui.controllers.projecttables.HoursTableController;
 import javafx.application.Platform;
-import javafx.fxml.Initializable;
 
 import java.time.LocalDate;
 
 public class ControllerMediator implements IMediateControllers {
 
-    private MenuBarController menuBarController;
+    //private MenuBarController menuBarController;
     private UserViewController userViewController;
     private UploadTableController uploadTableController;
     private BalanceTableController balanceTableController;
@@ -22,10 +21,10 @@ public class ControllerMediator implements IMediateControllers {
     private FinancesTableController financesTableController;
     private HoursTableController hoursTableController;
 
-    @Override
+    /*@Override
     public void registerControllerMenu(MenuBarController controller) {
         menuBarController = controller;
-    }
+    }*/
 
     @Override
     public void registerControllerUser(UserViewController controller) {

@@ -27,10 +27,10 @@ public class BalanceTableController implements Initializable {
     @FXML
     private TableView<ExtendedBalanceEntity> balanceTable;
 
-    private GenericDao<BalanceEntity> balanceDao;
-    private GenericDao<StatusEntity> statusDao;
-    private GenericDao<UsersEntity> userDao;
-    private GenericDao<ProjectsEntity> projectsDao;
+    private final GenericDao<BalanceEntity> balanceDao;
+    private final GenericDao<StatusEntity> statusDao;
+    private final GenericDao<UsersEntity> userDao;
+    private final GenericDao<ProjectsEntity> projectsDao;
 
     public BalanceTableController() {
         balanceDao = DaoManager.getInstance().getBalanceDao();

@@ -49,7 +49,7 @@
                 </FXCollections>
             </items>
         </ComboBox>
-        <Button text="Kiválaszt" onAction="#loadTableAction"></Button>
+        <Button text="Kiválaszt" onAction="#loadTableAction"/>
       <padding>
          <Insets bottom="10.0" left="10.0" top="10.0" />
       </padding>

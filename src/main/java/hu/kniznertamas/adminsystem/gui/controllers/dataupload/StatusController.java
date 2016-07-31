@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class StatusController implements Initializable {
 
-    private GenericDao<StatusEntity> statusDao;
+    private final GenericDao<StatusEntity> statusDao;
 
     @FXML
     private TextField nameField;
@@ -38,8 +38,7 @@ public class StatusController implements Initializable {
     }
 
     private boolean validForm() {
-        if("".equals(nameField.getText())) return false;
-        return true;
+        return !"".equals(nameField.getText());
     }
 
     @FXML

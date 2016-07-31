@@ -22,10 +22,10 @@ import java.util.ResourceBundle;
 public class NewUploadController implements Initializable {
 
     @FXML
-    private ComboBox userBox;
+    private ComboBox<UsersEntity> userBox;
 
     @FXML
-    private ComboBox projectBox;
+    private ComboBox<ProjectsEntity> projectBox;
 
     @FXML
     private TextField hoursField;
@@ -68,8 +68,8 @@ public class NewUploadController implements Initializable {
             return;
         }
         UploadEntity newUpload = new UploadEntity();
-        newUpload.setUserId(((UsersEntity)userBox.getSelectionModel().getSelectedItem()).getId());
-        newUpload.setProjectId(((ProjectsEntity)projectBox.getSelectionModel().getSelectedItem()).getId());
+        newUpload.setUserId((userBox.getSelectionModel().getSelectedItem()).getId());
+        newUpload.setProjectId((projectBox.getSelectionModel().getSelectedItem()).getId());
         newUpload.setHour(Double.parseDouble(hoursField.getText()));
         newUpload.setCreated(Date.valueOf(createdPicker.getValue()));
         newUpload.setNote((noteField.getText().length() == 0) ? "" : noteField.getText());

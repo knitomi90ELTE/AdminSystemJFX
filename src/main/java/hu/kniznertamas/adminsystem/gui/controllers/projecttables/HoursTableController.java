@@ -5,7 +5,6 @@ import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.ExtendedUploadEntity;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
-import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -29,7 +28,7 @@ public class HoursTableController implements Initializable {
     @FXML
     private Label sumHoursLabel;
 
-    private GenericDao<UploadEntity> uploadDao;
+    private final GenericDao<UploadEntity> uploadDao;
 
     public HoursTableController() {
         uploadDao = DaoManager.getInstance().getUploadDao();

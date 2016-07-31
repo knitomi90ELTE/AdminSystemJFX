@@ -2,7 +2,7 @@ package hu.kniznertamas.adminsystem.gui.elements;
 
 import javafx.scene.control.MenuItem;
 
-public class CustomMenuItem extends MenuItem {
+class CustomMenuItem extends MenuItem {
 
     private Integer itemID;
 

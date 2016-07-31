@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
 
-    private GenericDao<UsersEntity> userDao;
+    private final GenericDao<UsersEntity> userDao;
 
     @FXML
     private TextField nameField;

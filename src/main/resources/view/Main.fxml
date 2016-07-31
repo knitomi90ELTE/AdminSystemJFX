@@ -4,19 +4,22 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tab?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.MainController" prefWidth="1366.0" prefHeight="768.0">
-    <fx:include source="MenuBar.fxml"></fx:include>
+    <fx:include source="MenuBar.fxml"/>
     <TabPane tabClosingPolicy="UNAVAILABLE">
         <Tab text="Napi nézet">
-            <fx:include source="DailyView.fxml"></fx:include>
+            <fx:include source="DailyView.fxml"/>
         </Tab>
         <Tab text="Alkalmazottak">
-            <fx:include source="UserView.fxml"></fx:include>
+            <fx:include source="UserView.fxml"/>
         </Tab>
         <Tab text="Munkák">
-            <fx:include source="ProjectView.fxml"></fx:include>
+            <fx:include source="ProjectView.fxml"/>
+        </Tab>
+        <Tab text="Nyitott tételek">
+            <fx:include source="OpenItems.fxml"/>
         </Tab>
         <Tab text="Bérlista">
-            <fx:include source="WageView.fxml"></fx:include>
+            <fx:include source="WageView.fxml"/>
         </Tab>
     </TabPane>
 

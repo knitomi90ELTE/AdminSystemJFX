@@ -11,13 +11,13 @@ public abstract class PersistentEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
+    Integer id;
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    void setId(Integer id) {
         this.id = id;
     }
 

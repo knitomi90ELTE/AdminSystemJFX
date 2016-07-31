@@ -19,6 +19,7 @@ public class ExtendedBalanceEntity extends BalanceEntity{
         this.modelName = be.getModelName();
         this.modelId = be.getModelId();
         this.created = be.getCreated();
+        this.completed = be.getCompleted();
         this.cash = be.getCash();
         this.note = be.getNote();
     }
