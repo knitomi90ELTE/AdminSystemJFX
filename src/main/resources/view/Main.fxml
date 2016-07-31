@@ -15,6 +15,9 @@
         <Tab text="Munkák">
             <fx:include source="ProjectView.fxml"></fx:include>
         </Tab>
+        <Tab text="Bérlista">
+            <fx:include source="WageView.fxml"></fx:include>
+        </Tab>
     </TabPane>
 
 </VBox>
