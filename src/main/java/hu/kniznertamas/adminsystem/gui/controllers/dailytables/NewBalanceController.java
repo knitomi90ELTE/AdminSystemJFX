@@ -347,7 +347,7 @@ public class NewBalanceController implements Initializable {
 
     //public void setCurrentDate(LocalDate currentDate) { this.currentDate = currentDate;}
 
-    void setParent(PopOver parent) {
+    public void setParent(PopOver parent) {
         this.parent = parent;
     }
 }

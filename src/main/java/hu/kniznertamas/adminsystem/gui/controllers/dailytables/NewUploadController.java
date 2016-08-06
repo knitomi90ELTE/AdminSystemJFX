@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.Callback;
 import org.controlsfx.control.PopOver;
+
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -49,10 +50,10 @@ public class NewUploadController implements Initializable {
     }
 
     private boolean validForm() {
-        if("".equals(hoursField.getText())) return false;
-        try{
+        if ("".equals(hoursField.getText())) return false;
+        try {
             Integer.parseInt(hoursField.getText());
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             return false;
         }
         return true;
@@ -60,7 +61,7 @@ public class NewUploadController implements Initializable {
 
     @FXML
     private void onSaveAction(ActionEvent event) {
-        if(!validForm()){
+        if (!validForm()) {
             /*Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setHeaderText("Hiba a bevitt adatokban!");
             errorAlert.showAndWait();*/
@@ -84,12 +85,12 @@ public class NewUploadController implements Initializable {
         parent.hide();
     }
 
-    private void initDate(){
+    private void initDate() {
         LocalDate today = LocalDate.now();
         createdPicker.setValue(today);
     }
 
-    private void loadUsers(){
+    private void loadUsers() {
         new Thread() {
             @Override
             public void run() {
@@ -147,7 +148,7 @@ public class NewUploadController implements Initializable {
         }.start();
     }
 
-    void setParent(PopOver parent){
+    void setParent(PopOver parent) {
         this.parent = parent;
     }
 }

@@ -1,17 +1,17 @@
-package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
+package hu.kniznertamas.adminsystem.gui.controllers;
 
 import hu.kniznertamas.adminsystem.Main;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
-import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import hu.kniznertamas.adminsystem.gui.controllers.dailytables.NewBalanceController;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import org.controlsfx.control.PopOver;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -22,17 +22,17 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class BalanceTableController implements Initializable {
+public class OpenItemsViewController implements Initializable {
 
     @FXML
-    private TableView<ExtendedBalanceEntity> balanceTable;
+    private TableView<ExtendedBalanceEntity> openItemsTable;
 
     private final GenericDao<BalanceEntity> balanceDao;
     private final GenericDao<StatusEntity> statusDao;
     private final GenericDao<UsersEntity> userDao;
     private final GenericDao<ProjectsEntity> projectsDao;
 
-    public BalanceTableController() {
+    public OpenItemsViewController() {
         balanceDao = DaoManager.getInstance().getBalanceDao();
         statusDao = DaoManager.getInstance().getStatusDao();
         userDao = DaoManager.getInstance().getUserDao();
@@ -41,14 +41,12 @@ public class BalanceTableController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ControllerMediator.getInstance().registerControllerBalanceTable(this);
+        initOpenItemsTable();
     }
 
-    public void refreshTableData(LocalDate currentDate){
+    private void initOpenItemsTable() {
         Stream<BalanceEntity> balanceList = balanceDao.findAll().stream();
-        //List<BalanceEntity> filteredList = balanceList.filter(item -> item.getCreated().equals(Date.valueOf(currentDate))).collect(Collectors.toList());
-        List<BalanceEntity> filteredList = balanceList.filter(item -> item.getCompleted().equals(Date.valueOf(currentDate))).collect(Collectors.toList());
-        System.out.println(filteredList.toString());
+        List<BalanceEntity> filteredList = balanceList.filter(item -> item.getCompleted() == null).collect(Collectors.toList());
         List<ExtendedBalanceEntity> extendedList = new ArrayList<>();
         for (BalanceEntity be : filteredList){
             ExtendedBalanceEntity ebe = new ExtendedBalanceEntity(be);
@@ -67,12 +65,21 @@ public class BalanceTableController implements Initializable {
             }
             extendedList.add(ebe);
         }
-        balanceTable.setItems(FXCollections.observableArrayList(extendedList));
-        balanceTable.refresh();
+        openItemsTable.setItems(FXCollections.observableArrayList(extendedList));
+        openItemsTable.refresh();
     }
 
     @FXML
-    private void addNewAction(ActionEvent event){
+    private void onPayButtonAction() {
+        ExtendedBalanceEntity ebe = openItemsTable.getSelectionModel().getSelectedItem();
+        BalanceEntity selectedEntity = balanceDao.findById(ebe.getId());
+        selectedEntity.setCompleted(Date.valueOf(LocalDate.now()));
+        balanceDao.update(selectedEntity);
+        initOpenItemsTable();
+    }
+
+    @FXML
+    private void onNewButtonAction() {
         PopOver popover = new PopOver();
         popover.setAutoHide(false);
         FXMLLoader loader = Main.getInstance().getChangeContent().getContentNode("/view/dailytables/NewBalanceView.fxml");
@@ -85,13 +92,4 @@ public class BalanceTableController implements Initializable {
         }
         popover.show(Main.getInstance().getChangeContent().getMainStage());
     }
-
-    @FXML
-    private void removeSelectedAction(ActionEvent event) {
-        ExtendedBalanceEntity ebe = balanceTable.getSelectionModel().getSelectedItem();
-        if(ebe == null) return;
-        balanceDao.delete(balanceDao.findById(ebe.getId()));
-        ControllerMediator.getInstance().refreshDailyTableData(ebe.getCreated().toLocalDate());
-    }
-
 }

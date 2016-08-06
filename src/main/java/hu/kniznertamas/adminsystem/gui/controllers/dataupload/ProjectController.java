@@ -44,11 +44,11 @@ public class ProjectController implements Initializable {
     }
 
     private boolean validForm() {
-        if("".equals(nameField.getText())) return false;
-        if("".equals(retentionField.getText())) return false;
-        try{
+        if ("".equals(nameField.getText())) return false;
+        if ("".equals(retentionField.getText())) return false;
+        try {
             Integer.parseInt(retentionField.getText());
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             return false;
         }
         return true;
@@ -56,7 +56,7 @@ public class ProjectController implements Initializable {
 
     @FXML
     private void onSaveAction(ActionEvent event) {
-        if(!validForm()){
+        if (!validForm()) {
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setHeaderText("Hiba a bevitt adatokban!");
             errorAlert.showAndWait();
@@ -82,7 +82,7 @@ public class ProjectController implements Initializable {
         initProjectsTable();
     }
 
-    private void clearFields(){
+    private void clearFields() {
         nameField.setText("");
         retentionField.setText("");
         noteField.setText("");
