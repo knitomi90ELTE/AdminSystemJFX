@@ -8,13 +8,13 @@
             fx:controller="hu.kniznertamas.adminsystem.gui.controllers.DailyViewController">
     <top>
         <HBox alignment="CENTER">
-            <Button onAction="#decreaseDate">-</Button>
+            <Button onAction="#decreaseDate" text="Előző nap"/>
             <DatePicker fx:id="datePicker" onAction="#onDateChangeAction">
                 <padding>
                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                 </padding>
             </DatePicker>
-            <Button onAction="#increaseDate">+</Button>
+            <Button onAction="#increaseDate" text="Következő nap"/>
 
         </HBox>
     </top>

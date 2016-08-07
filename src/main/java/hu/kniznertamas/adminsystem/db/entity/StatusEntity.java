@@ -25,8 +25,8 @@ public class StatusEntity extends PersistentEntity {
 
         StatusEntity that = (StatusEntity) o;
 
-        if (id != that.id) return false;
-        return name != null ? name.equals(that.name) : that.name == null;
+        //noinspection NumberEquality
+        return id == that.id && (name != null ? name.equals(that.name) : that.name == null);
 
     }
 

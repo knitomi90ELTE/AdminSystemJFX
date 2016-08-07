@@ -47,10 +47,10 @@ public class ProjectsEntity extends PersistentEntity {
 
         ProjectsEntity that = (ProjectsEntity) o;
 
+        //noinspection SimplifiableIfStatement,NumberEquality
         if (id != that.id) return false;
-        if (retention != that.retention) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        return note != null ? note.equals(that.note) : that.note == null;
+        //noinspection NumberEquality
+        return retention == that.retention && (name != null ? name.equals(that.name) : that.name == null && (note != null ? note.equals(that.note) : that.note == null));
 
     }
 

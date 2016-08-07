@@ -2,10 +2,13 @@ package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
+import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
+import hu.kniznertamas.adminsystem.gui.controllers.PopupAbstractt;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import hu.kniznertamas.adminsystem.helper.CallbackInterface;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +23,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class NewUploadController implements Initializable {
+public class NewUploadController extends PopupAbstractt implements Initializable {
 
     @FXML
     private ComboBox<UsersEntity> userBox;
@@ -38,6 +41,7 @@ public class NewUploadController implements Initializable {
     private TextField noteField;
 
     private PopOver parent;
+    private CallbackInterface callbackFunction;
 
     public NewUploadController() {
     }
@@ -52,6 +56,7 @@ public class NewUploadController implements Initializable {
     private boolean validForm() {
         if ("".equals(hoursField.getText())) return false;
         try {
+            //noinspection ResultOfMethodCallIgnored
             Integer.parseInt(hoursField.getText());
         } catch (NumberFormatException e) {
             return false;
@@ -77,12 +82,7 @@ public class NewUploadController implements Initializable {
         GenericDao<UploadEntity> uploadDao = DaoManager.getInstance().getUploadDao();
         uploadDao.create(newUpload);
         ControllerMediator.getInstance().refreshDailyTableData(createdPicker.getValue());
-        onCancelAction(null);
-    }
-
-    @FXML
-    private void onCancelAction(ActionEvent event) {
-        parent.hide();
+        onCancelAction();
     }
 
     private void initDate() {
@@ -148,7 +148,24 @@ public class NewUploadController implements Initializable {
         }.start();
     }
 
-    void setParent(PopOver parent) {
+    @Override
+    public void setParent(PopOver parent) {
         this.parent = parent;
+    }
+
+    @Override
+    public void loadEntityToFields(PersistentEntity entity) {
+
+    }
+
+    @Override
+    public void setCallbackFunction(CallbackInterface callbackFunction) {
+        this.callbackFunction = callbackFunction;
+    }
+
+    @Override
+    protected void onCancelAction() {
+        callbackFunction.callbackFunction();
+        parent.hide();
     }
 }

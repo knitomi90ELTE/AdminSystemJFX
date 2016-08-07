@@ -75,12 +75,13 @@ public class UploadEntity extends PersistentEntity {
 
         UploadEntity that = (UploadEntity) o;
 
+        //noinspection NumberEquality
         if (id != that.id) return false;
+        //noinspection NumberEquality
         if (userId != that.userId) return false;
+        //noinspection SimplifiableIfStatement,NumberEquality
         if (projectId != that.projectId) return false;
-        if (Double.compare(that.hour, hour) != 0) return false;
-        if (created != null ? !created.equals(that.created) : that.created != null) return false;
-        return note != null ? note.equals(that.note) : that.note == null;
+        return Double.compare(that.hour, hour) == 0 && (created != null ? created.equals(that.created) : that.created == null && (note != null ? note.equals(that.note) : that.note == null));
 
     }
 

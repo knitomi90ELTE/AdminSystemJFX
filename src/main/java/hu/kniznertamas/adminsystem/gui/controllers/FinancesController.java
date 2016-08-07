@@ -3,44 +3,56 @@ package hu.kniznertamas.adminsystem.gui.controllers;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
-import hu.kniznertamas.adminsystem.gui.controllers.dailytables.NewBalanceController;
-import hu.kniznertamas.adminsystem.gui.elements.PopOverElement;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
+
 import java.net.URL;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class OpenItemsViewController implements Initializable {
+public class FinancesController implements Initializable {
 
     @FXML
-    private TableView<ExtendedBalanceEntity> openItemsTable;
+    private ComboBox<StatusEntity> statusBox;
+
+    @FXML
+    private TableView<ExtendedBalanceEntity> balanceTable;
 
     private final GenericDao<BalanceEntity> balanceDao;
     private final GenericDao<StatusEntity> statusDao;
     private final GenericDao<UsersEntity> userDao;
     private final GenericDao<ProjectsEntity> projectsDao;
 
-    public OpenItemsViewController() {
+    public FinancesController() {
         balanceDao = DaoManager.getInstance().getBalanceDao();
         statusDao = DaoManager.getInstance().getStatusDao();
         userDao = DaoManager.getInstance().getUserDao();
         projectsDao = DaoManager.getInstance().getProjectsDao();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        initOpenItemsTable();
+    private void initStatusBox() {
+        List<StatusEntity> statusList = statusDao.findAll();
+        statusBox.setItems(FXCollections.observableArrayList(statusList));
+        statusBox.getSelectionModel().selectFirst();
+        statusBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            loadDataToTable();
+        });
+
     }
 
-    private void initOpenItemsTable() {
+    private void loadDataToTable(){
         Stream<BalanceEntity> balanceList = balanceDao.findAll().stream();
-        List<BalanceEntity> filteredList = balanceList.filter(item -> item.getCompleted() == null).collect(Collectors.toList());
+        List<BalanceEntity> filteredList = balanceList.filter(item -> item.getStatusId().equals(statusBox.getSelectionModel().getSelectedItem().getId())).collect(Collectors.toList());
+        System.out.println(filteredList.toString());
         List<ExtendedBalanceEntity> extendedList = new ArrayList<>();
         for (BalanceEntity be : filteredList){
             ExtendedBalanceEntity ebe = new ExtendedBalanceEntity(be);
@@ -59,19 +71,13 @@ public class OpenItemsViewController implements Initializable {
             }
             extendedList.add(ebe);
         }
-        openItemsTable.setItems(FXCollections.observableArrayList(extendedList));
-        openItemsTable.refresh();
+        balanceTable.setItems(FXCollections.observableArrayList(extendedList));
+        balanceTable.refresh();
     }
 
-    @FXML
-    private void onPayButtonAction() {
-        ExtendedBalanceEntity ebe = openItemsTable.getSelectionModel().getSelectedItem();
-        BalanceEntity selectedEntity = balanceDao.findById(ebe.getId());
-        new PopOverElement<NewBalanceController>("/view/dailytables/NewBalanceView.fxml", selectedEntity, this::initOpenItemsTable);
-    }
-
-    @FXML
-    private void onNewButtonAction() {
-        new PopOverElement<NewBalanceController>("/view/dailytables/NewBalanceView.fxml", null, this::initOpenItemsTable);
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        initStatusBox();
+        loadDataToTable();
     }
 }

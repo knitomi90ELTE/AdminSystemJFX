@@ -1,18 +1,14 @@
 package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 
-import hu.kniznertamas.adminsystem.Main;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import hu.kniznertamas.adminsystem.gui.elements.PopOverElement;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
-import org.controlsfx.control.PopOver;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -46,8 +42,7 @@ public class BalanceTableController implements Initializable {
 
     public void refreshTableData(LocalDate currentDate){
         Stream<BalanceEntity> balanceList = balanceDao.findAll().stream();
-        //List<BalanceEntity> filteredList = balanceList.filter(item -> item.getCreated().equals(Date.valueOf(currentDate))).collect(Collectors.toList());
-        List<BalanceEntity> filteredList = balanceList.filter(item -> item.getCompleted().equals(Date.valueOf(currentDate))).collect(Collectors.toList());
+        List<BalanceEntity> filteredList = balanceList.filter(item -> (item.getCompleted() != null) && item.getCompleted().equals(Date.valueOf(currentDate))).collect(Collectors.toList());
         System.out.println(filteredList.toString());
         List<ExtendedBalanceEntity> extendedList = new ArrayList<>();
         for (BalanceEntity be : filteredList){
@@ -72,22 +67,12 @@ public class BalanceTableController implements Initializable {
     }
 
     @FXML
-    private void addNewAction(ActionEvent event){
-        PopOver popover = new PopOver();
-        popover.setAutoHide(false);
-        FXMLLoader loader = Main.getInstance().getChangeContent().getContentNode("/view/dailytables/NewBalanceView.fxml");
-        try {
-            popover.setContentNode(loader.load());
-            NewBalanceController controller = loader.getController();
-            controller.setParent(popover);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        popover.show(Main.getInstance().getChangeContent().getMainStage());
+    private void addNewAction(){
+        new PopOverElement<NewBalanceController>("/view/dailytables/NewBalanceView.fxml", null, () -> refreshTableData(LocalDate.now()));
     }
 
     @FXML
-    private void removeSelectedAction(ActionEvent event) {
+    private void removeSelectedAction() {
         ExtendedBalanceEntity ebe = balanceTable.getSelectionModel().getSelectedItem();
         if(ebe == null) return;
         balanceDao.delete(balanceDao.findById(ebe.getId()));

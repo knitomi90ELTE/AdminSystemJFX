@@ -15,6 +15,9 @@
         <Tab text="Munkák">
             <fx:include source="ProjectView.fxml"/>
         </Tab>
+        <Tab text="Pénzügy">
+            <fx:include source="Finances.fxml"/>
+        </Tab>
         <Tab text="Nyitott tételek">
             <fx:include source="OpenItems.fxml"/>
         </Tab>

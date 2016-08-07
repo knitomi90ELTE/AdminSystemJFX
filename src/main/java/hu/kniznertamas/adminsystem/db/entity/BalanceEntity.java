@@ -152,10 +152,9 @@ public class BalanceEntity extends PersistentEntity {
         if (!afa.equals(that.afa)) return false;
         if (!afaValue.equals(that.afaValue)) return false;
         if (!created.equals(that.created)) return false;
+        //noinspection SimplifiableIfStatement
         if (completed != null ? !completed.equals(that.completed) : that.completed != null) return false;
-        if (!statusId.equals(that.statusId)) return false;
-        if (modelName != null ? !modelName.equals(that.modelName) : that.modelName != null) return false;
-        return modelId != null ? modelId.equals(that.modelId) : that.modelId == null && cash.equals(that.cash) && (note != null ? note.equals(that.note) : that.note == null);
+        return statusId.equals(that.statusId) && (modelName != null ? modelName.equals(that.modelName) : that.modelName == null && (modelId != null ? modelId.equals(that.modelId) : that.modelId == null && cash.equals(that.cash) && (note != null ? note.equals(that.note) : that.note == null)));
 
     }
 

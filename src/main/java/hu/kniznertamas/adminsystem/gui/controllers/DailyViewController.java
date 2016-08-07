@@ -1,7 +1,6 @@
 package hu.kniznertamas.adminsystem.gui.controllers;
 
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
@@ -46,12 +45,13 @@ public class DailyViewController implements Initializable {
         currentDate = ld;
     }
 
-    public void onDateChangeAction(ActionEvent event){
+    public void onDateChangeAction(){
         currentDate = datePicker.getValue();
         updateTables();
     }
 
-    private void updateData(boolean updateTables, boolean setValue,  LocalDate ld){
+    @SuppressWarnings("UnusedParameters")
+    private void updateData(boolean updateTables, boolean setValue, LocalDate ld){
         //TODO: fenti metódusok refaktorálása, mert csúnya
     }
 

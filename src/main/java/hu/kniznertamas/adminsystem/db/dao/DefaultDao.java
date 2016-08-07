@@ -57,15 +57,17 @@ class DefaultDao<T extends PersistentEntity> implements GenericDao<T> {
         return EMF.createEntityManager();
     }
 
-    private List<T> findEntities(boolean all, int firstResult, int maxResult) {
+    private List<T> findEntities(@SuppressWarnings("SameParameterValue") boolean all, int firstResult, int maxResult) {
         EntityManager entityManager = getEntityManager();
         CriteriaQuery criteriaQuery = entityManager.getCriteriaBuilder().createQuery();
+        //noinspection unchecked
         criteriaQuery.select(criteriaQuery.from(CLASS));
         Query query = entityManager.createQuery(criteriaQuery);
         if (!all) {
             query.setFirstResult(firstResult);
             query.setMaxResults(maxResult);
         }
+        //noinspection unchecked
         return query.getResultList();
     }
 }

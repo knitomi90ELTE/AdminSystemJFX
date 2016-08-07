@@ -3,7 +3,9 @@ package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
+import hu.kniznertamas.adminsystem.gui.controllers.PopupAbstractt;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import hu.kniznertamas.adminsystem.helper.CallbackInterface;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,19 +13,14 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 import org.controlsfx.control.PopOver;
+
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
-/*
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-*/
-public class NewBalanceController implements Initializable {
+
+public class NewBalanceController extends PopupAbstractt implements Initializable {
 
     @FXML
     private GridPane mainGridPane;
@@ -63,11 +60,13 @@ public class NewBalanceController implements Initializable {
 
     private TextField customAfa;
     private boolean customAfaAdded = false;
+    private boolean editingMode;
     private ComboBox<UsersEntity> userBox;
     private ComboBox<ProjectsEntity> projectBox;
     private DatePicker paidPicker;
-    //private LocalDate currentDate;
     private PopOver parent;
+    private BalanceEntity tempEntity;
+    private CallbackInterface callbackFunction;
 
     public NewBalanceController() {
     }
@@ -177,7 +176,6 @@ public class NewBalanceController implements Initializable {
     }
 
     private void initUserBox() {
-        //Platform.runLater(() -> {
         userBox = new ComboBox<>();
         userBox.setPrefHeight(36.0);
         userBox.setPrefWidth(200.0);
@@ -202,11 +200,9 @@ public class NewBalanceController implements Initializable {
                 };
             }
         });
-        //});
     }
 
     private void initProjectBox() {
-        //Platform.runLater(() -> {
         projectBox = new ComboBox<>();
         projectBox.setPrefHeight(36.0);
         projectBox.setPrefWidth(200.0);
@@ -231,7 +227,6 @@ public class NewBalanceController implements Initializable {
                 };
             }
         });
-        //});
     }
 
     private void initModelNameBox() {
@@ -248,32 +243,19 @@ public class NewBalanceController implements Initializable {
     }
 
     private void initStatusBox() {
-        //new Thread() {
-        //@Override
-        //public void run() {
         GenericDao<StatusEntity> statusDao = DaoManager.getInstance().getStatusDao();
         List<StatusEntity> statusList = statusDao.findAll();
         statusIdBox.setItems(FXCollections.observableArrayList(statusList));
-        //}
-        //}.start();
     }
 
     private void initCustomAfaField() {
-        // new Thread() {
-        //@Override
-        //public void run() {
         customAfa = new TextField();
         customAfa.prefHeight(36.0);
         customAfa.setPromptText("Egyedi ÁFA");
         customAfa.setText("0");
-        //}
-        //}.start();
     }
 
     private void initAfaBox() {
-        // new Thread() {
-        //@Override
-        //public void run() {
         afaBox.getItems().addAll("0", "27", "egyéb");
         afaBox.getSelectionModel().select(1);
         afaBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -289,12 +271,53 @@ public class NewBalanceController implements Initializable {
                 }
             }
         });
-        //}
-        //}.start();
     }
 
     @FXML
     private void onSaveAction() {
+        if(editingMode) {
+            modifyEntity();
+        } else {
+            saveNewEntity();
+        }
+    }
+
+    private void modifyEntity() {
+        tempEntity.setNetto(Integer.parseInt(nettoField.getText()));
+        tempEntity.setBrutto(Integer.parseInt(bruttoField.getText()));
+        tempEntity.setAfa(Integer.parseInt((customAfaAdded) ? customAfa.getText() : afaBox.getSelectionModel().getSelectedItem()));
+        tempEntity.setAfaValue(Integer.parseInt(afaValueField.getText()));
+        tempEntity.setCreated(Date.valueOf(createdPicker.getValue()));
+        tempEntity.setCompleted((paidBox.isSelected()) ? Date.valueOf(paidPicker.getValue()) : null);
+        tempEntity.setStatusId((statusIdBox.getSelectionModel().getSelectedItem()).getId());
+        tempEntity.setCash(cashBox.isSelected());
+        tempEntity.setNote(noteField.getText());
+        String modelName = modelNameBox.getSelectionModel().getSelectedItem();
+        switch (modelName) {
+            case "Alkalmazott":
+                tempEntity.setModelName("user");
+                tempEntity.setModelId(( userBox.getSelectionModel().getSelectedItem()).getId());
+                break;
+            case "Munka":
+                tempEntity.setModelName("project");
+                tempEntity.setModelId(( projectBox.getSelectionModel().getSelectedItem()).getId());
+                break;
+            case "Egyéb":
+                tempEntity.setModelName(null);
+                tempEntity.setModelId(null);
+                break;
+            default:
+                System.out.println("baj van");
+                break;
+        }
+
+        GenericDao<BalanceEntity> balanceDao = DaoManager.getInstance().getBalanceDao();
+        balanceDao.update(tempEntity);
+        ControllerMediator.getInstance().refreshDailyTableData(createdPicker.getValue());
+        onCancelAction();
+    }
+
+    private void saveNewEntity(){
         BalanceEntity balanceEntity = createEntityFromForm();
         GenericDao<BalanceEntity> balanceDao = DaoManager.getInstance().getBalanceDao();
         balanceDao.create(balanceEntity);
@@ -340,14 +363,68 @@ public class NewBalanceController implements Initializable {
         return balanceEntity;
     }
 
-    @FXML
-    private void onCancelAction() {
-        parent.hide();
+    @Override
+    public void loadEntityToFields(PersistentEntity entity) {
+        if(entity == null) {
+            editingMode = false;
+            return;
+        }
+        editingMode = true;
+        tempEntity = (BalanceEntity)entity;
+        nettoField.setText(tempEntity.getNetto().toString());
+        bruttoField.setText(tempEntity.getBrutto().toString());
+        String afa = tempEntity.getAfa().toString();
+        if("0".equals(afa)){
+            afaBox.getSelectionModel().select(0);
+        } else if("27".equals(afa)) {
+            afaBox.getSelectionModel().select(1);
+        } else {
+            afaBox.getSelectionModel().select(2);
+            customAfa.setText(afa);
+            customAfaAdded = true;
+        }
+        afaValueField.setText(tempEntity.getAfaValue().toString());
+        createdPicker.setValue(tempEntity.getCreated().toLocalDate());
+        if(tempEntity.getCompleted() != null) {
+            paidBox.selectedProperty().setValue(true);
+            paidPicker.setValue(tempEntity.getCompleted().toLocalDate());
+        }
+        switch (tempEntity.getModelName()){
+            case "Alkalmazott":
+                modelNameBox.getSelectionModel().select(0);
+                GenericDao<UsersEntity> userDao = DaoManager.getInstance().getUserDao();
+                userBox.getSelectionModel().select(userDao.findById(tempEntity.getModelId()));
+                showUserBox();
+                break;
+            case "Munka":
+                modelNameBox.getSelectionModel().select(1);
+                GenericDao<ProjectsEntity> projectDao = DaoManager.getInstance().getProjectsDao();
+                projectBox.getSelectionModel().select(projectDao.findById(tempEntity.getModelId()));
+                showProjectBox();
+                break;
+            case "egyéb":
+                modelNameBox.getSelectionModel().select(2);
+                hideBoxes();
+                break;
+        }
+        cashBox.selectedProperty().setValue(tempEntity.getCash());
+        noteField.setText(tempEntity.getNote());
+
     }
 
-    //public void setCurrentDate(LocalDate currentDate) { this.currentDate = currentDate;}
+    @Override
+    public void setCallbackFunction(CallbackInterface callbackFunction) {
+        this.callbackFunction = callbackFunction;
+    }
 
+    @Override
     public void setParent(PopOver parent) {
         this.parent = parent;
+    }
+
+    @Override
+    protected void onCancelAction() {
+        callbackFunction.callbackFunction();
+        parent.hide();
     }
 }
