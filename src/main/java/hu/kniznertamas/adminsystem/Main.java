@@ -3,8 +3,12 @@ package hu.kniznertamas.adminsystem;
 import hu.kniznertamas.adminsystem.helper.ChangeContent;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Main extends Application {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
     private static Main instance;
     private ChangeContent changeContent;
@@ -23,6 +27,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        LOGGER.info("Application started");
         changeContent = new ChangeContent(instance, primaryStage);
         changeContent.replaceSceneContent("/view/Main.fxml");
         primaryStage.show();

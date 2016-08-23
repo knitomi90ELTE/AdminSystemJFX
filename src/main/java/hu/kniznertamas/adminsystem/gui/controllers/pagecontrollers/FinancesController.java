@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 import java.sql.Date;
@@ -32,6 +34,8 @@ public class FinancesController implements Initializable {
     private final GenericDao<UsersEntity> userDao;
     private final GenericDao<ProjectsEntity> projectsDao;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(FinancesController.class);
+
     public FinancesController() {
         balanceDao = DaoManager.getInstance().getBalanceDao();
         statusDao = DaoManager.getInstance().getStatusDao();
@@ -52,7 +56,6 @@ public class FinancesController implements Initializable {
     private void loadDataToTable(){
         Stream<BalanceEntity> balanceList = balanceDao.findAll().stream();
         List<BalanceEntity> filteredList = balanceList.filter(item -> item.getStatusId().equals(statusBox.getSelectionModel().getSelectedItem().getId())).collect(Collectors.toList());
-        System.out.println(filteredList.toString());
         List<ExtendedBalanceEntity> extendedList = new ArrayList<>();
         for (BalanceEntity be : filteredList){
             ExtendedBalanceEntity ebe = new ExtendedBalanceEntity(be);
@@ -71,6 +74,7 @@ public class FinancesController implements Initializable {
             }
             extendedList.add(ebe);
         }
+        LOGGER.info("Data: {}", extendedList);
         balanceTable.setItems(FXCollections.observableArrayList(extendedList));
         balanceTable.refresh();
     }

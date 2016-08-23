@@ -9,6 +9,9 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -26,6 +29,8 @@ public class UploadTableController implements Initializable {
     private final GenericDao<UsersEntity> userDao;
     private final GenericDao<UploadEntity> uploadDao;
     private final GenericDao<ProjectsEntity> projectsDao;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(UploadTableController.class);
 
     public UploadTableController() {
         userDao = DaoManager.getInstance().getUserDao();
@@ -57,7 +62,6 @@ public class UploadTableController implements Initializable {
     public void refreshTableData(LocalDate currentDate){
         Stream<UploadEntity> uploadList = uploadDao.findAll().stream();
         List<UploadEntity> filteredList = uploadList.filter(item -> item.getCreated().equals(Date.valueOf(currentDate))).collect(Collectors.toList());
-        System.out.println(filteredList.toString());
         List<ExtendedUploadEntity> extendedList = new ArrayList<>();
         for (UploadEntity ue : filteredList){
             ExtendedUploadEntity eue = new ExtendedUploadEntity(ue);
@@ -65,6 +69,7 @@ public class UploadTableController implements Initializable {
             eue.setUser_name(userDao.findById(ue.getUserId()).getName());
             extendedList.add(eue);
         }
+        LOGGER.info("Data: {}", extendedList);
         uploadTable.setItems(FXCollections.observableArrayList(extendedList));
         uploadTable.refresh();
     }
@@ -73,6 +78,7 @@ public class UploadTableController implements Initializable {
     private void removeSelectedAction() {
         ExtendedUploadEntity eue = uploadTable.getSelectionModel().getSelectedItem();
         if(eue == null) return;
+        LOGGER.info("Removing entity: {}", eue.getId());
         uploadDao.delete(uploadDao.findById(eue.getId()));
         ControllerMediator.getInstance().refreshDailyTableData(eue.getCreated().toLocalDate());
     }

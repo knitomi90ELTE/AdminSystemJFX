@@ -9,6 +9,9 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -23,6 +26,8 @@ public class BalanceTableController implements Initializable {
     @FXML
     private TableView<ExtendedBalanceEntity> balanceTable;
 
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(BalanceTableController.class);
     private final GenericDao<BalanceEntity> balanceDao;
     private final GenericDao<StatusEntity> statusDao;
     private final GenericDao<UsersEntity> userDao;
@@ -43,7 +48,6 @@ public class BalanceTableController implements Initializable {
     public void refreshTableData(LocalDate currentDate){
         Stream<BalanceEntity> balanceList = balanceDao.findAll().stream();
         List<BalanceEntity> filteredList = balanceList.filter(item -> (item.getCompleted() != null) && item.getCompleted().equals(Date.valueOf(currentDate))).collect(Collectors.toList());
-        System.out.println(filteredList.toString());
         List<ExtendedBalanceEntity> extendedList = new ArrayList<>();
         for (BalanceEntity be : filteredList){
             ExtendedBalanceEntity ebe = new ExtendedBalanceEntity(be);
@@ -62,6 +66,7 @@ public class BalanceTableController implements Initializable {
             }
             extendedList.add(ebe);
         }
+        LOGGER.info("Data: {}", extendedList);
         balanceTable.setItems(FXCollections.observableArrayList(extendedList));
         balanceTable.refresh();
     }
@@ -74,6 +79,7 @@ public class BalanceTableController implements Initializable {
     @FXML
     private void removeSelectedAction() {
         ExtendedBalanceEntity ebe = balanceTable.getSelectionModel().getSelectedItem();
+        LOGGER.info("Removing entity: {}", ebe.getId());
         if(ebe == null) return;
         balanceDao.delete(balanceDao.findById(ebe.getId()));
         ControllerMediator.getInstance().refreshDailyTableData(ebe.getCreated().toLocalDate());

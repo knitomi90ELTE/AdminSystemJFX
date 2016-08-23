@@ -9,6 +9,9 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,8 @@ public class OpenItemsViewController implements Initializable {
     private final GenericDao<StatusEntity> statusDao;
     private final GenericDao<UsersEntity> userDao;
     private final GenericDao<ProjectsEntity> projectsDao;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(OpenItemsViewController.class);
 
     public OpenItemsViewController() {
         balanceDao = DaoManager.getInstance().getBalanceDao();
@@ -59,6 +64,7 @@ public class OpenItemsViewController implements Initializable {
             }
             extendedList.add(ebe);
         }
+        LOGGER.info("Data: {}", extendedList);
         openItemsTable.setItems(FXCollections.observableArrayList(extendedList));
         openItemsTable.refresh();
     }

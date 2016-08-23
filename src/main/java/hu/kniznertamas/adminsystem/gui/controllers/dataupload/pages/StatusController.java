@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,6 +25,8 @@ public class StatusController implements Initializable {
 
     @FXML
     private TableView<StatusEntity> statusTable;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(StatusController.class);
 
     public StatusController() {
         statusDao = DaoManager.getInstance().getStatusDao();
@@ -42,8 +46,9 @@ public class StatusController implements Initializable {
     }
 
     @FXML
-    private void onSaveAction(ActionEvent event) {
+    private void onSaveAction() {
         if(!validForm()){
+            LOGGER.info("Hiba a bevitt adatokban!");
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setHeaderText("Hiba a bevitt adatokban!");
             errorAlert.showAndWait();
@@ -56,6 +61,7 @@ public class StatusController implements Initializable {
         clearFields();
         initStatusTable();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        LOGGER.info("Sikeres mentés! {}", newStatus.getName());
         alert.setHeaderText("Sikeres mentés!");
         alert.showAndWait();
     }
@@ -64,6 +70,7 @@ public class StatusController implements Initializable {
     private void onDeleteAction(ActionEvent event) {
         StatusEntity selected = statusTable.getSelectionModel().getSelectedItem();
         statusDao.delete(statusDao.findById(selected.getId()));
+        LOGGER.info("Sikeres törlés! {}", selected.getName());
         initStatusTable();
     }
 

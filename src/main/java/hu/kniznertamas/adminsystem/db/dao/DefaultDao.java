@@ -1,6 +1,7 @@
 package hu.kniznertamas.adminsystem.db.dao;
 
 import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -11,7 +12,7 @@ import java.util.List;
 class DefaultDao<T extends PersistentEntity> implements GenericDao<T> {
 
     private final Class<T> CLASS;
-    private final EntityManagerFactory EMF;
+    private EntityManagerFactory EMF;
 
     DefaultDao(Class<T> CLASS) {
         this.CLASS = CLASS;

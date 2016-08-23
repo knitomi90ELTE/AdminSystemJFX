@@ -51,8 +51,6 @@ public class FinancesTableController implements Initializable {
     public void refreshTableData(ProjectsEntity projectsEntity) {
         Stream<BalanceEntity> uploadList = balanceDao.findAll().stream();
         List<BalanceEntity> filteredList = uploadList.filter(item -> "project".equals(item.getModelName()) && projectsEntity.getId().equals(item.getModelId())).collect(Collectors.toList());
-        System.out.println("FINANCES " + filteredList.toString());
-
         List<Integer> incomeIndexes = Arrays.asList(3, 17, 18);
         int allIncome = 0;
         int allExpense = 0;

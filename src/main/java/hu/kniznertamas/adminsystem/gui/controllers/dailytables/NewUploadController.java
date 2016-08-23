@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.Callback;
 import org.controlsfx.control.PopOver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 import java.sql.Date;
@@ -43,6 +45,8 @@ public class NewUploadController extends PopupAbstractt implements Initializable
     private PopOver parent;
     private CallbackInterface callbackFunction;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(NewUploadController.class);
+
     public NewUploadController() {
     }
 
@@ -65,7 +69,7 @@ public class NewUploadController extends PopupAbstractt implements Initializable
     }
 
     @FXML
-    private void onSaveAction(ActionEvent event) {
+    private void onSaveAction() {
         if (!validForm()) {
             /*Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setHeaderText("Hiba a bevitt adatokban!");
@@ -81,6 +85,7 @@ public class NewUploadController extends PopupAbstractt implements Initializable
         newUpload.setNote((noteField.getText().length() == 0) ? "" : noteField.getText());
         GenericDao<UploadEntity> uploadDao = DaoManager.getInstance().getUploadDao();
         uploadDao.create(newUpload);
+        LOGGER.info("Saved entity: {}", newUpload);
         ControllerMediator.getInstance().refreshDailyTableData(createdPicker.getValue());
         onCancelAction();
     }

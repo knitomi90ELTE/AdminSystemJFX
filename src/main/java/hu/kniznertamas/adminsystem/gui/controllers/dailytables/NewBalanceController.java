@@ -13,6 +13,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 import org.controlsfx.control.PopOver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 import java.sql.Date;
@@ -67,6 +69,8 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     private PopOver parent;
     private BalanceEntity tempEntity;
     private CallbackInterface callbackFunction;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(NewBalanceController.class);
 
     public NewBalanceController() {
     }
@@ -307,12 +311,12 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
                 tempEntity.setModelId(null);
                 break;
             default:
-                System.out.println("baj van");
                 break;
         }
 
         GenericDao<BalanceEntity> balanceDao = DaoManager.getInstance().getBalanceDao();
         balanceDao.update(tempEntity);
+        LOGGER.info("Modified entity: {}", tempEntity.getId());
         ControllerMediator.getInstance().refreshDailyTableData(createdPicker.getValue());
         onCancelAction();
     }
@@ -321,6 +325,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
         BalanceEntity balanceEntity = createEntityFromForm();
         GenericDao<BalanceEntity> balanceDao = DaoManager.getInstance().getBalanceDao();
         balanceDao.create(balanceEntity);
+        LOGGER.info("Saved entity: {}", balanceEntity);
         ControllerMediator.getInstance().refreshDailyTableData(createdPicker.getValue());
         onCancelAction();
     }
@@ -341,7 +346,6 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
                 balanceEntity.setModelId(null);
                 break;
             default:
-                System.out.println("baj van");
                 break;
         }
         return balanceEntity;

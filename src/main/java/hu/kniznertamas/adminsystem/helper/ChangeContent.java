@@ -6,11 +6,15 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ChangeContent {
 
     private final Main instance;
     private final Stage stage;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ChangeContent.class);
 
     public ChangeContent(Main instance, Stage stage) {
         this.instance = instance;
@@ -23,6 +27,7 @@ public class ChangeContent {
 
     public void replaceSceneContent(String fxml) {
         try {
+            LOGGER.info("Changing content to {}", fxml);
             Parent page = FXMLLoader.load(instance.getClass().getResource(fxml), null, new JavaFXBuilderFactory());
             Scene scene = stage.getScene();
             if (scene == null) {
@@ -33,6 +38,7 @@ public class ChangeContent {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
     }
 

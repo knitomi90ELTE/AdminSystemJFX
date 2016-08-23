@@ -42,8 +42,6 @@ public class HoursTableController implements Initializable {
     public void refreshTableData(ProjectsEntity projectsEntity) {
         Stream<UploadEntity> uploadList = uploadDao.findAll().stream();
         List<UploadEntity> filteredList = uploadList.filter(item -> item.getProjectId().equals(projectsEntity.getId())).collect(Collectors.toList());
-        System.out.println(filteredList.toString());
-
         Map<Date, List<UploadEntity>> mappedList = filteredList.stream().collect(Collectors.groupingBy(UploadEntity::getCreated));
         List<ExtendedUploadEntity> extendedList = new ArrayList<>();
         final double[] hours = {0};

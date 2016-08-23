@@ -57,7 +57,6 @@ public class UserViewController implements Initializable {
 
         Stream<UploadEntity> uploadList = uploadDao.findAll().stream();
         List<UploadEntity> filteredList = uploadList.filter(item -> item.getUserId().equals(usersEntity.getId())).collect(Collectors.toList());
-        System.out.println(filteredList.toString());
         List<ExtendedUploadEntity> extendedList = new ArrayList<>();
         for (UploadEntity ue : filteredList){
             ExtendedUploadEntity eue = new ExtendedUploadEntity(ue);
