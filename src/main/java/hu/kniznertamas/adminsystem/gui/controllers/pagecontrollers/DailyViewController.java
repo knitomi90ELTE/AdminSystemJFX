@@ -1,4 +1,4 @@
-package hu.kniznertamas.adminsystem.gui.controllers;
+package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import javafx.fxml.FXML;
@@ -17,10 +17,6 @@ public class DailyViewController implements Initializable {
 
     public DailyViewController() {
 
-    }
-
-    public LocalDate getCurrentDate() {
-        return currentDate;
     }
 
     @Override

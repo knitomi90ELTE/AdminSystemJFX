@@ -2,9 +2,10 @@ package hu.kniznertamas.adminsystem.gui.controllers.mediator;
 
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
-import hu.kniznertamas.adminsystem.gui.controllers.*;
 import hu.kniznertamas.adminsystem.gui.controllers.dailytables.BalanceTableController;
 import hu.kniznertamas.adminsystem.gui.controllers.dailytables.UploadTableController;
+import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.ProjectViewController;
+import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.UserViewController;
 import hu.kniznertamas.adminsystem.gui.controllers.projecttables.FinancesTableController;
 import hu.kniznertamas.adminsystem.gui.controllers.projecttables.HoursTableController;
 import javafx.application.Platform;
@@ -13,18 +14,12 @@ import java.time.LocalDate;
 
 public class ControllerMediator implements IMediateControllers {
 
-    //private MenuBarController menuBarController;
     private UserViewController userViewController;
     private UploadTableController uploadTableController;
     private BalanceTableController balanceTableController;
     private ProjectViewController projectViewController;
     private FinancesTableController financesTableController;
     private HoursTableController hoursTableController;
-
-    /*@Override
-    public void registerControllerMenu(MenuBarController controller) {
-        menuBarController = controller;
-    }*/
 
     @Override
     public void registerControllerUser(UserViewController controller) {

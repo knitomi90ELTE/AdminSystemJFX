@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.UserViewController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.UserViewController">
     <top>
         <VBox spacing="5.0">
             <ComboBox fx:id="comboBox" promptText="Válassz alkalmazottat!" />

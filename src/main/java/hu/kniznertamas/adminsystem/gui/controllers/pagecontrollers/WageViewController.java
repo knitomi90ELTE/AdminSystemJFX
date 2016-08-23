@@ -1,4 +1,4 @@
-package hu.kniznertamas.adminsystem.gui.controllers;
+package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
 import hu.kniznertamas.adminsystem.helper.WageEntityHelper;
 import javafx.fxml.FXML;

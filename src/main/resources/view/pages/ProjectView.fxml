@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="hu.kniznertamas.adminsystem.gui.controllers.ProjectViewController">
+            fx:controller="hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.ProjectViewController">
     <top>
         <VBox spacing="5.0">
             <ComboBox fx:id="comboBox" promptText="Válassz munkát!">
@@ -31,8 +31,8 @@
     <center>
         <VBox spacing="5.0">
             <Separator/>
-            <fx:include source="projecttables/HoursTable.fxml"/>
-            <fx:include source="projecttables/FinancesTable.fxml"/>
+            <fx:include source="../projecttables/HoursTable.fxml"/>
+            <fx:include source="../projecttables/FinancesTable.fxml"/>
         </VBox>
     </center>
 </BorderPane>

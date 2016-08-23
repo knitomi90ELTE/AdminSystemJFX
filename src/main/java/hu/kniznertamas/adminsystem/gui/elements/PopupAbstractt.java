@@ -1,4 +1,4 @@
-package hu.kniznertamas.adminsystem.gui.controllers;
+package hu.kniznertamas.adminsystem.gui.elements;
 
 import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
 import hu.kniznertamas.adminsystem.helper.CallbackInterface;

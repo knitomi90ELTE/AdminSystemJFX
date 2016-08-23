@@ -1,4 +1,4 @@
-package hu.kniznertamas.adminsystem.gui.controllers.dataupload;
+package hu.kniznertamas.adminsystem.gui.controllers.dataupload.pages;
 
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;

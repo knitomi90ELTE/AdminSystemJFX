@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="hu.kniznertamas.adminsystem.gui.controllers.DailyViewController">
+            fx:controller="hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.DailyViewController">
     <top>
         <HBox alignment="CENTER">
             <Button onAction="#decreaseDate" text="Előző nap"/>
@@ -20,8 +20,8 @@
     </top>
     <center>
         <VBox>
-            <fx:include source="dailytables/UploadTable.fxml"/>
-            <fx:include source="dailytables/BalanceTable.fxml"/>
+            <fx:include source="../dailytables/UploadTable.fxml"/>
+            <fx:include source="../dailytables/BalanceTable.fxml"/>
         </VBox>
     </center>
 

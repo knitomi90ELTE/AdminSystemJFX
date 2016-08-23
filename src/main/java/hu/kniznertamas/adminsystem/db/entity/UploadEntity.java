@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "upload", schema = "adminsystem_test")
+@Table(name = "upload", schema = "kniznerasztalos")
 public class UploadEntity extends PersistentEntity {
 
     @Column(name = "user_id")

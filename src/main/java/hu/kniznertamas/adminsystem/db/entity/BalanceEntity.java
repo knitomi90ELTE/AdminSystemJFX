@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "balance", schema = "adminsystem_test")
+@Table(name = "balance", schema = "kniznerasztalos")
 public class BalanceEntity extends PersistentEntity {
 
     @Column(name = "netto")

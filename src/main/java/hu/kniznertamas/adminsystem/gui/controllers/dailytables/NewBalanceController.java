@@ -3,7 +3,7 @@ package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
-import hu.kniznertamas.adminsystem.gui.controllers.PopupAbstractt;
+import hu.kniznertamas.adminsystem.gui.elements.PopupAbstractt;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.helper.CallbackInterface;
 import javafx.collections.FXCollections;

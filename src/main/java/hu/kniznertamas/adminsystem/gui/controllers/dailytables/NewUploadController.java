@@ -6,7 +6,7 @@ import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
-import hu.kniznertamas.adminsystem.gui.controllers.PopupAbstractt;
+import hu.kniznertamas.adminsystem.gui.elements.PopupAbstractt;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.helper.CallbackInterface;
 import javafx.collections.FXCollections;
