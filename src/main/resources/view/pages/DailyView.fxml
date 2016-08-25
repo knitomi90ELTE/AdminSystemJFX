@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.DailyViewController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.DailyViewController">
     <top>
-        <HBox alignment="CENTER">
-            <Button onAction="#decreaseDate" text="Előző nap"/>
+        <HBox alignment="CENTER" spacing="10.0">
+            <Button onAction="#decreaseDate" prefHeight="35.0" prefWidth="100.0" text="Előző nap" />
             <DatePicker fx:id="datePicker" onAction="#onDateChangeAction">
                 <padding>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                 </padding>
             </DatePicker>
-            <Button onAction="#increaseDate" text="Következő nap"/>
+            <Button onAction="#increaseDate" prefHeight="35.0" prefWidth="100.0" text="Következő nap" />
+         <padding>
+            <Insets top="5.0" />
+         </padding>
 
         </HBox>
     </top>
     <center>
         <VBox>
-            <fx:include source="../dailytables/UploadTable.fxml"/>
-            <fx:include source="../dailytables/BalanceTable.fxml"/>
+            <fx:include source="../dailytables/UploadTable.fxml" />
+            <fx:include source="../dailytables/BalanceTable.fxml" />
         </VBox>
     </center>
 

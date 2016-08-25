@@ -9,11 +9,11 @@ import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
 import hu.kniznertamas.adminsystem.gui.elements.PopupAbstractt;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.helper.CallbackInterface;
+import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.util.Callback;
 import org.controlsfx.control.PopOver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -101,7 +101,7 @@ public class NewUploadController extends PopupAbstractt implements Initializable
                 GenericDao<UsersEntity> userDao = DaoManager.getInstance().getUserDao();
                 List<UsersEntity> allUsers = userDao.findAll();
                 userBox.setItems(FXCollections.observableArrayList(allUsers));
-                userBox.setCellFactory(new Callback<ListView<UsersEntity>, ListCell<UsersEntity>>() {
+                /*userBox.setCellFactory(new Callback<ListView<UsersEntity>, ListCell<UsersEntity>>() {
                     @Override
                     public ListCell<UsersEntity> call(ListView<UsersEntity> param) {
                         return new ListCell<UsersEntity>() {
@@ -117,7 +117,8 @@ public class NewUploadController extends PopupAbstractt implements Initializable
                             }
                         };
                     }
-                });
+                });*/
+                EntityHelper.initComboBoxWithUserEntity(userBox);
                 userBox.getSelectionModel().selectFirst();
             }
         }.start();
@@ -130,7 +131,7 @@ public class NewUploadController extends PopupAbstractt implements Initializable
                 GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
                 List<ProjectsEntity> allProjects = projectsDao.findAll();
                 projectBox.setItems(FXCollections.observableArrayList(allProjects));
-                projectBox.setCellFactory(new Callback<ListView<ProjectsEntity>, ListCell<ProjectsEntity>>() {
+                /*projectBox.setCellFactory(new Callback<ListView<ProjectsEntity>, ListCell<ProjectsEntity>>() {
                     @Override
                     public ListCell<ProjectsEntity> call(ListView<ProjectsEntity> param) {
                         return new ListCell<ProjectsEntity>() {
@@ -146,7 +147,8 @@ public class NewUploadController extends PopupAbstractt implements Initializable
                             }
                         };
                     }
-                });
+                });*/
+                EntityHelper.initComboBoxWithProjectsEntity(projectBox);
                 projectBox.getSelectionModel().selectFirst();
             }
         }.start();

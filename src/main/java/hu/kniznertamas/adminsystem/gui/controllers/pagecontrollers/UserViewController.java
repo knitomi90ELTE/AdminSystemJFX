@@ -3,18 +3,16 @@ package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.ExtendedUploadEntity;
-import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.util.Callback;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -50,20 +48,10 @@ public class UserViewController implements Initializable {
         nameLabel.setText("Név: " + usersEntity.getName());
         wageLabel.setText("Órabér: " + usersEntity.getWage().toString());
         noteLabel.setText("Megjegyzés: " + usersEntity.getNote());
-
-        GenericDao<UsersEntity> userDao = DaoManager.getInstance().getUserDao();
-        GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
         GenericDao<UploadEntity> uploadDao = DaoManager.getInstance().getUploadDao();
-
         Stream<UploadEntity> uploadList = uploadDao.findAll().stream();
         List<UploadEntity> filteredList = uploadList.filter(item -> item.getUserId().equals(usersEntity.getId())).collect(Collectors.toList());
-        List<ExtendedUploadEntity> extendedList = new ArrayList<>();
-        for (UploadEntity ue : filteredList){
-            ExtendedUploadEntity eue = new ExtendedUploadEntity(ue);
-            eue.setProject_name(projectsDao.findById(ue.getProjectId()).getName());
-            eue.setUser_name(userDao.findById(ue.getUserId()).getName());
-            extendedList.add(eue);
-        }
+        List<ExtendedUploadEntity> extendedList = EntityHelper.createExtendedUploadEntityList(filteredList);
         userTable.setItems(FXCollections.observableArrayList(extendedList));
         userTable.refresh();
 
@@ -76,7 +64,7 @@ public class UserViewController implements Initializable {
                 GenericDao<UsersEntity> usersDao = DaoManager.getInstance().getUserDao();
                 List<UsersEntity> allUsers = usersDao.findAll();
                 comboBox.setItems(FXCollections.observableArrayList(allUsers));
-                comboBox.setCellFactory(new Callback<ListView<UsersEntity>, ListCell<UsersEntity>>() {
+                /*comboBox.setCellFactory(new Callback<ListView<UsersEntity>, ListCell<UsersEntity>>() {
                     @Override
                     public ListCell<UsersEntity> call(ListView<UsersEntity> param) {
                         return new ListCell<UsersEntity>() {
@@ -92,7 +80,7 @@ public class UserViewController implements Initializable {
                             }
                         };
                     }
-                });
+                });*/
                 comboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> ControllerMediator.getInstance().loadUserDataToController(newValue));
             }
         }.start();

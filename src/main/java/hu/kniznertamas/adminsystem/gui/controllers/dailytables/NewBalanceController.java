@@ -6,12 +6,12 @@ import hu.kniznertamas.adminsystem.db.entity.*;
 import hu.kniznertamas.adminsystem.gui.elements.PopupAbstractt;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.helper.CallbackInterface;
+import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.util.Callback;
 import org.controlsfx.control.PopOver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -187,7 +187,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
         List<UsersEntity> allUsers = usersDao.findAll();
         userBox.setItems(FXCollections.observableArrayList(allUsers));
         userBox.getSelectionModel().selectFirst();
-        userBox.setCellFactory(new Callback<ListView<UsersEntity>, ListCell<UsersEntity>>() {
+        /*userBox.setCellFactory(new Callback<ListView<UsersEntity>, ListCell<UsersEntity>>() {
             @Override
             public ListCell<UsersEntity> call(ListView<UsersEntity> param) {
                 return new ListCell<UsersEntity>() {
@@ -203,7 +203,8 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
                     }
                 };
             }
-        });
+        });*/
+        EntityHelper.initComboBoxWithUserEntity(userBox);
     }
 
     private void initProjectBox() {
@@ -214,7 +215,8 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
         List<ProjectsEntity> allProjects = projectsDao.findAll();
         projectBox.setItems(FXCollections.observableArrayList(allProjects));
         projectBox.getSelectionModel().selectFirst();
-        projectBox.setCellFactory(new Callback<ListView<ProjectsEntity>, ListCell<ProjectsEntity>>() {
+        EntityHelper.initComboBoxWithProjectsEntity(projectBox);
+        /*projectBox.setCellFactory(new Callback<ListView<ProjectsEntity>, ListCell<ProjectsEntity>>() {
             @Override
             public ListCell<ProjectsEntity> call(ListView<ProjectsEntity> param) {
                 return new ListCell<ProjectsEntity>() {
@@ -230,7 +232,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
                     }
                 };
             }
-        });
+        });*/
     }
 
     private void initModelNameBox() {

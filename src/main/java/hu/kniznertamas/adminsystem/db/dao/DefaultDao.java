@@ -12,7 +12,7 @@ import java.util.List;
 class DefaultDao<T extends PersistentEntity> implements GenericDao<T> {
 
     private final Class<T> CLASS;
-    private EntityManagerFactory EMF;
+    private final EntityManagerFactory EMF;
 
     DefaultDao(Class<T> CLASS) {
         this.CLASS = CLASS;

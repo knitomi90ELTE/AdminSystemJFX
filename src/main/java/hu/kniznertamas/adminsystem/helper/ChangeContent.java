@@ -33,12 +33,14 @@ public class ChangeContent {
             LOGGER.info("Changing content to {}", fxml);
             Parent page = FXMLLoader.load(instance.getClass().getResource(fxml), null, new JavaFXBuilderFactory());
             Scene scene = stage.getScene();
+            //page.getStylesheets().add(instance.getClass().getResource("/style/main.css").toExternalForm());
             if (scene == null) {
                 scene = new Scene(page);
                 stage.setScene(scene);
             } else {
                 stage.getScene().setRoot(page);
             }
+
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }

@@ -4,14 +4,12 @@ import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.List;
@@ -53,7 +51,7 @@ public class ProjectViewController implements Initializable {
                 GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
                 List<ProjectsEntity> allProjects = projectsDao.findAll();
                 comboBox.setItems(FXCollections.observableArrayList(allProjects));
-                comboBox.setCellFactory(new Callback<ListView<ProjectsEntity>, ListCell<ProjectsEntity>>() {
+                /*comboBox.setCellFactory(new Callback<ListView<ProjectsEntity>, ListCell<ProjectsEntity>>() {
                     @Override
                     public ListCell<ProjectsEntity> call(ListView<ProjectsEntity> param) {
                         return new ListCell<ProjectsEntity>() {
@@ -69,7 +67,8 @@ public class ProjectViewController implements Initializable {
                             }
                         };
                     }
-                });
+                });*/
+                EntityHelper.initComboBoxWithProjectsEntity(comboBox);
                 comboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> ControllerMediator.getInstance().loadProjectDataToController(newValue));
             }
         }.start();
