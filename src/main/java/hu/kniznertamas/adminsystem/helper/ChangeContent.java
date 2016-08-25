@@ -26,6 +26,9 @@ public class ChangeContent {
     }
 
     public void replaceSceneContent(String fxml) {
+    	if(fxml == null) {
+    		return;
+    	}
         try {
             LOGGER.info("Changing content to {}", fxml);
             Parent page = FXMLLoader.load(instance.getClass().getResource(fxml), null, new JavaFXBuilderFactory());
@@ -37,7 +40,6 @@ public class ChangeContent {
                 stage.getScene().setRoot(page);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             LOGGER.error(e.getMessage());
         }
     }

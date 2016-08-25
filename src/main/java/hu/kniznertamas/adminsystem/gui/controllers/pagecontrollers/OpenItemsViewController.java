@@ -72,6 +72,7 @@ public class OpenItemsViewController implements Initializable {
     @FXML
     private void onPayButtonAction() {
         ExtendedBalanceEntity ebe = openItemsTable.getSelectionModel().getSelectedItem();
+        if(ebe == null) return;
         BalanceEntity selectedEntity = balanceDao.findById(ebe.getId());
         new PopOverElement<NewBalanceController>("/view/dailytables/NewBalanceView.fxml", selectedEntity, this::initOpenItemsTable);
     }

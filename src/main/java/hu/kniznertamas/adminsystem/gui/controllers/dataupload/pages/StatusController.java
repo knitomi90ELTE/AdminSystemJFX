@@ -69,6 +69,9 @@ public class StatusController implements Initializable {
     @FXML
     private void onDeleteAction(ActionEvent event) {
         StatusEntity selected = statusTable.getSelectionModel().getSelectedItem();
+        if(selected == null) {
+        	return;
+        }
         statusDao.delete(statusDao.findById(selected.getId()));
         LOGGER.info("Sikeres törlés! {}", selected.getName());
         initStatusTable();

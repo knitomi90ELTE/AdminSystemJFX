@@ -45,17 +45,6 @@ public class UploadTableController implements Initializable {
 
     @FXML
     private void addNewAction(){
-        /*PopOver popover = new PopOver();
-        popover.setAutoHide(false);
-        FXMLLoader loader = Main.getInstance().getChangeContent().getContentNode("/view/dailytables/NewUploadView.fxml");
-        try {
-            popover.setContentNode(loader.load());
-            NewUploadController controller = loader.getController();
-            controller.setParent(popover);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        popover.show(Main.getInstance().getChangeContent().getMainStage());*/
         new PopOverElement<NewUploadController>("/view/dailytables/NewUploadView.fxml", null, () -> refreshTableData(LocalDate.now()));
     }
 
@@ -77,7 +66,9 @@ public class UploadTableController implements Initializable {
     @FXML
     private void removeSelectedAction() {
         ExtendedUploadEntity eue = uploadTable.getSelectionModel().getSelectedItem();
-        if(eue == null) return;
+        if(eue == null) {
+        	return;
+        }
         LOGGER.info("Removing entity: {}", eue.getId());
         uploadDao.delete(uploadDao.findById(eue.getId()));
         ControllerMediator.getInstance().refreshDailyTableData(eue.getCreated().toLocalDate());

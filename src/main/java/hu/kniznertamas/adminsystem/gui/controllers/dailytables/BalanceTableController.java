@@ -79,8 +79,10 @@ public class BalanceTableController implements Initializable {
     @FXML
     private void removeSelectedAction() {
         ExtendedBalanceEntity ebe = balanceTable.getSelectionModel().getSelectedItem();
+        if(ebe == null) {
+        	return;
+        }
         LOGGER.info("Removing entity: {}", ebe.getId());
-        if(ebe == null) return;
         balanceDao.delete(balanceDao.findById(ebe.getId()));
         ControllerMediator.getInstance().refreshDailyTableData(ebe.getCreated().toLocalDate());
     }

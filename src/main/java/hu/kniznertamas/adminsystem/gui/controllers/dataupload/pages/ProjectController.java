@@ -86,6 +86,9 @@ public class ProjectController implements Initializable {
     @FXML
     private void onDeleteAction() {
         ProjectsEntity selected = projectTable.getSelectionModel().getSelectedItem();
+        if(selected == null) {
+        	return;
+        }
         projectDao.delete(projectDao.findById(selected.getId()));
         LOGGER.info("Sikeres törlés! {}", selected.getName());
         initProjectsTable();

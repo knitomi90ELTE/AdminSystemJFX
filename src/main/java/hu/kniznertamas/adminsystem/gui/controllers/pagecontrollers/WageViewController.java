@@ -12,10 +12,10 @@ import java.util.ResourceBundle;
 public class WageViewController implements Initializable {
 
     @FXML
-    private ComboBox yearPicker;
+    private ComboBox<String> yearPicker;
 
     @FXML
-    private ComboBox monthPicker;
+    private ComboBox<String> monthPicker;
 
     @FXML
     private TableView<WageEntityHelper> wageTable;

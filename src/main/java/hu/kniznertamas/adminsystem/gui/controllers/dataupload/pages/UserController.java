@@ -85,6 +85,9 @@ public class UserController implements Initializable {
     @FXML
     private void onDeleteAction() {
         UsersEntity selected = userTable.getSelectionModel().getSelectedItem();
+        if(selected == null) {
+        	return;
+        }
         userDao.delete(userDao.findById(selected.getId()));
         LOGGER.info("Sikeres törlés! {}", selected.getName());
         initUserTable();
