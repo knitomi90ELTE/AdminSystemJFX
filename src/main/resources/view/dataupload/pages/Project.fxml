@@ -12,13 +12,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <BorderPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.dataupload.pages.ProjectController">
     <top>
         <HBox spacing="10.0">
             <TextField fx:id="nameField" prefHeight="36.0" prefWidth="200.0" promptText="Név" />
             <TextField fx:id="retentionField" prefHeight="36.0" prefWidth="200.0" promptText="Visszatartás" />
             <TextField fx:id="noteField" prefHeight="36.0" prefWidth="200.0" promptText="Megjegyzés" />
-            <Button onAction="#onSaveAction" prefHeight="36.0" prefWidth="200.0" text="Új hozzáadása" />
+            <JFXButton onAction="#onSaveAction" prefHeight="36.0" prefWidth="200.0" text="Új hozzáadása" />
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" top="10.0" />
          </BorderPane.margin>
@@ -31,7 +32,7 @@
                <font>
                   <Font size="25.0" />
                </font></Label>
-            <Button onAction="#onDeleteAction" prefHeight="36.0" prefWidth="200.0" text="Kijelölt törlése" />
+            <JFXButton onAction="#onDeleteAction" prefHeight="36.0" prefWidth="200.0" text="Kijelölt törlése" />
             <padding>
                <Insets left="10.0" />
             </padding>

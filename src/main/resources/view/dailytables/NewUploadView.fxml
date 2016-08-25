@@ -12,6 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.dailytables.NewUploadController">
 
     <Text text="Új adat" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
@@ -26,14 +29,14 @@
     <Label text="Dátum" GridPane.columnIndex="0" GridPane.rowIndex="4" />
     <Label text="Megjegyzés" GridPane.columnIndex="0" GridPane.rowIndex="5" />
 
-    <ComboBox fx:id="userBox" prefHeight="36.0" promptText="Alkalmazott" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-    <ComboBox fx:id="projectBox" prefHeight="36.0" promptText="Munka" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <JFXComboBox fx:id="userBox" prefHeight="36.0" promptText="Alkalmazott" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <JFXComboBox fx:id="projectBox" prefHeight="36.0" promptText="Munka" GridPane.columnIndex="1" GridPane.rowIndex="2" />
     <TextField fx:id="hoursField" prefHeight="36.0" prefWidth="200.0" promptText="Óraszám" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-    <DatePicker fx:id="createdPicker" prefHeight="36.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <JFXDatePicker fx:id="createdPicker" prefHeight="36.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
     <TextField fx:id="noteField" prefHeight="36.0" prefWidth="200.0" promptText="Megjegyzés" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
-    <Button onAction="#onSaveAction" prefHeight="36.0" prefWidth="200.0" text="Mentés" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-    <Button onAction="#onCancelAction" prefHeight="36.0" prefWidth="200.0" text="Mégse" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+    <JFXButton onAction="#onSaveAction" prefHeight="36.0" prefWidth="200.0" text="Mentés" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+    <JFXButton onAction="#onCancelAction" prefHeight="36.0" prefWidth="200.0" text="Mégse" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
     <padding>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

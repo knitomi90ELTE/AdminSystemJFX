@@ -3,9 +3,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tab?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.dataupload.DataUploadController" prefWidth="1366.0" prefHeight="768.0">
     <fx:include source="../MenuBar.fxml"/>
-    <TabPane tabClosingPolicy="UNAVAILABLE">
+    <JFXTabPane tabClosingPolicy="UNAVAILABLE">
         <Tab text="Alkalmazott">
             <fx:include source="pages/User.fxml"/>
         </Tab>
@@ -15,6 +16,6 @@
         <Tab text="Státusz">
             <fx:include source="pages/Status.fxml"/>
         </Tab>
-    </TabPane>
+    </JFXTabPane>
 
 </VBox>

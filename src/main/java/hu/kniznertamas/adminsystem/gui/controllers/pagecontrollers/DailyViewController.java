@@ -1,5 +1,6 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
+import com.jfoenix.controls.JFXDatePicker;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +15,7 @@ import java.util.ResourceBundle;
 public class DailyViewController implements Initializable {
 
     @FXML
-    private DatePicker datePicker;
+    private JFXDatePicker datePicker;
 
     private LocalDate currentDate;
 

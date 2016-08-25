@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <VBox xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="hu.kniznertamas.adminsystem.gui.controllers.dailytables.UploadTableController" spacing="5.0">
     <HBox>
@@ -17,16 +18,16 @@
                 <Insets bottom="5.0" right="5.0" top="5.0"/>
             </padding>
         </Label>
-        <Button onAction="#addNewAction" text="Új hozzáadása">
+        <JFXButton onAction="#addNewAction" text="Új hozzáadása">
             <HBox.margin>
                 <Insets left="10.0"/>
             </HBox.margin>
-        </Button>
-        <Button onAction="#removeSelectedAction" text="Kijelölt törlése">
+        </JFXButton>
+        <JFXButton onAction="#removeSelectedAction" text="Kijelölt törlése">
             <HBox.margin>
                 <Insets left="10.0"/>
             </HBox.margin>
-        </Button>
+        </JFXButton>
         <padding>
             <Insets left="10.0" top="10.0"/>
         </padding>

@@ -7,13 +7,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.ProjectViewController">
     <top>
         <VBox spacing="5.0">
-            <ComboBox fx:id="comboBox" promptText="Válassz munkát!">
+            <JFXComboBox fx:id="comboBox" promptText="Válassz munkát!">
 
-            </ComboBox>
+            </JFXComboBox>
             <Label fx:id="nameLabel" text="Név: " BorderPane.alignment="CENTER_LEFT">
 
             </Label>

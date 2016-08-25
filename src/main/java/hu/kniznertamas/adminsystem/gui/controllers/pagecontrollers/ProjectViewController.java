@@ -1,5 +1,6 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
+import com.jfoenix.controls.JFXComboBox;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
@@ -27,7 +28,7 @@ public class ProjectViewController implements Initializable {
     private Label noteLabel;
 
     @FXML
-    private ComboBox<ProjectsEntity> comboBox;
+    private JFXComboBox<ProjectsEntity> comboBox;
 
     public ProjectViewController() {
         loadProjects();

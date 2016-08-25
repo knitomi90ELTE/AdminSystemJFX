@@ -1,5 +1,8 @@
 package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
@@ -37,25 +40,25 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     private TextField bruttoField;
 
     @FXML
-    private ComboBox<String> afaBox;
+    private JFXComboBox<String> afaBox;
 
     @FXML
     private TextField afaValueField;
 
     @FXML
-    private DatePicker createdPicker;
+    private JFXDatePicker createdPicker;
 
     @FXML
-    private CheckBox paidBox;
+    private JFXCheckBox paidBox;
 
     @FXML
-    private ComboBox<String> modelNameBox;
+    private JFXComboBox<String> modelNameBox;
 
     @FXML
-    private ComboBox<StatusEntity> statusIdBox;
+    private JFXComboBox<StatusEntity> statusIdBox;
 
     @FXML
-    private CheckBox cashBox;
+    private JFXCheckBox cashBox;
 
     @FXML
     private TextField noteField;
@@ -63,9 +66,9 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     private TextField customAfa;
     private boolean customAfaAdded = false;
     private boolean editingMode;
-    private ComboBox<UsersEntity> userBox;
-    private ComboBox<ProjectsEntity> projectBox;
-    private DatePicker paidPicker;
+    private JFXComboBox<UsersEntity> userBox;
+    private JFXComboBox<ProjectsEntity> projectBox;
+    private JFXDatePicker paidPicker;
     private PopOver parent;
     private BalanceEntity tempEntity;
     private CallbackInterface callbackFunction;
@@ -100,7 +103,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     }
 
     private void initPaidPicker() {
-        paidPicker = new DatePicker(LocalDate.now());
+        paidPicker = new JFXDatePicker(LocalDate.now());
         paidPicker.setPrefHeight(36.0);
         paidPicker.setPrefWidth(200.0);
     }
@@ -180,7 +183,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     }
 
     private void initUserBox() {
-        userBox = new ComboBox<>();
+        userBox = new JFXComboBox<>();
         userBox.setPrefHeight(36.0);
         userBox.setPrefWidth(200.0);
         GenericDao<UsersEntity> usersDao = DaoManager.getInstance().getUserDao();
@@ -208,7 +211,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     }
 
     private void initProjectBox() {
-        projectBox = new ComboBox<>();
+        projectBox = new JFXComboBox<>();
         projectBox.setPrefHeight(36.0);
         projectBox.setPrefWidth(200.0);
         GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();

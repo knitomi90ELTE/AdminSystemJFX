@@ -8,11 +8,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <VBox spacing="5.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.OpenItemsViewController">
 
     <HBox spacing="5.0">
-        <Button onAction="#onNewButtonAction" text="Új tétel" />
-        <Button onAction="#onPayButtonAction" text="Szerkesztés" />
+        <JFXButton onAction="#onNewButtonAction" text="Új tétel" />
+        <JFXButton onAction="#onPayButtonAction" text="Szerkesztés" />
       <padding>
          <Insets left="5.0" top="5.0" />
       </padding>

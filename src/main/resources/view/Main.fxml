@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tab?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.MainController" prefWidth="1366.0" prefHeight="768.0">
     <fx:include source="MenuBar.fxml"/>
-    <TabPane tabClosingPolicy="UNAVAILABLE">
+    <JFXTabPane tabClosingPolicy="UNAVAILABLE">
         <Tab text="Napi nézet">
             <fx:include source="pages/DailyView.fxml"/>
         </Tab>
@@ -24,6 +24,6 @@
         <Tab text="Bérlista">
             <fx:include source="pages/WageView.fxml"/>
         </Tab>
-    </TabPane>
+    </JFXTabPane>
 
 </VBox>

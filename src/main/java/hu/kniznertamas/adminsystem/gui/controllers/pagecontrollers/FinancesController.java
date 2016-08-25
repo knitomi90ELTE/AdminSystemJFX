@@ -1,5 +1,6 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
+import com.jfoenix.controls.JFXComboBox;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
@@ -21,7 +22,7 @@ import java.util.stream.Stream;
 public class FinancesController implements Initializable {
 
     @FXML
-    private ComboBox<StatusEntity> statusBox;
+    private JFXComboBox<StatusEntity> statusBox;
 
     @FXML
     private TableView<ExtendedBalanceEntity> balanceTable;

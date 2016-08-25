@@ -1,5 +1,6 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
+import com.jfoenix.controls.JFXComboBox;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.ExtendedUploadEntity;
@@ -33,7 +34,7 @@ public class UserViewController implements Initializable {
     private TableView<ExtendedUploadEntity> userTable;
 
     @FXML
-    private ComboBox<UsersEntity> comboBox;
+    private JFXComboBox<UsersEntity> comboBox;
 
     public UserViewController() {
         loadUsers();

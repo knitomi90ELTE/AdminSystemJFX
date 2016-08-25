@@ -1,5 +1,7 @@
 package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
@@ -27,16 +29,16 @@ import java.util.ResourceBundle;
 public class NewUploadController extends PopupAbstractt implements Initializable {
 
     @FXML
-    private ComboBox<UsersEntity> userBox;
+    private JFXComboBox<UsersEntity> userBox;
 
     @FXML
-    private ComboBox<ProjectsEntity> projectBox;
+    private JFXComboBox<ProjectsEntity> projectBox;
 
     @FXML
     private TextField hoursField;
 
     @FXML
-    private DatePicker createdPicker;
+    private JFXDatePicker createdPicker;
 
     @FXML
     private TextField noteField;

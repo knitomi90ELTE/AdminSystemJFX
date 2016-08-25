@@ -1,5 +1,6 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
+import com.jfoenix.controls.JFXComboBox;
 import hu.kniznertamas.adminsystem.helper.WageEntityHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,10 +13,10 @@ import java.util.ResourceBundle;
 public class WageViewController implements Initializable {
 
     @FXML
-    private ComboBox<String> yearPicker;
+    private JFXComboBox<String> yearPicker;
 
     @FXML
-    private ComboBox<String> monthPicker;
+    private JFXComboBox<String> monthPicker;
 
     @FXML
     private TableView<WageEntityHelper> wageTable;

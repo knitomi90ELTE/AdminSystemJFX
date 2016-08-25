@@ -1,5 +1,6 @@
 package hu.kniznertamas.adminsystem.helper;
 
+import com.jfoenix.controls.JFXComboBox;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
@@ -52,7 +53,7 @@ public class EntityHelper {
         return extendedList;
     }
 
-    public static void initComboBoxWithUserEntity(ComboBox<UsersEntity> comboBox) {
+    public static void initComboBoxWithUserEntity(JFXComboBox<UsersEntity> comboBox) {
         comboBox.setCellFactory(new Callback<ListView<UsersEntity>, ListCell<UsersEntity>>() {
             @Override
             public ListCell<UsersEntity> call(ListView<UsersEntity> param) {
@@ -72,7 +73,7 @@ public class EntityHelper {
         });
     }
 
-    public static void initComboBoxWithProjectsEntity(ComboBox<ProjectsEntity> comboBox) {
+    public static void initComboBoxWithProjectsEntity(JFXComboBox<ProjectsEntity> comboBox) {
         comboBox.setCellFactory(new Callback<ListView<ProjectsEntity>, ListCell<ProjectsEntity>>() {
             @Override
             public ListCell<ProjectsEntity> call(ListView<ProjectsEntity> param) {

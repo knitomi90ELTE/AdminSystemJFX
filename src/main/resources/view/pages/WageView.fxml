@@ -13,6 +13,8 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXButton?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.76-ea" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.WageViewController">
 
     <HBox spacing="5.0">
@@ -20,18 +22,18 @@
          <font>
             <Font size="20.0" />
          </font></Label>
-        <ComboBox fx:id="yearPicker" promptText="év">
+        <JFXComboBox fx:id="yearPicker" promptText="év">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="2016" />
                 </FXCollections>
             </items>
-        </ComboBox>
+        </JFXComboBox>
         <Label text="Hónap:">
          <font>
             <Font size="20.0" />
          </font></Label>
-        <ComboBox fx:id="monthPicker" promptText="hónap">
+        <JFXComboBox fx:id="monthPicker" promptText="hónap">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="január" />
@@ -48,8 +50,8 @@
                     <String fx:value="december" />
                 </FXCollections>
             </items>
-        </ComboBox>
-        <Button text="Kiválaszt" onAction="#loadTableAction"/>
+        </JFXComboBox>
+        <JFXButton text="Kiválaszt" onAction="#loadTableAction"/>
       <padding>
          <Insets bottom="10.0" left="10.0" top="10.0" />
       </padding>
