@@ -10,7 +10,6 @@ import hu.kniznertamas.adminsystem.gui.elements.PopupAbstractt;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.helper.CallbackInterface;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;

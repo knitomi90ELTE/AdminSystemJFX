@@ -59,7 +59,7 @@ class DefaultDao<T extends PersistentEntity> implements GenericDao<T> {
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
-	private List<T> findEntities(@SuppressWarnings("SameParameterValue") boolean all, int firstResult, int maxResult) {
+	private List<T> findEntities(boolean all, int firstResult, int maxResult) {
         EntityManager entityManager = getEntityManager();
         CriteriaQuery criteriaQuery = entityManager.getCriteriaBuilder().createQuery();
         criteriaQuery.select(criteriaQuery.from(CLASS));

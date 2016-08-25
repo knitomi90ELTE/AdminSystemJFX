@@ -51,8 +51,8 @@ public class DailyViewController implements Initializable {
         updateTables();
     }
 
-    @SuppressWarnings("UnusedParameters")
-    private void updateData(boolean updateTables, boolean setValue, LocalDate ld) {
+    @SuppressWarnings("unused")
+	private void updateData(boolean updateTables, boolean setValue, LocalDate ld) {
         //TODO: fenti metódusok refaktorálása, mert csúnya
     }
 

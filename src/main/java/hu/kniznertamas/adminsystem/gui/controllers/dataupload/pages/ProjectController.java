@@ -4,7 +4,6 @@ import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -12,7 +11,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.rmi.runtime.Log;
 
 import java.net.URL;
 import java.util.ResourceBundle;

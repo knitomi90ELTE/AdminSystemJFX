@@ -3,8 +3,6 @@ package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.URL;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
