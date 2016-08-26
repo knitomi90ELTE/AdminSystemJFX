@@ -190,23 +190,6 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
         List<UsersEntity> allUsers = usersDao.findAll();
         userBox.setItems(FXCollections.observableArrayList(allUsers));
         userBox.getSelectionModel().selectFirst();
-        /*userBox.setCellFactory(new Callback<ListView<UsersEntity>, ListCell<UsersEntity>>() {
-            @Override
-            public ListCell<UsersEntity> call(ListView<UsersEntity> param) {
-                return new ListCell<UsersEntity>() {
-                    @Override
-                    public void updateItem(UsersEntity item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (!empty) {
-                            setText(item.getName());
-                            setGraphic(null);
-                        } else {
-                            setText(null);
-                        }
-                    }
-                };
-            }
-        });*/
         EntityHelper.initComboBoxWithUserEntity(userBox);
     }
 
@@ -219,23 +202,6 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
         projectBox.setItems(FXCollections.observableArrayList(allProjects));
         projectBox.getSelectionModel().selectFirst();
         EntityHelper.initComboBoxWithProjectsEntity(projectBox);
-        /*projectBox.setCellFactory(new Callback<ListView<ProjectsEntity>, ListCell<ProjectsEntity>>() {
-            @Override
-            public ListCell<ProjectsEntity> call(ListView<ProjectsEntity> param) {
-                return new ListCell<ProjectsEntity>() {
-                    @Override
-                    public void updateItem(ProjectsEntity item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (!empty) {
-                            setText(item.getName());
-                            setGraphic(null);
-                        } else {
-                            setText(null);
-                        }
-                    }
-                };
-            }
-        });*/
     }
 
     private void initModelNameBox() {

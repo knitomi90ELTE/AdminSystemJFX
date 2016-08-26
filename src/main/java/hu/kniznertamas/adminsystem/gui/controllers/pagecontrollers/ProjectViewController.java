@@ -1,6 +1,11 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXComboBox;
+
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
@@ -9,12 +14,7 @@ import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
 
 public class ProjectViewController implements Initializable {
 

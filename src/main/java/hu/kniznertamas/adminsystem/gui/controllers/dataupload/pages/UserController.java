@@ -50,7 +50,6 @@ public class UserController implements Initializable {
         if("".equals(nameField.getText())) return false;
         if("".equals(wageField.getText())) return false;
         try{
-            //noinspection ResultOfMethodCallIgnored
             Integer.parseInt(wageField.getText());
         } catch (NumberFormatException e){
             return false;

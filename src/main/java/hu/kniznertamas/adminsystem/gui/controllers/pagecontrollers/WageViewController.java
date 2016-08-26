@@ -1,14 +1,14 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXComboBox;
+
 import hu.kniznertamas.adminsystem.helper.WageEntityHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class WageViewController implements Initializable {
 

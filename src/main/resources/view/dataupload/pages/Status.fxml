@@ -13,10 +13,11 @@
 <?import javafx.scene.text.Font?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <BorderPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.dataupload.pages.StatusController">
     <top>
         <HBox spacing="10.0">
-            <TextField fx:id="nameField" prefHeight="36.0" prefWidth="200.0" promptText="Név" />
+            <JFXTextField fx:id="nameField" prefHeight="36.0" prefWidth="200.0" promptText="Név" />
             <JFXButton onAction="#onSaveAction" prefHeight="36.0" prefWidth="200.0" text="Új hozzáadása" />
             <BorderPane.margin>
                 <Insets bottom="10.0" left="10.0" top="10.0" />

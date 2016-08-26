@@ -18,12 +18,12 @@
                 <Insets bottom="5.0" right="5.0" top="5.0"/>
             </padding>
         </Label>
-        <JFXButton onAction="#addNewAction" text="Új hozzáadása">
+        <JFXButton onAction="#addNewAction" text="Új hozzáadása" buttonType="RAISED">
             <HBox.margin>
                 <Insets left="10.0"/>
             </HBox.margin>
         </JFXButton>
-        <JFXButton onAction="#removeSelectedAction" text="Kijelölt törlése">
+        <JFXButton onAction="#removeSelectedAction" text="Kijelölt törlése" buttonType="RAISED">
             <HBox.margin>
                 <Insets left="10.0"/>
             </HBox.margin>

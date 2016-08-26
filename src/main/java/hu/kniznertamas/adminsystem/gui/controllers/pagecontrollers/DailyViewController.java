@@ -1,16 +1,17 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
-import com.jfoenix.controls.JFXDatePicker;
-import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.jfoenix.controls.JFXDatePicker;
+
+import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
 public class DailyViewController implements Initializable {
 

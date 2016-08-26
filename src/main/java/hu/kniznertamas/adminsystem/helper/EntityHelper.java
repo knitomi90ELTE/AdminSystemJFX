@@ -1,20 +1,25 @@
 package hu.kniznertamas.adminsystem.helper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.jfoenix.controls.JFXComboBox;
+
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
-import hu.kniznertamas.adminsystem.db.entity.*;
-import javafx.scene.control.ComboBox;
+import hu.kniznertamas.adminsystem.db.entity.BalanceEntity;
+import hu.kniznertamas.adminsystem.db.entity.ExtendedBalanceEntity;
+import hu.kniznertamas.adminsystem.db.entity.ExtendedUploadEntity;
+import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
+import hu.kniznertamas.adminsystem.db.entity.StatusEntity;
+import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
+import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class EntityHelper {
 
-    //private static final GenericDao<BalanceEntity> balanceDao = DaoManager.getInstance().getBalanceDao();
     private static final GenericDao<StatusEntity> statusDao = DaoManager.getInstance().getStatusDao();
     private static final GenericDao<UsersEntity> userDao = DaoManager.getInstance().getUserDao();
     private static final GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();

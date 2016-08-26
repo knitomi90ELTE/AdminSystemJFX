@@ -61,7 +61,6 @@ public class NewUploadController extends PopupAbstractt implements Initializable
     private boolean validForm() {
         if ("".equals(hoursField.getText())) return false;
         try {
-            //noinspection ResultOfMethodCallIgnored
             Integer.parseInt(hoursField.getText());
         } catch (NumberFormatException e) {
             return false;
@@ -72,9 +71,6 @@ public class NewUploadController extends PopupAbstractt implements Initializable
     @FXML
     private void onSaveAction() {
         if (!validForm()) {
-            /*Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setHeaderText("Hiba a bevitt adatokban!");
-            errorAlert.showAndWait();*/
             hoursField.setText("HIBÁS ÉRTÉK");
             return;
         }
@@ -103,23 +99,6 @@ public class NewUploadController extends PopupAbstractt implements Initializable
                 GenericDao<UsersEntity> userDao = DaoManager.getInstance().getUserDao();
                 List<UsersEntity> allUsers = userDao.findAll();
                 userBox.setItems(FXCollections.observableArrayList(allUsers));
-                /*userBox.setCellFactory(new Callback<ListView<UsersEntity>, ListCell<UsersEntity>>() {
-                    @Override
-                    public ListCell<UsersEntity> call(ListView<UsersEntity> param) {
-                        return new ListCell<UsersEntity>() {
-                            @Override
-                            public void updateItem(UsersEntity item, boolean empty) {
-                                super.updateItem(item, empty);
-                                if (!empty) {
-                                    setText(item.getName());
-                                    setGraphic(null);
-                                } else {
-                                    setText(null);
-                                }
-                            }
-                        };
-                    }
-                });*/
                 EntityHelper.initComboBoxWithUserEntity(userBox);
                 userBox.getSelectionModel().selectFirst();
             }
@@ -133,23 +112,6 @@ public class NewUploadController extends PopupAbstractt implements Initializable
                 GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
                 List<ProjectsEntity> allProjects = projectsDao.findAll();
                 projectBox.setItems(FXCollections.observableArrayList(allProjects));
-                /*projectBox.setCellFactory(new Callback<ListView<ProjectsEntity>, ListCell<ProjectsEntity>>() {
-                    @Override
-                    public ListCell<ProjectsEntity> call(ListView<ProjectsEntity> param) {
-                        return new ListCell<ProjectsEntity>() {
-                            @Override
-                            public void updateItem(ProjectsEntity item, boolean empty) {
-                                super.updateItem(item, empty);
-                                if (!empty) {
-                                    setText(item.getName());
-                                    setGraphic(null);
-                                } else {
-                                    setText(null);
-                                }
-                            }
-                        };
-                    }
-                });*/
                 EntityHelper.initComboBoxWithProjectsEntity(projectBox);
                 projectBox.getSelectionModel().selectFirst();
             }

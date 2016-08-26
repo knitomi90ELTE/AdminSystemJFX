@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableView?>
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="hu.kniznertamas.adminsystem.gui.controllers.dailytables.BalanceTableController" spacing="5.0">
     <HBox>
@@ -14,12 +15,12 @@
                 <Insets bottom="5.0" right="5.0" top="5.0"/>
             </padding>
         </Label>
-        <JFXButton onAction="#addNewAction" text="Új hozzáadása">
+        <JFXButton onAction="#addNewAction" text="Új hozzáadása" buttonType="RAISED">
             <HBox.margin>
                 <Insets left="10.0"/>
             </HBox.margin>
         </JFXButton>
-        <JFXButton onAction="#removeSelectedAction" text="Kijelölt törlése">
+        <JFXButton onAction="#removeSelectedAction" text="Kijelölt törlése" buttonType="RAISED">
             <HBox.margin>
                 <Insets left="10.0"/>
             </HBox.margin>
@@ -28,7 +29,7 @@
             <Insets left="10.0" top="10.0"/>
         </padding>
     </HBox>
-    <TableView fx:id="balanceTable" prefHeight="300">
+    <TableView   fx:id="balanceTable" prefHeight="300">
         <columns>
             <TableColumn prefWidth="100.0" text="Nettó">
                 <cellValueFactory>

@@ -29,7 +29,7 @@ public class BalanceEntity extends PersistentEntity {
     Boolean cash;
     @Column(name = "note")
     String note;
-
+    
     @Basic
     @Column(name = "netto")
     public Integer getNetto() {

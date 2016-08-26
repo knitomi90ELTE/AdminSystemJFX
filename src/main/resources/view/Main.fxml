@@ -5,7 +5,7 @@
 <?import com.jfoenix.controls.JFXTabPane?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.MainController" prefWidth="1366.0" prefHeight="768.0">
     <fx:include source="MenuBar.fxml"/>
-    <JFXTabPane tabClosingPolicy="UNAVAILABLE">
+    <JFXTabPane tabClosingPolicy="UNAVAILABLE" >
         <Tab text="Napi nézet">
             <fx:include source="pages/DailyView.fxml"/>
         </Tab>

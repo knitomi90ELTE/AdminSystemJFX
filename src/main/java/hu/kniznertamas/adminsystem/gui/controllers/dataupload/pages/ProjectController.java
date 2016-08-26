@@ -50,7 +50,6 @@ public class ProjectController implements Initializable {
         if ("".equals(nameField.getText())) return false;
         if ("".equals(retentionField.getText())) return false;
         try {
-            //noinspection ResultOfMethodCallIgnored
             Integer.parseInt(retentionField.getText());
         } catch (NumberFormatException e) {
             return false;
