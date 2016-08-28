@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import hu.kniznertamas.adminsystem.helper.CallbackInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,7 +52,10 @@ public class BalanceTableController implements Initializable {
 
     @FXML
     private void addNewAction(){
-        new PopOverElement<NewBalanceController>("/view/dailytables/NewBalanceView.fxml", null, () -> refreshTableData(LocalDate.now()));
+        new PopOverElement<NewBalanceController>("/view/dailytables/NewBalanceView.fxml", null, () -> {
+            refreshTableData(ControllerMediator.getInstance().getCurrentDate());
+            ControllerMediator.getInstance().refreshOpenItemsTable();
+        });
     }
 
     @FXML

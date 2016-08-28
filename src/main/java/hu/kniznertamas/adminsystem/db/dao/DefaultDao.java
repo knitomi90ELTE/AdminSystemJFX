@@ -14,9 +14,11 @@ class DefaultDao<T extends PersistentEntity> implements GenericDao<T> {
     private final Class<T> CLASS;
     private final EntityManagerFactory EMF;
 
+    private final boolean ENV_DEV = true;
+
     DefaultDao(Class<T> CLASS) {
         this.CLASS = CLASS;
-        this.EMF = Persistence.createEntityManagerFactory("remotePersistenceUnit");
+        this.EMF = ENV_DEV ? Persistence.createEntityManagerFactory("remotePersistenceUnit_DEV") : Persistence.createEntityManagerFactory("remotePersistenceUnit");
     }
 
     @Override

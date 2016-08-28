@@ -41,7 +41,7 @@ public class UploadTableController implements Initializable {
 
     @FXML
     private void addNewAction(){
-        new PopOverElement<NewUploadController>("/view/dailytables/NewUploadView.fxml", null, () -> refreshTableData(LocalDate.now()));
+        new PopOverElement<NewUploadController>("/view/dailytables/NewUploadView.fxml", null, () -> refreshTableData(ControllerMediator.getInstance().getCurrentDate()));
     }
 
     public void refreshTableData(LocalDate currentDate){

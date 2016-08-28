@@ -1,5 +1,6 @@
 package hu.kniznertamas.adminsystem.gui.controllers.dataupload.pages;
 
+import com.jfoenix.controls.JFXTextField;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
@@ -8,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,13 +20,13 @@ public class ProjectController implements Initializable {
     private final GenericDao<ProjectsEntity> projectDao;
 
     @FXML
-    private TextField nameField;
+    private JFXTextField nameField;
 
     @FXML
-    private TextField retentionField;
+    private JFXTextField retentionField;
 
     @FXML
-    private TextField noteField;
+    private JFXTextField noteField;
 
     @FXML
     private TableView<ProjectsEntity> projectTable;
@@ -61,9 +61,10 @@ public class ProjectController implements Initializable {
     private void onSaveAction() {
         if (!validForm()) {
             LOGGER.info("Hiba a bevitt adatokban!");
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setHeaderText("Hiba a bevitt adatokban!");
-            errorAlert.showAndWait();
+
+
+            //errorAlert.setHeaderText("Hiba a bevitt adatokban!");
+            //errorAlert.showAndWait();
             clearFields();
             return;
         }

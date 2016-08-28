@@ -121,7 +121,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     }
 
     private void initDatePicker() {
-        createdPicker.setValue(LocalDate.now());
+        createdPicker.setValue(ControllerMediator.getInstance().getCurrentDate());
     }
 
     private void initTextFields() {

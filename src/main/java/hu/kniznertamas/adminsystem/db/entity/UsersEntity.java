@@ -3,7 +3,7 @@ package hu.kniznertamas.adminsystem.db.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users", schema = "kniznerasztalos")
+@Table(name = "users")
 public class UsersEntity extends PersistentEntity {
 
     private String name;

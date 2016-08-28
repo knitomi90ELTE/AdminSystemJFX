@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Tab?>
 <?import com.jfoenix.controls.JFXTabPane?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.MainController" prefWidth="1366.0" prefHeight="768.0">
-    <fx:include source="MenuBar.fxml"/>
-    <JFXTabPane tabClosingPolicy="UNAVAILABLE" >
+<?import java.net.URL?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.MainController">
+    <fx:include source="MenuBar.fxml" />
+    <JFXTabPane styleClass="blue-200" tabClosingPolicy="UNAVAILABLE">
         <Tab text="Napi nézet">
-            <fx:include source="pages/DailyView.fxml"/>
+            <fx:include source="pages/DailyView.fxml" />
         </Tab>
         <Tab text="Alkalmazottak">
-            <fx:include source="pages/UserView.fxml"/>
+            <fx:include source="pages/UserView.fxml" />
         </Tab>
         <Tab text="Munkák">
-            <fx:include source="pages/ProjectView.fxml"/>
+            <fx:include source="pages/ProjectView.fxml" />
         </Tab>
         <Tab text="Pénzügy">
-            <fx:include source="pages/Finances.fxml"/>
+            <fx:include source="pages/Finances.fxml" />
         </Tab>
         <Tab text="Nyitott tételek">
-            <fx:include source="pages/OpenItems.fxml"/>
+            <fx:include source="pages/OpenItems.fxml" />
         </Tab>
         <Tab text="Bérlista">
-            <fx:include source="pages/WageView.fxml"/>
+            <fx:include source="pages/WageView.fxml" />
         </Tab>
+      <stylesheets>
+         <URL value="@../style/main.css" />
+         <URL value="@../style/jfoenix-fonts.css" />
+         <URL value="@../style/jfoenix-design.css" />
+         <URL value="@../style/jfoenix-components.css" />
+      </stylesheets>
     </JFXTabPane>
 
 </VBox>

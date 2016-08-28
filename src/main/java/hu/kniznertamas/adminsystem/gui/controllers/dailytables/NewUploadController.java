@@ -2,6 +2,7 @@ package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
@@ -35,7 +36,7 @@ public class NewUploadController extends PopupAbstractt implements Initializable
     private JFXComboBox<ProjectsEntity> projectBox;
 
     @FXML
-    private TextField hoursField;
+    private JFXTextField hoursField;
 
     @FXML
     private JFXDatePicker createdPicker;
@@ -88,8 +89,7 @@ public class NewUploadController extends PopupAbstractt implements Initializable
     }
 
     private void initDate() {
-        LocalDate today = LocalDate.now();
-        createdPicker.setValue(today);
+        createdPicker.setValue(ControllerMediator.getInstance().getCurrentDate());
     }
 
     private void loadUsers() {

@@ -65,23 +65,6 @@ public class UserViewController implements Initializable {
                 GenericDao<UsersEntity> usersDao = DaoManager.getInstance().getUserDao();
                 List<UsersEntity> allUsers = usersDao.findAll();
                 comboBox.setItems(FXCollections.observableArrayList(allUsers));
-                /*comboBox.setCellFactory(new Callback<ListView<UsersEntity>, ListCell<UsersEntity>>() {
-                    @Override
-                    public ListCell<UsersEntity> call(ListView<UsersEntity> param) {
-                        return new ListCell<UsersEntity>() {
-                            @Override
-                            public void updateItem(UsersEntity item, boolean empty) {
-                                super.updateItem(item, empty);
-                                if (!empty) {
-                                    setText(item.getName());
-                                    setGraphic(null);
-                                } else {
-                                    setText(null);
-                                }
-                            }
-                        };
-                    }
-                });*/
                 comboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> ControllerMediator.getInstance().loadUserDataToController(newValue));
             }
         }.start();

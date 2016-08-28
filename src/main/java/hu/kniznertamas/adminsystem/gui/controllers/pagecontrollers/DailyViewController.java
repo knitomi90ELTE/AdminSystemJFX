@@ -31,6 +31,7 @@ public class DailyViewController implements Initializable {
         LocalDate ld = LocalDate.now();
         datePicker.setValue(ld);
         currentDate = ld;
+        ControllerMediator.getInstance().registerControllerDailyView(this);
         updateTables();
     }
 
@@ -61,6 +62,10 @@ public class DailyViewController implements Initializable {
     private void updateTables() {
         LOGGER.info("Updating tables {}", currentDate.toString());
         ControllerMediator.getInstance().refreshDailyTableData(currentDate);
+    }
+
+    public LocalDate getCurrentDate() {
+        return currentDate;
     }
 
 }

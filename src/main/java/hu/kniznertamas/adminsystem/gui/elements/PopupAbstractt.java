@@ -5,6 +5,8 @@ import hu.kniznertamas.adminsystem.helper.CallbackInterface;
 import javafx.fxml.FXML;
 import org.controlsfx.control.PopOver;
 
+import java.time.LocalDate;
+
 public abstract class PopupAbstractt {
 
     public abstract void setParent(PopOver parent);

@@ -1,0 +1,33 @@
+Label {
+    -fx-font-family: Roboto;
+    src:"/resources/roboto/Roboto-Regular.ttf";
+}
+
+
+
+JFXButton {
+    -fx-text-fill:WHITE;
+    -fx-background-color:#5264AE;
+}
+/*
+JFXTabPane {
+    -fx-background-color:#F3E5F5;
+}
+*/
+VBOX {
+    -fx-background-color:#F3E5F5;
+}
+
+HBOX {
+    -fx-background-color:#F3E5F5;
+}
+
+.jfx-tab-pane {
+    -fx-background-color:#FFFFFF;
+}
+.tab-header-background {
+    -fx-background-color:#FF0000;
+}
+.tab-selected-line {
+    -fx-background-color: #00FF00;
+}

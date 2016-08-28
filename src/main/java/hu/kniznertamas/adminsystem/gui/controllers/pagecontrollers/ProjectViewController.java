@@ -36,7 +36,7 @@ public class ProjectViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ControllerMediator.getInstance().registerControlerProjects(this);
+        ControllerMediator.getInstance().registerControllerProjects(this);
     }
 
     public void loadProjectData(ProjectsEntity projectsEntity) {
@@ -52,23 +52,6 @@ public class ProjectViewController implements Initializable {
                 GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
                 List<ProjectsEntity> allProjects = projectsDao.findAll();
                 comboBox.setItems(FXCollections.observableArrayList(allProjects));
-                /*comboBox.setCellFactory(new Callback<ListView<ProjectsEntity>, ListCell<ProjectsEntity>>() {
-                    @Override
-                    public ListCell<ProjectsEntity> call(ListView<ProjectsEntity> param) {
-                        return new ListCell<ProjectsEntity>() {
-                            @Override
-                            public void updateItem(ProjectsEntity item, boolean empty) {
-                                super.updateItem(item, empty);
-                                if (!empty) {
-                                    setText(item.getName());
-                                    setGraphic(null);
-                                } else {
-                                    setText(null);
-                                }
-                            }
-                        };
-                    }
-                });*/
                 EntityHelper.initComboBoxWithProjectsEntity(comboBox);
                 comboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> ControllerMediator.getInstance().loadProjectDataToController(newValue));
             }

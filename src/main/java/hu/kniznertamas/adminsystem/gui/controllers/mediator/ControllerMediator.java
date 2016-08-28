@@ -4,6 +4,8 @@ import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
 import hu.kniznertamas.adminsystem.gui.controllers.dailytables.BalanceTableController;
 import hu.kniznertamas.adminsystem.gui.controllers.dailytables.UploadTableController;
+import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.DailyViewController;
+import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.OpenItemsViewController;
 import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.ProjectViewController;
 import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.UserViewController;
 import hu.kniznertamas.adminsystem.gui.controllers.projecttables.FinancesTableController;
@@ -20,6 +22,8 @@ public class ControllerMediator implements IMediateControllers {
     private ProjectViewController projectViewController;
     private FinancesTableController financesTableController;
     private HoursTableController hoursTableController;
+    private DailyViewController dailyViewController;
+    private OpenItemsViewController openItemsViewController;
 
     @Override
     public void registerControllerUser(UserViewController controller) {
@@ -37,18 +41,23 @@ public class ControllerMediator implements IMediateControllers {
     }
 
     @Override
-    public void registerControlerProjects(ProjectViewController controller) {
+    public void registerControllerProjects(ProjectViewController controller) {
         projectViewController = controller;
     }
 
     @Override
-    public void registerControlerHoursTable(HoursTableController controller) {
+    public void registerControllerHoursTable(HoursTableController controller) {
         hoursTableController = controller;
     }
 
     @Override
-    public void registerControlerFinancesTable(FinancesTableController controller) {
+    public void registerControllerFinancesTable(FinancesTableController controller) {
         financesTableController = controller;
+    }
+
+    @Override
+    public void registerControllerOpenItemsController(OpenItemsViewController controller) {
+        openItemsViewController = controller;
     }
 
     @Override
@@ -65,18 +74,23 @@ public class ControllerMediator implements IMediateControllers {
 
     @Override
     public void refreshDailyTableData(LocalDate currentDate) {
-        new Thread() {
-            @Override
-            public void run() {
-                uploadTableController.refreshTableData(currentDate);
-            }
-        }.start();
-        new Thread() {
-            @Override
-            public void run() {
-                balanceTableController.refreshTableData(currentDate);
-            }
-        }.start();
+        Platform.runLater(() -> uploadTableController.refreshTableData(currentDate));
+        Platform.runLater(() -> balanceTableController.refreshTableData(currentDate));
+    }
+
+    @Override
+    public void registerControllerDailyView(DailyViewController controller) {
+        dailyViewController = controller;
+    }
+
+    @Override
+    public void refreshOpenItemsTable() {
+        openItemsViewController.initOpenItemsTable();
+    }
+
+    @Override
+    public LocalDate getCurrentDate() {
+        return dailyViewController.getCurrentDate();
     }
 
     private ControllerMediator() {

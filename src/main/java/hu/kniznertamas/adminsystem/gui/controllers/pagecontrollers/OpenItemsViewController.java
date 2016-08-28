@@ -4,6 +4,7 @@ import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
 import hu.kniznertamas.adminsystem.gui.controllers.dailytables.NewBalanceController;
+import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.gui.elements.PopOverElement;
 import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
@@ -34,10 +35,11 @@ public class OpenItemsViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ControllerMediator.getInstance().registerControllerOpenItemsController(this);
         initOpenItemsTable();
     }
 
-    private void initOpenItemsTable() {
+    public void initOpenItemsTable() {
         Stream<BalanceEntity> balanceList = balanceDao.findAll().stream();
         List<BalanceEntity> filteredList = balanceList.filter(item -> item.getCompleted() == null).collect(Collectors.toList());
         List<ExtendedBalanceEntity> extendedList = EntityHelper.createExtendedBalanceEntityList(filteredList);

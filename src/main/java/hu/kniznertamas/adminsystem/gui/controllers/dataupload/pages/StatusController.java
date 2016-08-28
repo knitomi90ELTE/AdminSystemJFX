@@ -4,7 +4,6 @@ import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.StatusEntity;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -67,7 +66,7 @@ public class StatusController implements Initializable {
     }
 
     @FXML
-    private void onDeleteAction(ActionEvent event) {
+    private void onDeleteAction() {
         StatusEntity selected = statusTable.getSelectionModel().getSelectedItem();
         if(selected == null) {
         	return;

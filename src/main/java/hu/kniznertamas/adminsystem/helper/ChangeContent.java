@@ -35,7 +35,7 @@ public class ChangeContent {
             Scene scene = stage.getScene();
             page.getStylesheets().add(instance.getClass().getResource("/style/jfoenix-fonts.css").toExternalForm());
             page.getStylesheets().add(instance.getClass().getResource("/style/main.css").toExternalForm());
-            page.getStylesheets().add(instance.getClass().getResource("/style/jfoenix-design.css").toExternalForm());
+            //page.getStylesheets().add(instance.getClass().getResource("/style/jfoenix-design.css").toExternalForm());
     		//scene.getStylesheets().add(MainDemo.class.getResource("/resources/css/jfoenix-main-demo.css").toExternalForm());
             if (scene == null) {
                 scene = new Scene(page);

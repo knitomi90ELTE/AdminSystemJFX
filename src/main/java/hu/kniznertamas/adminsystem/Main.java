@@ -31,6 +31,7 @@ public class Main extends Application {
         changeContent = new ChangeContent(instance, primaryStage);
         changeContent.replaceSceneContent("/view/Main.fxml");
         primaryStage.setTitle("Adminisztrációs rendszer");
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 

@@ -39,7 +39,7 @@ public class FinancesTableController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ControllerMediator.getInstance().registerControlerFinancesTable(this);
+        ControllerMediator.getInstance().registerControllerFinancesTable(this);
     }
 
     public FinancesTableController() {

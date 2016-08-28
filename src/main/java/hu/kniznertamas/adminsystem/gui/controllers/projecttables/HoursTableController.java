@@ -36,7 +36,7 @@ public class HoursTableController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ControllerMediator.getInstance().registerControlerHoursTable(this);
+        ControllerMediator.getInstance().registerControllerHoursTable(this);
     }
 
     public void refreshTableData(ProjectsEntity projectsEntity) {
