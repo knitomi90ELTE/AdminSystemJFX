@@ -12,18 +12,10 @@
             fx:controller="hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.ProjectViewController">
     <top>
         <VBox spacing="5.0">
-            <JFXComboBox fx:id="comboBox" promptText="Válassz munkát!">
-
-            </JFXComboBox>
-            <Label fx:id="nameLabel" text="Név: " BorderPane.alignment="CENTER_LEFT">
-
-            </Label>
-            <Label fx:id="retentionLabel" text="Garanciális visszatartás: " BorderPane.alignment="CENTER_LEFT">
-
-            </Label>
-            <Label fx:id="noteLabel" text="Megjegyzés: " BorderPane.alignment="CENTER_LEFT">
-
-            </Label>
+            <JFXComboBox fx:id="comboBox" promptText="Válassz munkát!" />
+            <Label fx:id="nameLabel" text="Név: " BorderPane.alignment="CENTER_LEFT" />
+            <Label fx:id="retentionLabel" text="Garanciális visszatartás: " BorderPane.alignment="CENTER_LEFT" />
+            <Label fx:id="noteLabel" text="Megjegyzés: " BorderPane.alignment="CENTER_LEFT" />
             <padding>
                 <Insets bottom="5.0" left="10.0" top="5.0"/>
             </padding>

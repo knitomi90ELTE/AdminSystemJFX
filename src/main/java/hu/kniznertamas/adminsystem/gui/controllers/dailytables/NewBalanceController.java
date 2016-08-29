@@ -3,6 +3,9 @@ package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import com.sun.glass.ui.Cursor;
+import com.sun.glass.ui.Pixels;
+
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.*;
@@ -15,6 +18,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+
 import org.controlsfx.control.PopOver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,6 +81,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     private static final Logger LOGGER = LoggerFactory.getLogger(NewBalanceController.class);
 
     public NewBalanceController() {
+    	
     }
 
     @Override
@@ -123,7 +129,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     private void initDatePicker() {
         createdPicker.setValue(ControllerMediator.getInstance().getCurrentDate());
     }
-
+    
     private void initTextFields() {
         nettoField.setText("0");
         bruttoField.setText("0");

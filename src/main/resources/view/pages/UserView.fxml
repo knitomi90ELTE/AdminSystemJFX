@@ -14,15 +14,12 @@
     <top>
         <VBox spacing="5.0">
             <JFXComboBox fx:id="comboBox" promptText="Válassz alkalmazottat!" />
-            <Label fx:id="nameLabel" text="Név: " BorderPane.alignment="CENTER_LEFT">
+            <Label fx:id="nameLabel" text="Név: " BorderPane.alignment="CENTER_LEFT" />
 
-            </Label>
-            <Label fx:id="wageLabel" text="Órabér: " BorderPane.alignment="CENTER_LEFT">
+            <Label fx:id="wageLabel" text="Órabér: " BorderPane.alignment="CENTER_LEFT" />
 
-            </Label>
-            <Label fx:id="noteLabel" text="Megjegyzés: " BorderPane.alignment="CENTER_LEFT">
+            <Label fx:id="noteLabel" text="Megjegyzés: " BorderPane.alignment="CENTER_LEFT" />
 
-            </Label>
             <padding>
                 <Insets bottom="5.0" left="10.0" top="5.0" />
             </padding>

@@ -5,7 +5,7 @@ Label {
 }
 
 JFXButton {
-    -fx-text-fill:#c5cae9;
+    -fx-text-fill:#ffffff;
     -fx-background-color:#283593;
 }
 VBOX {
@@ -14,6 +14,16 @@ VBOX {
 
 HBOX {
     -fx-background-color:#c5cae9;
+}
+
+JFXTextField {
+	-fx-text-fill:#283593;
+	-fx-font-family: Roboto;
+    src:"/resources/roboto/Roboto-Regular.ttf";
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: #3949ab;
+    -fx-focus-color: #283593;
+    -fx-unfocus-color: #3949ab; 
 }
 
 .jfx-tab-pane {
@@ -48,4 +58,26 @@ HBOX {
 	-fx-font-weight: BOLD; 	
 	-fx-padding: 0.7em 0.8em;
 	-fx-text-fill: #ffffff;
+}
+
+
+
+
+
+.combo-box-popup .list-view .jfx-list-cell .label {
+  	-fx-text-fill: #283593 ;
+}
+.combo-box-popup .list-view .jfx-list-cell:odd:selected > .jfx-rippler > StackPane,
+.combo-box-popup .list-view .jfx-list-cell:even:selected > .jfx-rippler > StackPane { 
+	-fx-background-color: white;
+}
+
+.combo-box-popup .list-view .jfx-list-cell:filled:hover .label{ 
+	-fx-text-fill: #283593;
+}
+.combo-box-popup .list-view .jfx-list-cell:filled:hover .custom-jfx-list-view-icon {
+	-fx-text-fill: RED;
+}
+.combo-box-popup .list-view .jfx-list-cell .jfx-rippler {
+	-fx-rippler-fill: #7986cb;
 }
