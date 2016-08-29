@@ -32,7 +32,7 @@ public class DialogManager {
     	content.setActions(b);
     	dialog.setContent(content);
     	dialog.setDialogContainer(Main.getInstance().getChangeContent().getRootPane());
-    	dialog.show();
+    	dialog.show();;
 	}
 	
 }

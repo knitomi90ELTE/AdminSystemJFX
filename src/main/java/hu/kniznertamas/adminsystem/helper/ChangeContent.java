@@ -1,7 +1,7 @@
 package hu.kniznertamas.adminsystem.helper;
 
 import hu.kniznertamas.adminsystem.Main;
-import hu.kniznertamas.adminsystem.gui.controllers.MainController;
+import hu.kniznertamas.adminsystem.gui.controllers.RootController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -38,10 +38,10 @@ public class ChangeContent {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(instance.getClass().getResource(fxml));
 			Parent page = loader.load();
-			if (rootPane == null && loader.getController() instanceof MainController) {
+			if (loader.getController() instanceof RootController) {
 				LOGGER.info("RootPane set.");
-				MainController mc = loader.getController();
-				rootPane = mc.getRoot();
+				RootController c = loader.getController();
+				rootPane = c.getRoot();
 			}
 			Scene scene = stage.getScene();
 			page.getStylesheets().add(instance.getClass().getResource("/style/jfoenix-fonts.css").toExternalForm());

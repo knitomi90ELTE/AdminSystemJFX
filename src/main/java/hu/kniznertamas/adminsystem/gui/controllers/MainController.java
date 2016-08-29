@@ -7,7 +7,7 @@ import javafx.scene.layout.StackPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+public class MainController extends RootController implements Initializable {
 
 	@FXML
 	private StackPane root;
@@ -21,6 +21,7 @@ public class MainController implements Initializable {
 
     }
 
+    @Override
 	public StackPane getRoot() {
 		return root;
 	}

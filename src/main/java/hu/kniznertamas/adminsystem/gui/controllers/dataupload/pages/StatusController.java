@@ -3,6 +3,7 @@ package hu.kniznertamas.adminsystem.gui.controllers.dataupload.pages;
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.StatusEntity;
+import hu.kniznertamas.adminsystem.helper.DialogManager;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,9 +49,7 @@ public class StatusController implements Initializable {
     private void onSaveAction() {
         if(!validForm()){
             LOGGER.info("Hiba a bevitt adatokban!");
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setHeaderText("Hiba a bevitt adatokban!");
-            errorAlert.showAndWait();
+            DialogManager.showDialog("Hiba", "Hiba a bevitt adatokban!", "Ok", "error");
             clearFields();
             return;
         }
@@ -59,10 +58,8 @@ public class StatusController implements Initializable {
         statusDao.create(newStatus);
         clearFields();
         initStatusTable();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        DialogManager.showDialog("Mentés", "Sikeres mentés!", "Ok", "accept");
         LOGGER.info("Sikeres mentés! {}", newStatus.getName());
-        alert.setHeaderText("Sikeres mentés!");
-        alert.showAndWait();
     }
 
     @FXML
