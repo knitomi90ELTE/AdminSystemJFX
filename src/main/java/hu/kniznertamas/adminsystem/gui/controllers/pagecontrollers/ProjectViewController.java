@@ -11,6 +11,7 @@ import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.helper.EntityHelper;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,16 +47,13 @@ public class ProjectViewController implements Initializable {
     }
 
     private void loadProjects() {
-        new Thread() {
-            @Override
-            public void run() {
-                GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
-                List<ProjectsEntity> allProjects = projectsDao.findAll();
-                comboBox.setItems(FXCollections.observableArrayList(allProjects));
-                EntityHelper.initComboBoxWithProjectsEntity(comboBox);
-                comboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> ControllerMediator.getInstance().loadProjectDataToController(newValue));
-            }
-        }.start();
+        Platform.runLater(() -> {
+			GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
+		    List<ProjectsEntity> allProjects = projectsDao.findAll();
+		    comboBox.setItems(FXCollections.observableArrayList(allProjects));
+		    EntityHelper.initComboBoxWithProjectsEntity(comboBox);
+		    comboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> ControllerMediator.getInstance().loadProjectDataToController(newValue));
+		});
     }
 
 

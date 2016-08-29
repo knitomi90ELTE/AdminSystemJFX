@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import hu.kniznertamas.adminsystem.helper.CallbackInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

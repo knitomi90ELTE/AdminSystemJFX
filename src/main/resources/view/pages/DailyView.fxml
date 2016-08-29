@@ -17,6 +17,7 @@
                 </padding>
             </JFXDatePicker>
             <JFXButton onAction="#increaseDate" prefHeight="35.0" prefWidth="100.0" text="Következő nap" buttonType="RAISED"/>
+            <JFXButton onAction="#showDialog" prefHeight="35.0" prefWidth="100.0" text="DIALOG" buttonType="RAISED"/>
          <padding>
             <Insets top="5.0" />
          </padding>

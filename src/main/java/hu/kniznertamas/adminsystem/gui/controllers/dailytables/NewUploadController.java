@@ -23,119 +23,109 @@ import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class NewUploadController extends PopupAbstractt implements Initializable {
 
-    @FXML
-    private JFXComboBox<UsersEntity> userBox;
+	@FXML
+	private JFXComboBox<UsersEntity> userBox;
 
-    @FXML
-    private JFXComboBox<ProjectsEntity> projectBox;
+	@FXML
+	private JFXComboBox<ProjectsEntity> projectBox;
 
-    @FXML
-    private JFXTextField hoursField;
+	@FXML
+	private JFXTextField hoursField;
 
-    @FXML
-    private JFXDatePicker createdPicker;
+	@FXML
+	private JFXDatePicker createdPicker;
 
-    @FXML
-    private TextField noteField;
+	@FXML
+	private TextField noteField;
 
-    private PopOver parent;
-    private CallbackInterface callbackFunction;
+	private PopOver parent;
+	private CallbackInterface callbackFunction;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(NewUploadController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(NewUploadController.class);
 
-    public NewUploadController() {
-    }
+	public NewUploadController() {
+	}
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        initDate();
-        loadUsers();
-        loadProjects();
-    }
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		initDate();
+		loadUsers();
+		loadProjects();
+	}
 
-    private boolean validForm() {
-        if ("".equals(hoursField.getText())) return false;
-        try {
-            Integer.parseInt(hoursField.getText());
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
+	private boolean validForm() {
+		if ("".equals(hoursField.getText()))
+			return false;
+		try {
+			Integer.parseInt(hoursField.getText());
+		} catch (NumberFormatException e) {
+			return false;
+		}
+		return true;
+	}
 
-    @FXML
-    private void onSaveAction() {
-        if (!validForm()) {
-            hoursField.setText("HIBÁS ÉRTÉK");
-            return;
-        }
-        UploadEntity newUpload = new UploadEntity();
-        newUpload.setUserId((userBox.getSelectionModel().getSelectedItem()).getId());
-        newUpload.setProjectId((projectBox.getSelectionModel().getSelectedItem()).getId());
-        newUpload.setHour(Double.parseDouble(hoursField.getText()));
-        newUpload.setCreated(Date.valueOf(createdPicker.getValue()));
-        newUpload.setNote((noteField.getText().length() == 0) ? "" : noteField.getText());
-        GenericDao<UploadEntity> uploadDao = DaoManager.getInstance().getUploadDao();
-        uploadDao.create(newUpload);
-        LOGGER.info("Saved entity: {}", newUpload);
-        ControllerMediator.getInstance().refreshDailyTableData(createdPicker.getValue());
-        onCancelAction();
-    }
+	@FXML
+	private void onSaveAction() {
+		if (!validForm()) {
+			hoursField.setText("HIBÁS ÉRTÉK");
+			return;
+		}
+		UploadEntity newUpload = new UploadEntity();
+		newUpload.setUserId((userBox.getSelectionModel().getSelectedItem()).getId());
+		newUpload.setProjectId((projectBox.getSelectionModel().getSelectedItem()).getId());
+		newUpload.setHour(Double.parseDouble(hoursField.getText()));
+		newUpload.setCreated(Date.valueOf(createdPicker.getValue()));
+		newUpload.setNote((noteField.getText().length() == 0) ? "" : noteField.getText());
+		GenericDao<UploadEntity> uploadDao = DaoManager.getInstance().getUploadDao();
+		uploadDao.create(newUpload);
+		LOGGER.info("Saved entity: {}", newUpload);
+		ControllerMediator.getInstance().refreshDailyTableData(createdPicker.getValue());
+		onCancelAction();
+	}
 
-    private void initDate() {
-        createdPicker.setValue(ControllerMediator.getInstance().getCurrentDate());
-    }
+	private void initDate() {
+		createdPicker.setValue(ControllerMediator.getInstance().getCurrentDate());
+	}
 
-    private void loadUsers() {
-        new Thread() {
-            @Override
-            public void run() {
-                GenericDao<UsersEntity> userDao = DaoManager.getInstance().getUserDao();
-                List<UsersEntity> allUsers = userDao.findAll();
-                userBox.setItems(FXCollections.observableArrayList(allUsers));
-                EntityHelper.initComboBoxWithUserEntity(userBox);
-                userBox.getSelectionModel().selectFirst();
-            }
-        }.start();
-    }
+	private void loadUsers() {
+		GenericDao<UsersEntity> userDao = DaoManager.getInstance().getUserDao();
+		List<UsersEntity> allUsers = userDao.findAll();
+		userBox.setItems(FXCollections.observableArrayList(allUsers));
+		EntityHelper.initComboBoxWithUserEntity(userBox);
+		userBox.getSelectionModel().selectFirst();
+	}
 
-    private void loadProjects() {
-        new Thread() {
-            @Override
-            public void run() {
-                GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
-                List<ProjectsEntity> allProjects = projectsDao.findAll();
-                projectBox.setItems(FXCollections.observableArrayList(allProjects));
-                EntityHelper.initComboBoxWithProjectsEntity(projectBox);
-                projectBox.getSelectionModel().selectFirst();
-            }
-        }.start();
-    }
+	private void loadProjects() {
+		GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
+		List<ProjectsEntity> allProjects = projectsDao.findAll();
+		projectBox.setItems(FXCollections.observableArrayList(allProjects));
+		EntityHelper.initComboBoxWithProjectsEntity(projectBox);
+		projectBox.getSelectionModel().selectFirst();
+	}
 
-    @Override
-    public void setParent(PopOver parent) {
-        this.parent = parent;
-    }
+	@Override
+	public void setParent(PopOver parent) {
+		this.parent = parent;
+	}
 
-    @Override
-    public void loadEntityToFields(PersistentEntity entity) {
+	@Override
+	public void loadEntityToFields(PersistentEntity entity) {
 
-    }
+	}
 
-    @Override
-    public void setCallbackFunction(CallbackInterface callbackFunction) {
-        this.callbackFunction = callbackFunction;
-    }
+	@Override
+	public void setCallbackFunction(CallbackInterface callbackFunction) {
+		this.callbackFunction = callbackFunction;
+	}
 
-    @Override
-    protected void onCancelAction() {
-        callbackFunction.callbackFunction();
-        parent.hide();
-    }
+	@Override
+	protected void onCancelAction() {
+		callbackFunction.callbackFunction();
+		parent.hide();
+	}
 }

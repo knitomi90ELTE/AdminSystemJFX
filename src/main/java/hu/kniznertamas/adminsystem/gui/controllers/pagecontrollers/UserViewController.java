@@ -8,6 +8,7 @@ import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.helper.EntityHelper;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,53 +22,50 @@ import java.util.stream.Stream;
 
 public class UserViewController implements Initializable {
 
-    @FXML
-    private Label nameLabel;
+	@FXML
+	private Label nameLabel;
 
-    @FXML
-    private Label wageLabel;
+	@FXML
+	private Label wageLabel;
 
-    @FXML
-    private Label noteLabel;
+	@FXML
+	private Label noteLabel;
 
-    @FXML
-    private TableView<ExtendedUploadEntity> userTable;
+	@FXML
+	private TableView<ExtendedUploadEntity> userTable;
 
-    @FXML
-    private JFXComboBox<UsersEntity> comboBox;
+	@FXML
+	private JFXComboBox<UsersEntity> comboBox;
 
-    public UserViewController() {
-        loadUsers();
-    }
+	public UserViewController() {
+		loadUsers();
+	}
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        ControllerMediator.getInstance().registerControllerUser(this);
-    }
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		ControllerMediator.getInstance().registerControllerUser(this);
+	}
 
-    public void loadUserData(UsersEntity usersEntity) {
-        nameLabel.setText("Név: " + usersEntity.getName());
-        wageLabel.setText("Órabér: " + usersEntity.getWage().toString());
-        noteLabel.setText("Megjegyzés: " + usersEntity.getNote());
-        GenericDao<UploadEntity> uploadDao = DaoManager.getInstance().getUploadDao();
-        Stream<UploadEntity> uploadList = uploadDao.findAll().stream();
-        List<UploadEntity> filteredList = uploadList.filter(item -> item.getUserId().equals(usersEntity.getId())).collect(Collectors.toList());
-        List<ExtendedUploadEntity> extendedList = EntityHelper.createExtendedUploadEntityList(filteredList);
-        userTable.setItems(FXCollections.observableArrayList(extendedList));
-        userTable.refresh();
+	public void loadUserData(UsersEntity usersEntity) {
+		nameLabel.setText("Név: " + usersEntity.getName());
+		wageLabel.setText("Órabér: " + usersEntity.getWage().toString());
+		noteLabel.setText("Megjegyzés: " + usersEntity.getNote());
+		GenericDao<UploadEntity> uploadDao = DaoManager.getInstance().getUploadDao();
+		Stream<UploadEntity> uploadList = uploadDao.findAll().stream();
+		List<UploadEntity> filteredList = uploadList.filter(item -> item.getUserId().equals(usersEntity.getId())).collect(Collectors.toList());
+		List<ExtendedUploadEntity> extendedList = EntityHelper.createExtendedUploadEntityList(filteredList);
+		userTable.setItems(FXCollections.observableArrayList(extendedList));
+		userTable.refresh();
+	}
 
-    }
-
-    private void loadUsers() {
-        new Thread() {
-            @Override
-            public void run() {
-                GenericDao<UsersEntity> usersDao = DaoManager.getInstance().getUserDao();
-                List<UsersEntity> allUsers = usersDao.findAll();
-                comboBox.setItems(FXCollections.observableArrayList(allUsers));
-                comboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> ControllerMediator.getInstance().loadUserDataToController(newValue));
-            }
-        }.start();
-    }
+	private void loadUsers() {
+		Platform.runLater(() -> {
+			GenericDao<UsersEntity> usersDao = DaoManager.getInstance().getUserDao();
+			List<UsersEntity> allUsers = usersDao.findAll();
+			comboBox.setItems(FXCollections.observableArrayList(allUsers));
+			comboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue,
+					newValue) -> ControllerMediator.getInstance().loadUserDataToController(newValue));
+		});
+	}
 
 }

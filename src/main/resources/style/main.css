@@ -1,33 +1,51 @@
 Label {
     -fx-font-family: Roboto;
     src:"/resources/roboto/Roboto-Regular.ttf";
+     -fx-text-fill: #283593;
 }
-
-
 
 JFXButton {
-    -fx-text-fill:WHITE;
-    -fx-background-color:#5264AE;
+    -fx-text-fill:#c5cae9;
+    -fx-background-color:#283593;
 }
-/*
-JFXTabPane {
-    -fx-background-color:#F3E5F5;
-}
-*/
 VBOX {
-    -fx-background-color:#F3E5F5;
+    -fx-background-color:#c5cae9;
 }
 
 HBOX {
-    -fx-background-color:#F3E5F5;
+    -fx-background-color:#c5cae9;
 }
 
 .jfx-tab-pane {
-    -fx-background-color:#FFFFFF;
+    -fx-background-color:#c5cae9;
 }
 .tab-header-background {
-    -fx-background-color:#FF0000;
+    -fx-background-color:#283593;
 }
 .tab-selected-line {
-    -fx-background-color: #00FF00;
+    -fx-background-color: #00ff00;
+}
+.tab-label {
+	-fx-text-fill: #ffffff;
+}
+
+.dialog-accept {
+	-fx-background-color: #009688;
+	-fx-font-weight: BOLD; 	
+	-fx-padding: 0.7em 0.8em;
+	-fx-text-fill: #ffffff;
+}
+
+.dialog-error {
+	-fx-background-color: #F44336;
+	-fx-font-weight: BOLD; 	
+	-fx-padding: 0.7em 0.8em;
+	-fx-text-fill: #ffffff;
+}
+
+.dialog-info {
+	-fx-background-color: #2196F3;
+	-fx-font-weight: BOLD; 	
+	-fx-padding: 0.7em 0.8em;
+	-fx-text-fill: #ffffff;
 }
