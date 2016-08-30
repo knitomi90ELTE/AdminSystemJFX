@@ -1,20 +1,21 @@
 package hu.kniznertamas.adminsystem.gui.controllers.dataupload.pages;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
+import hu.kniznertamas.adminsystem.gui.elements.NumberTextField;
 import hu.kniznertamas.adminsystem.helper.DialogManager;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
 
@@ -24,7 +25,7 @@ public class UserController implements Initializable {
     private TextField nameField;
 
     @FXML
-    private TextField wageField;
+    private NumberTextField wageField;
 
     @FXML
     private TextField noteField;

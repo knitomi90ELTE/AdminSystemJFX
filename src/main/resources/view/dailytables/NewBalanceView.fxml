@@ -20,6 +20,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import hu.kniznertamas.adminsystem.gui.elements.NumberTextField?>
+
 <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.76-ea"
           xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="hu.kniznertamas.adminsystem.gui.controllers.dailytables.NewBalanceController"
@@ -44,13 +46,13 @@
     <Label text="Készpénzes" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
     <Label text="Megjegyzés" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
 
-    <JFXTextField fx:id="nettoField" prefHeight="36.0" promptText="Nettó érték" GridPane.columnIndex="1"
+    <NumberTextField fx:id="nettoField" prefHeight="36.0" promptText="Nettó érték" GridPane.columnIndex="1"
                GridPane.rowIndex="1"/>
-    <JFXTextField fx:id="bruttoField" prefHeight="36.0" promptText="Bruttó érték" GridPane.columnIndex="1"
+    <NumberTextField fx:id="bruttoField" prefHeight="36.0" promptText="Bruttó érték" GridPane.columnIndex="1"
                GridPane.rowIndex="2"/>
     <JFXComboBox fx:id="afaBox" prefHeight="36.0" prefWidth="200.0" promptText="ÁFA" GridPane.columnIndex="1"
               GridPane.rowIndex="3"/>
-    <TextField fx:id="afaValueField" editable="false" prefHeight="36.0" prefWidth="200.0" promptText="ÁFA értéke"
+    <NumberTextField fx:id="afaValueField" editable="false" prefHeight="36.0" prefWidth="200.0" promptText="ÁFA értéke"
                GridPane.columnIndex="1"
                GridPane.rowIndex="4"/>
     <JFXDatePicker fx:id="createdPicker" prefHeight="36.0" GridPane.columnIndex="1" GridPane.rowIndex="5"/>

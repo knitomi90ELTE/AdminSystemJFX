@@ -9,6 +9,7 @@ import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
+import hu.kniznertamas.adminsystem.gui.elements.NumberTextField;
 import hu.kniznertamas.adminsystem.gui.elements.PopupAbstractt;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.helper.CallbackInterface;
@@ -35,7 +36,7 @@ public class NewUploadController extends PopupAbstractt implements Initializable
 	private JFXComboBox<ProjectsEntity> projectBox;
 
 	@FXML
-	private JFXTextField hoursField;
+	private NumberTextField hoursField;
 
 	@FXML
 	private JFXDatePicker createdPicker;

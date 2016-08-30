@@ -10,7 +10,7 @@
     <top>
         <HBox spacing="10.0">
             <JFXTextField fx:id="nameField" prefHeight="36.0" prefWidth="200.0" promptText="Név" />
-            <JFXTextField fx:id="retentionField" prefHeight="36.0" prefWidth="200.0" promptText="Visszatartás" />
+            <NumberTextField fx:id="retentionField" prefHeight="36.0" prefWidth="200.0" promptText="Visszatartás" />
             <JFXTextField fx:id="noteField" prefHeight="36.0" prefWidth="200.0" promptText="Megjegyzés" />
             <JFXButton onAction="#onSaveAction" prefHeight="36.0" prefWidth="200.0" text="Új hozzáadása" />
          <BorderPane.margin>

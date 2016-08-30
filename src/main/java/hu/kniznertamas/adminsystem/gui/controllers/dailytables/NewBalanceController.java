@@ -1,34 +1,37 @@
 package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 
-import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.sun.glass.ui.Cursor;
-import com.sun.glass.ui.Pixels;
-
-import hu.kniznertamas.adminsystem.db.dao.DaoManager;
-import hu.kniznertamas.adminsystem.db.dao.GenericDao;
-import hu.kniznertamas.adminsystem.db.entity.*;
-import hu.kniznertamas.adminsystem.gui.elements.PopupAbstractt;
-import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
-import hu.kniznertamas.adminsystem.helper.CallbackInterface;
-import hu.kniznertamas.adminsystem.helper.EntityHelper;
-import javafx.collections.FXCollections;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-
-import org.controlsfx.control.PopOver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import org.controlsfx.control.PopOver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+
+import hu.kniznertamas.adminsystem.db.dao.DaoManager;
+import hu.kniznertamas.adminsystem.db.dao.GenericDao;
+import hu.kniznertamas.adminsystem.db.entity.BalanceEntity;
+import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
+import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
+import hu.kniznertamas.adminsystem.db.entity.StatusEntity;
+import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
+import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import hu.kniznertamas.adminsystem.gui.elements.NumberTextField;
+import hu.kniznertamas.adminsystem.gui.elements.PopupAbstractt;
+import hu.kniznertamas.adminsystem.helper.CallbackInterface;
+import hu.kniznertamas.adminsystem.helper.EntityHelper;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 
 public class NewBalanceController extends PopupAbstractt implements Initializable {
 
@@ -39,16 +42,16 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     private Label modelIDLabel;
 
     @FXML
-    private TextField nettoField;
+    private NumberTextField nettoField;
 
     @FXML
-    private TextField bruttoField;
+    private NumberTextField bruttoField;
 
     @FXML
     private JFXComboBox<String> afaBox;
 
     @FXML
-    private TextField afaValueField;
+    private NumberTextField afaValueField;
 
     @FXML
     private JFXDatePicker createdPicker;
@@ -68,7 +71,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     @FXML
     private TextField noteField;
 
-    private TextField customAfa;
+    private NumberTextField customAfa;
     private boolean customAfaAdded = false;
     private boolean editingMode;
     private JFXComboBox<UsersEntity> userBox;
@@ -230,7 +233,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     }
 
     private void initCustomAfaField() {
-        customAfa = new TextField();
+        customAfa = new NumberTextField();
         customAfa.prefHeight(36.0);
         customAfa.setPromptText("Egyedi ÁFA");
         customAfa.setText("0");

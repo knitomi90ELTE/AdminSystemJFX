@@ -32,7 +32,7 @@
 
     <JFXComboBox fx:id="userBox" prefHeight="36.0" promptText="Alkalmazott" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     <JFXComboBox fx:id="projectBox" prefHeight="36.0" promptText="Munka" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-    <JFXTextField fx:id="hoursField" prefHeight="36.0" prefWidth="200.0" promptText="Óraszám" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <NumberTextField fx:id="hoursField" prefHeight="36.0" prefWidth="200.0" promptText="Óraszám" GridPane.columnIndex="1" GridPane.rowIndex="3" />
     <JFXDatePicker fx:id="createdPicker" prefHeight="36.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
     <JFXTextField fx:id="noteField" prefHeight="36.0" prefWidth="200.0" promptText="Megjegyzés" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
