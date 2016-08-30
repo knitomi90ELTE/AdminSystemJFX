@@ -1,5 +1,13 @@
 package hu.kniznertamas.adminsystem.gui.controllers.dataupload.pages;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.jfoenix.controls.JFXTextField;
+
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.StatusEntity;
@@ -7,21 +15,14 @@ import hu.kniznertamas.adminsystem.helper.DialogManager;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class StatusController implements Initializable {
 
     private final GenericDao<StatusEntity> statusDao;
 
     @FXML
-    private TextField nameField;
+    private JFXTextField nameField;
 
     @FXML
     private TableView<StatusEntity> statusTable;

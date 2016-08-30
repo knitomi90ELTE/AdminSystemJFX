@@ -14,43 +14,45 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<BorderPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.dataupload.pages.StatusController">
-    <top>
-        <HBox spacing="10.0">
-            <JFXTextField fx:id="nameField" prefHeight="36.0" prefWidth="200.0" promptText="Név" />
-            <JFXButton onAction="#onSaveAction" prefHeight="36.0" prefWidth="200.0" text="Új hozzáadása" />
-            <BorderPane.margin>
-                <Insets bottom="10.0" left="10.0" top="10.0" />
-            </BorderPane.margin>
-        </HBox>
-    </top>
-    <center>
-        <VBox spacing="10.0">
-            <HBox spacing="10.0">
-                <Label alignment="CENTER" contentDisplay="CENTER" text="Státuszok" textAlignment="CENTER">
-                    <font>
-                        <Font size="25.0" />
-                    </font>
-                </Label>
-                <JFXButton onAction="#onDeleteAction" prefHeight="36.0" prefWidth="200.0" text="Kijelölt törlése" />
-                <padding>
-                    <Insets left="10.0" />
-                </padding>
-            </HBox>
-            <TableView fx:id="statusTable" prefHeight="580.0">
-                <columns>
-                    <TableColumn prefWidth="100.0" text="ID">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="id" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn prefWidth="200.0" text="Név">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="name" />
-                        </cellValueFactory>
-                    </TableColumn>
-                </columns>
-            </TableView>
-        </VBox>
-    </center>
+<BorderPane prefHeight="768.0" prefWidth="1366.0"
+	xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="hu.kniznertamas.adminsystem.gui.controllers.dataupload.pages.StatusController">
+	<top>
+		<HBox spacing="10.0">
+			<JFXTextField fx:id="nameField" prefHeight="36.0"
+				prefWidth="200.0" promptText="Név" />
+			<JFXButton onAction="#onSaveAction" prefHeight="36.0"
+				prefWidth="200.0" text="Új hozzáadása" />
+			<BorderPane.margin>
+				<Insets bottom="10.0" left="10.0" top="10.0" />
+			</BorderPane.margin>
+		</HBox>
+	</top>
+	<center>
+		<VBox spacing="10.0">
+			<HBox spacing="10.0">
+				<Label alignment="CENTER" contentDisplay="CENTER" text="Státuszok"
+					textAlignment="CENTER" />
+				<JFXButton onAction="#onDeleteAction" prefHeight="36.0"
+					prefWidth="200.0" text="Kijelölt törlése" />
+				<padding>
+					<Insets left="10.0" />
+				</padding>
+			</HBox>
+			<TableView fx:id="statusTable" prefHeight="580.0">
+				<columns>
+					<TableColumn prefWidth="100.0" text="ID">
+						<cellValueFactory>
+							<PropertyValueFactory property="id" />
+						</cellValueFactory>
+					</TableColumn>
+					<TableColumn prefWidth="200.0" text="Név">
+						<cellValueFactory>
+							<PropertyValueFactory property="name" />
+						</cellValueFactory>
+					</TableColumn>
+				</columns>
+			</TableView>
+		</VBox>
+	</center>
 </BorderPane>

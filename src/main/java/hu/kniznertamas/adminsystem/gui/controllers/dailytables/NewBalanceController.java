@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
@@ -30,7 +31,6 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 public class NewBalanceController extends PopupAbstractt implements Initializable {
@@ -69,7 +69,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     private JFXCheckBox cashBox;
 
     @FXML
-    private TextField noteField;
+    private JFXTextField noteField;
 
     private NumberTextField customAfa;
     private boolean customAfaAdded = false;

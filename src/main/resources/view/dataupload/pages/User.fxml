@@ -15,58 +15,60 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import hu.kniznertamas.adminsystem.gui.elements.NumberTextField?>
 
-<BorderPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.76-ea"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="hu.kniznertamas.adminsystem.gui.controllers.dataupload.pages.UserController">
-    <top>
-        <HBox spacing="10.0">
-            <JFXTextField fx:id="nameField" prefHeight="36.0" prefWidth="200.0" promptText="Név"/>
-            <NumberTextField fx:id="wageField" prefHeight="36.0" prefWidth="200.0" promptText="Órabér"/>
-            <JFXTextField fx:id="noteField" prefHeight="36.0" prefWidth="200.0" promptText="Megjegyzés"/>
-            <JFXButton onAction="#onSaveAction" prefHeight="36.0" prefWidth="200.0" text="Új hozzáadása"/>
-            <BorderPane.margin>
-                <Insets bottom="10.0" left="10.0" top="10.0"/>
-            </BorderPane.margin>
-        </HBox>
-    </top>
-    <center>
-        <VBox spacing="10.0">
-            <HBox spacing="10.0">
-                <Label alignment="CENTER" contentDisplay="CENTER" text="Alkalmazottak" textAlignment="CENTER">
-                    <font>
-                        <Font size="25.0"/>
-                    </font>
-                </Label>
-                <JFXButton onAction="#onDeleteAction" prefHeight="36.0" prefWidth="200.0" text="Kijelölt törlése"/>
-                <padding>
-                    <Insets left="10.0"/>
-                </padding>
-            </HBox>
-            <TableView fx:id="userTable" prefHeight="580.0">
-                <columns>
-                    <TableColumn prefWidth="100.0" text="ID">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="id"/>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn prefWidth="200.0" text="Név">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="name"/>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn prefWidth="200.0" text="Órabér">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="wage"/>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn prefWidth="200.0" text="Megjegyzés">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="note"/>
-                        </cellValueFactory>
-                    </TableColumn>
-                </columns>
-            </TableView>
-        </VBox>
-    </center>
+<BorderPane prefHeight="768.0" prefWidth="1366.0"
+	xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="hu.kniznertamas.adminsystem.gui.controllers.dataupload.pages.UserController">
+	<top>
+		<HBox spacing="10.0">
+			<JFXTextField fx:id="nameField" prefHeight="36.0"
+				prefWidth="200.0" promptText="Név" />
+			<NumberTextField fx:id="wageField" prefHeight="36.0"
+				prefWidth="200.0" promptText="Órabér" />
+			<JFXTextField fx:id="noteField" prefHeight="36.0"
+				prefWidth="200.0" promptText="Megjegyzés" />
+			<JFXButton onAction="#onSaveAction" prefHeight="36.0"
+				prefWidth="200.0" text="Új hozzáadása" />
+			<BorderPane.margin>
+				<Insets bottom="10.0" left="10.0" top="10.0" />
+			</BorderPane.margin>
+		</HBox>
+	</top>
+	<center>
+		<VBox spacing="10.0">
+			<HBox spacing="10.0">
+				<Label alignment="CENTER" contentDisplay="CENTER" text="Alkalmazottak"
+					textAlignment="CENTER" />
+				<JFXButton onAction="#onDeleteAction" prefHeight="36.0"
+					prefWidth="200.0" text="Kijelölt törlése" />
+				<padding>
+					<Insets left="10.0" />
+				</padding>
+			</HBox>
+			<TableView fx:id="userTable" prefHeight="580.0">
+				<columns>
+					<TableColumn prefWidth="100.0" text="ID">
+						<cellValueFactory>
+							<PropertyValueFactory property="id" />
+						</cellValueFactory>
+					</TableColumn>
+					<TableColumn prefWidth="200.0" text="Név">
+						<cellValueFactory>
+							<PropertyValueFactory property="name" />
+						</cellValueFactory>
+					</TableColumn>
+					<TableColumn prefWidth="200.0" text="Órabér">
+						<cellValueFactory>
+							<PropertyValueFactory property="wage" />
+						</cellValueFactory>
+					</TableColumn>
+					<TableColumn prefWidth="200.0" text="Megjegyzés">
+						<cellValueFactory>
+							<PropertyValueFactory property="note" />
+						</cellValueFactory>
+					</TableColumn>
+				</columns>
+			</TableView>
+		</VBox>
+	</center>
 </BorderPane>
 

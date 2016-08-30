@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.jfoenix.controls.JFXTextField;
+
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
@@ -15,20 +17,19 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 
 public class UserController implements Initializable {
 
     private final GenericDao<UsersEntity> userDao;
 
     @FXML
-    private TextField nameField;
+    private JFXTextField nameField;
 
     @FXML
     private NumberTextField wageField;
 
     @FXML
-    private TextField noteField;
+    private JFXTextField noteField;
 
     @FXML
     private TableView<UsersEntity> userTable;

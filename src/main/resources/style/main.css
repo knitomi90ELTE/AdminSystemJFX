@@ -32,12 +32,12 @@ HBOX {
     -fx-background-color:#c5cae9;
 }
 
-JFXTextField, NumberTextField {
+TextField, JFXTextField, NumberTextField {
 	-fx-text-fill:#283593;
 	-fx-font-family: Roboto;
     src:"/resources/roboto/Roboto-Regular.ttf";
     -fx-background-color: transparent;
-    -fx-prompt-text-fill: #3949ab;
+    -fx-prompt-text-fill: #bfc5ea;
     -fx-focus-color: #283593;
     -fx-unfocus-color: #3949ab; 
     -fx-font-size: 15;
@@ -45,6 +45,7 @@ JFXTextField, NumberTextField {
 
 JFXComboBox {
 	-fx-font-size: 15;
+	-fx-text-fill: #283593;
 }
 
 .jfx-tab-pane {
@@ -81,21 +82,26 @@ JFXComboBox {
 	-fx-text-fill: #ffffff;
 }
 
-
-.combo-box-popup .list-view .jfx-list-cell .label {
-  	-fx-text-fill: #283593 ;
+.combo-box-selected-value-container {
+	-fx-border-color: #ff0000;
 }
+
+.combo-box-popup .list-view .jfx-list-cell {
+	-fx-text-fill: #283593; 
+}
+
 .combo-box-popup .list-view .jfx-list-cell:odd:selected > .jfx-rippler > StackPane,
 .combo-box-popup .list-view .jfx-list-cell:even:selected > .jfx-rippler > StackPane { 
-	-fx-background-color: white;
+	-fx-background-color: #c5cae9;
 }
 
 .combo-box-popup .list-view .jfx-list-cell:filled:hover .label{ 
 	-fx-text-fill: #283593;
 }
-.combo-box-popup .list-view .jfx-list-cell:filled:hover .custom-jfx-list-view-icon {
-	-fx-text-fill: RED;
-}
 .combo-box-popup .list-view .jfx-list-cell .jfx-rippler {
 	-fx-rippler-fill: #7986cb;
+}
+.combo-box .combo-box-button-container{
+ 	-fx-border-color:#283593;
+ 	-fx-border-width: 0 0 1 0;
 }
