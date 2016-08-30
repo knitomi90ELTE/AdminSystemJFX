@@ -3,6 +3,9 @@ package hu.kniznertamas.adminsystem;
 import hu.kniznertamas.adminsystem.helper.ChangeContent;
 import javafx.application.Application;
 import javafx.stage.Stage;
+
+import java.util.Locale;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +31,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         LOGGER.info("Application started");
+        Locale.setDefault(Locale.forLanguageTag("hu_HU"));
         changeContent = new ChangeContent(instance, primaryStage);
         changeContent.replaceSceneContent("/view/Main.fxml");
         primaryStage.setTitle("Adminisztrációs rendszer");

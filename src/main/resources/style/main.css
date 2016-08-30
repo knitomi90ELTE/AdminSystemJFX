@@ -2,6 +2,7 @@ Label {
     -fx-font-family: Roboto;
     src:"/resources/roboto/Roboto-Regular.ttf";
      -fx-text-fill: #283593;
+     -fx-font-size: 15;
 }
 
 TableView {
@@ -31,7 +32,7 @@ HBOX {
     -fx-background-color:#c5cae9;
 }
 
-JFXTextField {
+JFXTextField, NumberTextField {
 	-fx-text-fill:#283593;
 	-fx-font-family: Roboto;
     src:"/resources/roboto/Roboto-Regular.ttf";
@@ -39,6 +40,11 @@ JFXTextField {
     -fx-prompt-text-fill: #3949ab;
     -fx-focus-color: #283593;
     -fx-unfocus-color: #3949ab; 
+    -fx-font-size: 15;
+}
+
+JFXComboBox {
+	-fx-font-size: 15;
 }
 
 .jfx-tab-pane {

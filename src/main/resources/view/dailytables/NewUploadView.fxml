@@ -16,6 +16,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import hu.kniznertamas.adminsystem.gui.elements.NumberTextField?>
+
 <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.dailytables.NewUploadController">
 
     <Text text="Új adat" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">

@@ -10,50 +10,49 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import com.jfoenix.controls.JFXComboBox?>
-<BorderPane xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.UserViewController">
-    <top>
-        <VBox spacing="5.0">
-            <JFXComboBox fx:id="comboBox" promptText="Válassz alkalmazottat!" />
-            <Label fx:id="nameLabel" text="Név: " BorderPane.alignment="CENTER_LEFT" />
-
-            <Label fx:id="wageLabel" text="Órabér: " BorderPane.alignment="CENTER_LEFT" />
-
-            <Label fx:id="noteLabel" text="Megjegyzés: " BorderPane.alignment="CENTER_LEFT" />
-
-            <padding>
-                <Insets bottom="5.0" left="10.0" top="5.0" />
-            </padding>
-        </VBox>
-    </top>
-    <center>
-        <TableView fx:id="userTable" prefHeight="NaN" prefWidth="NaN" BorderPane.alignment="CENTER">
-            <columns>
-                <TableColumn prefWidth="150.0" text="Alkalmazott">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="user_name" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="150.0" text="Munka">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="project_name" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="100.0" text="Óraszám">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="hour" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="100.0" text="Dátum">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="created" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="100.0" text="Megjegyzés">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="note" />
-                    </cellValueFactory>
-                </TableColumn>
-            </columns>
-        </TableView>
-    </center>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.76-ea"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.UserViewController">
+	<top>
+		<VBox spacing="5.0">
+			<JFXComboBox fx:id="comboBox" promptText="Válassz alkalmazottat!" />
+			<Label fx:id="nameLabel" text="Név: " BorderPane.alignment="CENTER_LEFT" />
+			<Label fx:id="wageLabel" text="Órabér: " BorderPane.alignment="CENTER_LEFT" />
+			<Label fx:id="noteLabel" text="Megjegyzés: " BorderPane.alignment="CENTER_LEFT" />
+			<padding>
+				<Insets bottom="5.0" left="10.0" top="5.0" />
+			</padding>
+		</VBox>
+	</top>
+	<center>
+		<TableView fx:id="userTable" prefHeight="NaN" prefWidth="NaN" BorderPane.alignment="CENTER">
+			<columns>
+				<TableColumn prefWidth="150.0" text="Alkalmazott">
+					<cellValueFactory>
+						<PropertyValueFactory property="user_name" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn prefWidth="150.0" text="Munka">
+					<cellValueFactory>
+						<PropertyValueFactory property="project_name" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn prefWidth="100.0" text="Óraszám">
+					<cellValueFactory>
+						<PropertyValueFactory property="hour" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn prefWidth="100.0" text="Dátum">
+					<cellValueFactory>
+						<PropertyValueFactory property="created" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn prefWidth="100.0" text="Megjegyzés">
+					<cellValueFactory>
+						<PropertyValueFactory property="note" />
+					</cellValueFactory>
+				</TableColumn>
+			</columns>
+		</TableView>
+	</center>
 </BorderPane>

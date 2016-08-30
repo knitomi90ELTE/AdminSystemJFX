@@ -14,10 +14,7 @@
 <VBox prefHeight="768.0" prefWidth="1366.0" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.FinancesController">
 
     <HBox spacing="10.0">
-        <Label text="Szűrés:">
-         <font>
-            <Font size="17.0" />
-         </font></Label>
+        <Label text="Szűrés:" />
         <JFXComboBox fx:id="statusBox" />
         <VBox.margin>
             <Insets left="5.0" top="5.0" />
