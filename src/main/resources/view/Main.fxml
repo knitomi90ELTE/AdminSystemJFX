@@ -1,36 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXTabPane?>
-<?import java.net.URL?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane prefHeight="768.0" prefWidth="1366.0" fx:id="root"
-	xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="hu.kniznertamas.adminsystem.gui.controllers.MainController">
-	<VBox prefHeight="768.0" prefWidth="1366.0">
-		<fx:include source="MenuBar.fxml" />
-		<JFXTabPane tabClosingPolicy="UNAVAILABLE">
-			<Tab text="Napi nézet">
-				<fx:include source="pages/DailyView.fxml" />
-			</Tab>
-			<Tab text="Alkalmazottak">
-				<fx:include source="pages/UserView.fxml" />
-			</Tab>
-			<Tab text="Munkák">
-				<fx:include source="pages/ProjectView.fxml" />
-			</Tab>
-			<Tab text="Pénzügy">
-				<fx:include source="pages/Finances.fxml" />
-			</Tab>
-			<Tab text="Nyitott tételek">
-				<fx:include source="pages/OpenItems.fxml" />
-			</Tab>
-			<Tab text="Bérlista">
-				<fx:include source="pages/WageView.fxml" />
-			</Tab>
-		</JFXTabPane>
-
-	</VBox>
+<StackPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.76-ea"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="hu.kniznertamas.adminsystem.gui.controllers.MainController">
+    <VBox prefHeight="768.0" prefWidth="1366.0">
+        <fx:include source="MenuBar.fxml"/>
+        <JFXTabPane tabClosingPolicy="UNAVAILABLE">
+            <Tab text="Napi nézet">
+                <fx:include source="pages/DailyView.fxml"/>
+            </Tab>
+            <Tab text="Alkalmazottak">
+                <fx:include source="pages/UserView.fxml"/>
+            </Tab>
+            <Tab text="Munkák">
+                <fx:include source="pages/ProjectView.fxml"/>
+            </Tab>
+            <Tab text="Pénzügy">
+                <fx:include source="pages/Finances.fxml"/>
+            </Tab>
+            <Tab text="Nyitott tételek">
+                <fx:include source="pages/OpenItems.fxml"/>
+            </Tab>
+            <Tab text="Bérlista">
+                <fx:include source="pages/WageView.fxml"/>
+            </Tab>
+        </JFXTabPane>
+    </VBox>
 </StackPane>

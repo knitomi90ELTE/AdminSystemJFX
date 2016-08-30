@@ -1,5 +1,6 @@
 package hu.kniznertamas.adminsystem.helper;
 
+import com.jfoenix.controls.JFXDecorator;
 import hu.kniznertamas.adminsystem.Main;
 import hu.kniznertamas.adminsystem.gui.controllers.RootController;
 import javafx.fxml.FXMLLoader;
@@ -43,16 +44,22 @@ public class ChangeContent {
 				RootController c = loader.getController();
 				rootPane = c.getRoot();
 			}
-			Scene scene = stage.getScene();
 			page.getStylesheets().add(instance.getClass().getResource("/style/jfoenix-fonts.css").toExternalForm());
 			page.getStylesheets().add(instance.getClass().getResource("/style/main.css").toExternalForm());
 			page.getStylesheets().add(instance.getClass().getResource("/style/jfoenix-design.css").toExternalForm());
+			//JFXDecorator decorator = new JFXDecorator(stage, page);
+			//decorator.setCustomMaximize(true);
+			Scene scene = stage.getScene();
 			if (scene == null) {
+				System.out.println("NULL");
 				scene = new Scene(page);
 				stage.setScene(scene);
 			} else {
+				System.out.println("NOT NULL");
 				stage.getScene().setRoot(page);
 			}
+
+
 
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage());
