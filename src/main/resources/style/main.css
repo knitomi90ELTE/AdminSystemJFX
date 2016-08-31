@@ -2,7 +2,7 @@ Label {
     -fx-font-family: Roboto;
     src:"/resources/roboto/Roboto-Regular.ttf";
      -fx-text-fill: #283593;
-     -fx-font-size: 15;
+     -fx-font-size: 15.0;
 }
 
 TableView {
@@ -40,12 +40,23 @@ TextField, JFXTextField, NumberTextField {
     -fx-prompt-text-fill: #5f6275;
     -fx-focus-color: #283593;
     -fx-unfocus-color: #3949ab; 
-    -fx-font-size: 15;
+    -fx-font-size: 15.0;
 }
 
 JFXComboBox {
-	-fx-font-size: 15;
+	-fx-font-size: 15.0;
 	-fx-text-fill: #283593;
+}
+
+.jfx-decorator {
+	-fx-decorator-color: derive(#5264AE,-20.0%);
+}
+.jfx-decorator .jfx-decorator-buttons-container{
+	-fx-background-color:#283593;
+}
+.jfx-decorator .resize-border{
+	-fx-border-color:#283593;
+	-fx-border-width: 0.0 4.0 4.0 4.0;
 }
 
 .jfx-tab-pane {
@@ -103,5 +114,5 @@ JFXComboBox {
 }
 .combo-box .combo-box-button-container{
  	-fx-border-color:#283593;
- 	-fx-border-width: 0 0 1 0;
+ 	-fx-border-width: 0.0 0.0 1.0 0.0;
 }

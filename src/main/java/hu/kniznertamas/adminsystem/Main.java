@@ -39,29 +39,22 @@ public class Main extends Application {
 		LOGGER.info("Initializing primary stage...");
 		FXMLLoader loader = FXMLLoaderHelper.getContentNode("/view/Main.fxml");
 		try {
-			Parent page = loader.load();
-			loadCssToPage(page);
-			setStageProperties(primaryStage, page);
-			primaryStage.show();
+			setStageProperties(primaryStage, loader.load());
 		} catch (IOException e) {
 			LOGGER.error(e.getMessage());
 		}
-	}
-	
-	private void loadCssToPage(Parent page) {
-		LOGGER.info("Loading css files...");
-		page.getStylesheets().add(getClass().getResource("/style/jfoenix-fonts.css").toExternalForm());
-		page.getStylesheets().add(getClass().getResource("/style/main.css").toExternalForm());
-		page.getStylesheets().add(getClass().getResource("/style/jfoenix-design.css").toExternalForm());
 	}
 
 	private void setStageProperties(Stage primaryStage, Parent pageToLoad) {
 		JFXDecorator decorator = new JFXDecorator(primaryStage, pageToLoad);
 		decorator.setCustomMaximize(true);
 		Scene scene = new Scene(decorator);
+		scene.getStylesheets().add(getClass().getResource("/style/jfoenix-fonts.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/style/main.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/style/jfoenix-design.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Adminisztrációs rendszer");
-		
+		primaryStage.show();
 	}
 	
 	public static void main(String[] args) {
