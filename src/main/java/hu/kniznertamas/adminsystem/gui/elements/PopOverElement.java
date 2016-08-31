@@ -1,12 +1,14 @@
 package hu.kniznertamas.adminsystem.gui.elements;
 
+import java.io.IOException;
+
+import org.controlsfx.control.PopOver;
+
 import hu.kniznertamas.adminsystem.Main;
 import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
 import hu.kniznertamas.adminsystem.helper.CallbackInterface;
+import hu.kniznertamas.adminsystem.helper.FXMLLoaderHelper;
 import javafx.fxml.FXMLLoader;
-import org.controlsfx.control.PopOver;
-
-import java.io.IOException;
 
 public class PopOverElement<T extends PopupAbstractt> {
 
@@ -19,7 +21,7 @@ public class PopOverElement<T extends PopupAbstractt> {
     }
 
     private void addContent(String fxml, PersistentEntity entity, CallbackInterface callbackFunction) {
-        FXMLLoader loader = Main.getInstance().getChangeContent().getContentNode(fxml);
+        FXMLLoader loader = FXMLLoaderHelper.getContentNode(fxml);
         try {
             popOver.setContentNode(loader.load());
             T controller = loader.getController();
@@ -29,6 +31,6 @@ public class PopOverElement<T extends PopupAbstractt> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        popOver.show(Main.getInstance().getChangeContent().getMainStage());
+        popOver.show(Main.getInstance().getPrimaryStage());
     }
 }

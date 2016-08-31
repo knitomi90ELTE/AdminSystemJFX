@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 <?import com.jfoenix.controls.JFXComboBox?>
@@ -46,14 +41,14 @@
     <Label text="Megjegyzés" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
 
     <NumberTextField fx:id="nettoField" prefHeight="36.0" promptText="Nettó érték" GridPane.columnIndex="1"
-               GridPane.rowIndex="1"/>
+               GridPane.rowIndex="1" text="0"/>
     <NumberTextField fx:id="bruttoField" prefHeight="36.0" promptText="Bruttó érték" GridPane.columnIndex="1"
-               GridPane.rowIndex="2"/>
+               GridPane.rowIndex="2" text="0"/>
     <JFXComboBox fx:id="afaBox" prefHeight="36.0" prefWidth="200.0" promptText="ÁFA" GridPane.columnIndex="1"
               GridPane.rowIndex="3"/>
     <NumberTextField fx:id="afaValueField" editable="false" prefHeight="36.0" prefWidth="200.0" promptText="ÁFA értéke"
                GridPane.columnIndex="1"
-               GridPane.rowIndex="4"/>
+               GridPane.rowIndex="4" text="0"/>
     <JFXDatePicker fx:id="createdPicker" prefHeight="36.0" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
     <JFXCheckBox fx:id="paidBox" prefHeight="36.0" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
     <JFXComboBox fx:id="modelNameBox" prefHeight="36.0" prefWidth="200.0" GridPane.columnIndex="1"

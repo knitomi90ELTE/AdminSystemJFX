@@ -1,4 +1,4 @@
-package hu.kniznertamas.adminsystem.gui.controllers.dataupload.pages;
+package hu.kniznertamas.adminsystem.gui.controllers.dataupload;
 
 import java.net.URL;
 import java.util.ResourceBundle;

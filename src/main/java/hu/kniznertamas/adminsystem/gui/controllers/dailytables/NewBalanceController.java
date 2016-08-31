@@ -134,10 +134,10 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     }
     
     private void initTextFields() {
-        nettoField.setText("0");
+        /*nettoField.setText("0");
         bruttoField.setText("0");
         afaValueField.setText("0");
-        noteField.setText("");
+        noteField.setText("");*/
 
         nettoField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (bruttoField.isFocused() || "".equals(nettoField.getText())) return;

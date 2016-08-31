@@ -1,7 +1,11 @@
 package hu.kniznertamas.adminsystem.db.entity;
 
-import javax.persistence.*;
 import java.sql.Date;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "upload")
@@ -97,51 +101,6 @@ public class UploadEntity extends PersistentEntity {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (note != null ? note.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public Object get(int columnIndex) {
-        switch (columnIndex){
-            case 0:
-                return id;
-            case 1:
-                return userId;
-            case 2:
-                return projectId;
-            case 3:
-                return created;
-            case 4:
-                return hour;
-            case 5:
-                return note;
-            default:
-                return null;
-
-        }
-    }
-
-    @Override
-    public void set(int columnIndex, Object value) {
-        switch (columnIndex){
-            case 0:
-                setId((Integer) value);
-                break;
-            case 1:
-                setUserId((Integer) value);
-                break;
-            case 2:
-                setProjectId((Integer) value);
-                break;
-            case 3:
-                setCreated((Date) value);
-                break;
-            case 4:
-                setHour((Double) value);
-                break;
-            case 5:
-                setNote((String ) value);
-                break;
-        }
     }
 
     @Override

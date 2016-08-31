@@ -1,6 +1,9 @@
 package hu.kniznertamas.adminsystem.db.entity;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
@@ -61,40 +64,6 @@ public class UsersEntity extends PersistentEntity {
         result = 31 * result + wage;
         result = 31 * result + (note != null ? note.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public Object get(int columnIndex) {
-        switch (columnIndex){
-            case 0:
-                return id;
-            case 1:
-                return name;
-            case 2:
-                return wage;
-            case 3:
-                return note;
-            default:
-                return null;
-        }
-    }
-
-    @Override
-    public void set(int columnIndex, Object value) {
-        switch (columnIndex) {
-            case 0:
-                setId((Integer) value);
-                break;
-            case 1:
-                setName((String) value);
-                break;
-            case 2:
-                setWage((Integer) value);
-                break;
-            case 3:
-                setNote((String) value);
-                break;
-        }
     }
 
     @Override

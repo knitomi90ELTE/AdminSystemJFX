@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Tab?>
+
+<JFXTabPane tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1">
+	<Tab text="Alkalmazott">
+		<fx:include source="dataupload/User.fxml" />
+	</Tab>
+	<Tab text="Munka">
+		<fx:include source="dataupload/Project.fxml" />
+	</Tab>
+	<Tab text="Státusz">
+		<fx:include source="dataupload/Status.fxml" />
+	</Tab>
+</JFXTabPane>

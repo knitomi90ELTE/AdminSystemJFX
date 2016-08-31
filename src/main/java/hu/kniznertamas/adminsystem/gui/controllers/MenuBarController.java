@@ -1,10 +1,11 @@
 package hu.kniznertamas.adminsystem.gui.controllers;
 
-import hu.kniznertamas.adminsystem.Main;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
 public class MenuBarController implements Initializable {
 
@@ -19,12 +20,12 @@ public class MenuBarController implements Initializable {
 
     @FXML
     private void addNewData() {
-        Main.getInstance().getChangeContent().replaceSceneContent("/view/dataupload/DataUpload.fxml");
+        ControllerMediator.getInstance().showNewDataView();
     }
 
     @FXML
     private void showMain() {
-        Main.getInstance().getChangeContent().replaceSceneContent("/view/Main.fxml");
+    	ControllerMediator.getInstance().showBasicView();
     }
 
 }

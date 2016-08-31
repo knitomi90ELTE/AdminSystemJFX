@@ -1,6 +1,10 @@
 package hu.kniznertamas.adminsystem.db.dao;
 
-import hu.kniznertamas.adminsystem.db.entity.*;
+import hu.kniznertamas.adminsystem.db.entity.BalanceEntity;
+import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
+import hu.kniznertamas.adminsystem.db.entity.StatusEntity;
+import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
+import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
 
 public class DaoManager {
 

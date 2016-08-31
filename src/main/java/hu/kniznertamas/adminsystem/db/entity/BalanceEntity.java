@@ -1,7 +1,11 @@
 package hu.kniznertamas.adminsystem.db.entity;
 
-import javax.persistence.*;
 import java.sql.Date;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "balance")
@@ -172,81 +176,6 @@ public class BalanceEntity extends PersistentEntity {
         result = 31 * result + cash.hashCode();
         result = 31 * result + (note != null ? note.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public Object get(int columnIndex) {
-        switch (columnIndex){
-            case 0:
-                return id;
-            case 1:
-                return netto;
-            case 2:
-                return brutto;
-            case 3:
-                return afa;
-            case 4:
-                return afaValue;
-            case 5:
-                return created;
-            case 6:
-                return completed;
-            case 7:
-                return statusId;
-            case 8:
-                return modelName;
-            case 9:
-                return modelId;
-            case 10:
-                return cash;
-            case 11:
-                return note;
-            default:
-                return null;
-
-        }
-    }
-
-    @Override
-    public void set(int columnIndex, Object value) {
-        switch (columnIndex){
-            case 0:
-                setId((Integer) value);
-                break;
-            case 1:
-                setNetto((Integer) value);
-                break;
-            case 2:
-                setBrutto((Integer) value);
-                break;
-            case 3:
-                setAfa((Integer) value);
-                break;
-            case 4:
-                setAfaValue((Integer) value);
-                break;
-            case 5:
-                setCreated((Date) value);
-                break;
-            case 6:
-                setCompleted((Date) value);
-                break;
-            case 7:
-                setStatusId((Integer) value);
-                break;
-            case 8:
-                setModelName((String) value);
-                break;
-            case 9:
-                setModelId((Integer) value);
-                break;
-            case 10:
-                setCash((Boolean) value);
-                break;
-            case 11:
-                setNote((String) value);
-                break;
-        }
     }
 
     @Override

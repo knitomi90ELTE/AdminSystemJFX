@@ -1,18 +1,5 @@
 package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 
-import hu.kniznertamas.adminsystem.db.dao.DaoManager;
-import hu.kniznertamas.adminsystem.db.dao.GenericDao;
-import hu.kniznertamas.adminsystem.db.entity.*;
-import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
-import hu.kniznertamas.adminsystem.gui.elements.PopOverElement;
-import hu.kniznertamas.adminsystem.helper.EntityHelper;
-import javafx.collections.FXCollections;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TableView;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -20,6 +7,21 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import hu.kniznertamas.adminsystem.db.dao.DaoManager;
+import hu.kniznertamas.adminsystem.db.dao.GenericDao;
+import hu.kniznertamas.adminsystem.db.entity.ExtendedUploadEntity;
+import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
+import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import hu.kniznertamas.adminsystem.gui.elements.PopOverElement;
+import hu.kniznertamas.adminsystem.helper.EntityHelper;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableView;
 
 public class UploadTableController implements Initializable {
 

@@ -1,6 +1,13 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import com.jfoenix.controls.JFXComboBox;
+
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.ExtendedUploadEntity;
@@ -12,13 +19,8 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 
 public class UserViewController implements Initializable {
 

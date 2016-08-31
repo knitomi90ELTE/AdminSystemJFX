@@ -1,7 +1,8 @@
 package hu.kniznertamas.adminsystem.db.dao;
 
-import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
 import java.util.List;
+
+import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
 
 public interface GenericDao<T extends PersistentEntity> {
 

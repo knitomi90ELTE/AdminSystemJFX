@@ -1,15 +1,5 @@
 package hu.kniznertamas.adminsystem.gui.controllers.projecttables;
 
-import hu.kniznertamas.adminsystem.db.dao.DaoManager;
-import hu.kniznertamas.adminsystem.db.dao.GenericDao;
-import hu.kniznertamas.adminsystem.db.entity.*;
-import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
-import javafx.collections.FXCollections;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +7,19 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import hu.kniznertamas.adminsystem.db.dao.DaoManager;
+import hu.kniznertamas.adminsystem.db.dao.GenericDao;
+import hu.kniznertamas.adminsystem.db.entity.BalanceEntity;
+import hu.kniznertamas.adminsystem.db.entity.ExtendedBalanceEntity;
+import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
+import hu.kniznertamas.adminsystem.db.entity.StatusEntity;
+import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 
 public class FinancesTableController implements Initializable {
 

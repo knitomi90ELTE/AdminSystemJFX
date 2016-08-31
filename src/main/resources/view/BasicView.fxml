@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Tab?>
+
+<JFXTabPane tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1">
+	<Tab text="Napi nézet">
+		<fx:include source="pages/DailyView.fxml" />
+	</Tab>
+	<Tab text="Alkalmazottak">
+		<fx:include source="pages/UserView.fxml" />
+	</Tab>
+	<Tab text="Munkák">
+		<fx:include source="pages/ProjectView.fxml" />
+	</Tab>
+	<Tab text="Pénzügy">
+		<fx:include source="pages/Finances.fxml" />
+	</Tab>
+	<Tab text="Nyitott tételek">
+		<fx:include source="pages/OpenItems.fxml" />
+	</Tab>
+	<Tab text="Bérlista">
+		<fx:include source="pages/WageView.fxml" />
+	</Tab>
+</JFXTabPane>

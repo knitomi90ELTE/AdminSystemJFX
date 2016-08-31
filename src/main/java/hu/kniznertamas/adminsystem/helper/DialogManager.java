@@ -7,7 +7,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 
-import hu.kniznertamas.adminsystem.Main;
+import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import javafx.scene.control.Label;
 
 public class DialogManager {
@@ -31,7 +31,7 @@ public class DialogManager {
     	b.setOnAction(event -> dialog.close());
     	content.setActions(b);
     	dialog.setContent(content);
-    	dialog.setDialogContainer(Main.getInstance().getChangeContent().getRootPane());
+    	dialog.setDialogContainer(ControllerMediator.getInstance().getRoot());
     	dialog.show();;
 	}
 	

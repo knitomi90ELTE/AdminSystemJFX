@@ -1,7 +1,10 @@
 package hu.kniznertamas.adminsystem.gui.controllers.mediator;
 
+import java.time.LocalDate;
+
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
+import hu.kniznertamas.adminsystem.gui.controllers.MainController;
 import hu.kniznertamas.adminsystem.gui.controllers.dailytables.BalanceTableController;
 import hu.kniznertamas.adminsystem.gui.controllers.dailytables.UploadTableController;
 import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.DailyViewController;
@@ -11,8 +14,7 @@ import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.UserViewContr
 import hu.kniznertamas.adminsystem.gui.controllers.projecttables.FinancesTableController;
 import hu.kniznertamas.adminsystem.gui.controllers.projecttables.HoursTableController;
 import javafx.application.Platform;
-
-import java.time.LocalDate;
+import javafx.scene.layout.StackPane;
 
 public class ControllerMediator implements IMediateControllers {
 
@@ -24,6 +26,7 @@ public class ControllerMediator implements IMediateControllers {
     private HoursTableController hoursTableController;
     private DailyViewController dailyViewController;
     private OpenItemsViewController openItemsViewController;
+    private MainController mainController;
 
     @Override
     public void registerControllerUser(UserViewController controller) {
@@ -103,4 +106,24 @@ public class ControllerMediator implements IMediateControllers {
     private static class ControllerMediatorHolder {
         private static final ControllerMediator INSTANCE = new ControllerMediator();
     }
+
+	@Override
+	public void registerControllerMainController(MainController controller) {
+		this.mainController = controller;
+	}
+
+	@Override
+	public void showBasicView() {
+		mainController.showBasicView();
+	}
+
+	@Override
+	public void showNewDataView() {
+		mainController.showNewDataView();;		
+	}
+
+	@Override
+	public StackPane getRoot() {
+		return mainController.getRoot();
+	}
 }
