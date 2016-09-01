@@ -54,7 +54,7 @@ public class DailyViewController implements Initializable {
         updateTables();
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "EmptyMethod"})
 	private void updateData(boolean updateTables, boolean setValue, LocalDate ld) {
         //TODO: fenti metódusok refaktorálása, mert csúnya
     }

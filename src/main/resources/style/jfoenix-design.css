@@ -22,6 +22,7 @@
  * Colors			                                                       *
  *                                                                         *
  **************************************************************************/
+/*noinspection ALL*/
 .root{
 	-red-50 : #ffebee;
 	-red-100 : #ffcdd2; 
@@ -296,281 +297,773 @@
 	-blue-grey-800 : #37474f; 
 	-blue-grey-900 : #263238; 
 }
- 
+
+/*noinspection ALL*/
 .red-50{ -fx-background-color: #ffebee; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .red-100{ -fx-background-color: #ffcdd2; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .red-200{ -fx-background-color: #ef9a9a; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .red-300{ -fx-background-color: #e57373; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .red-400{ -fx-background-color: #ef5350; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .red-500{ -fx-background-color: #f44336; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .red-600{ -fx-background-color: #e53935; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .red-700{ -fx-background-color: #d32f2f; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .red-800{ -fx-background-color: #c62828; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .red-900{ -fx-background-color: #b71c1c; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .red-A100{ -fx-background-color: #ff8a80; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .red-A200{ -fx-background-color: #ff5252; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .red-A400{ -fx-background-color: #ff1744; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .red-A700{ -fx-background-color: #d50000; -fx-text-fill: rgba(255, 255, 255, 0.87); }
 
+/*noinspection ALL*/
 .pink-50{ -fx-background-color: #fce4ec; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .pink-100{ -fx-background-color: #f8bbd0; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .pink-200{ -fx-background-color: #f48fb1; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .pink-300{ -fx-background-color: #f06292; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .pink-400{ -fx-background-color: #ec407a; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .pink-500{ -fx-background-color: #e91e63; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .pink-600{ -fx-background-color: #d81b60; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .pink-700{ -fx-background-color: #c2185b; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .pink-800{ -fx-background-color: #ad1457; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .pink-900{ -fx-background-color: #880e4f; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .pink-A100{ -fx-background-color: #ff80ab; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .pink-A200{ -fx-background-color: #ff4081; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .pink-A400{ -fx-background-color: #f50057; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .pink-A700{ -fx-background-color: #c51162; -fx-text-fill: rgba(255, 255, 255, 0.87); }
 
+/*noinspection ALL*/
 .purple-50{ -fx-background-color: #f3e5f5; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .purple-100{ -fx-background-color: #e1bee7; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .purple-200{ -fx-background-color: #ce93d8; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .purple-300{ -fx-background-color: #ba68c8; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .purple-400{ -fx-background-color: #ab47bc; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .purple-500{ -fx-background-color: #9c27b0; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .purple-600{ -fx-background-color: #8e24aa; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .purple-700{ -fx-background-color: #7b1fa2; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .purple-800{ -fx-background-color: #6a1b9a; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .purple-900{ -fx-background-color: #4a148c; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .purple-A100{ -fx-background-color: #ea80fc; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .purple-A200{ -fx-background-color: #e040fb; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .purple-A400{ -fx-background-color: #d500f9; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .purple-A700{ -fx-background-color: #aa00ff; -fx-text-fill: rgba(255, 255, 255, 0.87); }
 
+/*noinspection ALL*/
 .deep-purple-50{ -fx-background-color: #ede7f6; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .deep-purple-100{ -fx-background-color: #d1c4e9; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .deep-purple-200{ -fx-background-color: #b39ddb; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .deep-purple-300{ -fx-background-color: #9575cd; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .deep-purple-400{ -fx-background-color: #7e57c2; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .deep-purple-500{ -fx-background-color: #673ab7; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .deep-purple-600{ -fx-background-color: #5e35b1; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .deep-purple-700{ -fx-background-color: #512da8; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .deep-purple-800{ -fx-background-color: #4527a0; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .deep-purple-900{ -fx-background-color: #311b92; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .deep-purple-A100{ -fx-background-color: #b388ff; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .deep-purple-A200{ -fx-background-color: #7c4dff; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .deep-purple-A400{ -fx-background-color: #651fff; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .deep-purple-A700{ -fx-background-color: #6200ea; -fx-text-fill: rgba(255, 255, 255, 0.87); }
 
+/*noinspection ALL*/
 .indigo-50{ -fx-background-color: #e8eaf6; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .indigo-100{ -fx-background-color: #c5cae9; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .indigo-200{ -fx-background-color: #9fa8da; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .indigo-300{ -fx-background-color: #7986cb; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .indigo-400{ -fx-background-color: #5c6bc0; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .indigo-500{ -fx-background-color: #3f51b5; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .indigo-600{ -fx-background-color: #3949ab; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .indigo-700{ -fx-background-color: #303f9f; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .indigo-800{ -fx-background-color: #283593; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .indigo-900{ -fx-background-color: #1a237e; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .indigo-A100{ -fx-background-color: #8c9eff; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .indigo-A200{ -fx-background-color: #536dfe; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .indigo-A400{ -fx-background-color: #3d5afe; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .indigo-A700{ -fx-background-color: #304ffe; -fx-text-fill: rgba(255, 255, 255, 0.87); }
 
+/*noinspection ALL*/
 .blue-50{ -fx-background-color: #e3f2fd; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .blue-100{ -fx-background-color: #bbdefb; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .blue-200{ -fx-background-color: #90caf9; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .blue-300{ -fx-background-color: #64b5f6; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .blue-400{ -fx-background-color: #42a5f5; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .blue-500{ -fx-background-color: #2196f3; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .blue-600{ -fx-background-color: #1e88e5; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .blue-700{ -fx-background-color: #1976d2; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .blue-800{ -fx-background-color: #1565c0; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .blue-900{ -fx-background-color: #0d47a1; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .blue-A100{ -fx-background-color: #82b1ff; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .blue-A200{ -fx-background-color: #448aff; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .blue-A400{ -fx-background-color: #2979ff; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .blue-A700{ -fx-background-color: #2962ff; -fx-text-fill: rgba(255, 255, 255, 0.87); }
 
+/*noinspection ALL*/
 .light-blue-50{ -fx-background-color: #e1f5fe; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-blue-100{ -fx-background-color: #b3e5fc; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-blue-200{ -fx-background-color: #81d4fa; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-blue-300{ -fx-background-color: #4fc3f7; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-blue-400{ -fx-background-color: #29b6f6; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-blue-500{ -fx-background-color: #03a9f4; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-blue-600{ -fx-background-color: #039be5; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .light-blue-700{ -fx-background-color: #0288d1; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .light-blue-800{ -fx-background-color: #0277bd; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .light-blue-900{ -fx-background-color: #01579b; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .light-blue-A100{ -fx-background-color: #80d8ff; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-blue-A200{ -fx-background-color: #40c4ff; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-blue-A400{ -fx-background-color: #00b0ff; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-blue-A700{ -fx-background-color: #0091ea; -fx-text-fill: #FFF; }
 
+/*noinspection ALL*/
 .cyan-50{ -fx-background-color: #e0f7fa; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .cyan-100{ -fx-background-color: #b2ebf2; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .cyan-200{ -fx-background-color: #80deea; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .cyan-300{ -fx-background-color: #4dd0e1; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .cyan-400{ -fx-background-color: #26c6da; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .cyan-500{ -fx-background-color: #00bcd4; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .cyan-600{ -fx-background-color: #00acc1; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .cyan-700{ -fx-background-color: #0097a7; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .cyan-800{ -fx-background-color: #00838f; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .cyan-900{ -fx-background-color: #006064; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .cyan-A100{ -fx-background-color: #84ffff; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .cyan-A200{ -fx-background-color: #18ffff; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .cyan-A400{ -fx-background-color: #00e5ff; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .cyan-A700{ -fx-background-color: #00b8d4; -fx-text-fill: rgba(0, 0, 0, 0.87); }
 
+/*noinspection ALL*/
 .teal-50{ -fx-background-color: #e0f2f1; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .teal-100{ -fx-background-color: #b2dfdb; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .teal-200{ -fx-background-color: #80cbc4; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .teal-300{ -fx-background-color: #4db6ac; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .teal-400{ -fx-background-color: #26a69a; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .teal-500{ -fx-background-color: #009688; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .teal-600{ -fx-background-color: #00897b; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .teal-700{ -fx-background-color: #00796b; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .teal-800{ -fx-background-color: #00695c; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .teal-900{ -fx-background-color: #004d40; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .teal-A100{ -fx-background-color: #a7ffeb; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .teal-A200{ -fx-background-color: #64ffda; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .teal-A400{ -fx-background-color: #1de9b6; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .teal-A700{ -fx-background-color: #00bfa5; -fx-text-fill: rgba(0, 0, 0, 0.87); }
 
+/*noinspection ALL*/
 .green-50{ -fx-background-color: #e8f5e9; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .green-100{ -fx-background-color: #c8e6c9; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .green-200{ -fx-background-color: #a5d6a7; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .green-300{ -fx-background-color: #81c784; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .green-400{ -fx-background-color: #66bb6a; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .green-500{ -fx-background-color: #4caf50; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .green-600{ -fx-background-color: #43a047; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .green-700{ -fx-background-color: #388e3c; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .green-800{ -fx-background-color: #2e7d32; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .green-900{ -fx-background-color: #1b5e20; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .green-A100{ -fx-background-color: #b9f6ca; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .green-A200{ -fx-background-color: #69f0ae; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .green-A400{ -fx-background-color: #00e676; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .green-A700{ -fx-background-color: #00c853; -fx-text-fill: rgba(255, 255, 255, 0.87); }
 
+/*noinspection ALL*/
 .light-green-50{ -fx-background-color: #f1f8e9; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-green-100{ -fx-background-color: #dcedc8; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-green-200{ -fx-background-color: #c5e1a5; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-green-300{ -fx-background-color: #aed581; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-green-400{ -fx-background-color: #9ccc65; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-green-500{ -fx-background-color: #8bc34a; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-green-600{ -fx-background-color: #7cb342; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-green-700{ -fx-background-color: #689f38; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .light-green-800{ -fx-background-color: #558b2f; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .light-green-900{ -fx-background-color: #33691e; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .light-green-A100{ -fx-background-color: #ccff90; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-green-A200{ -fx-background-color: #b2ff59; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-green-A400{ -fx-background-color: #76ff03; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .light-green-A700{ -fx-background-color: #64dd17; -fx-text-fill: rgba(0, 0, 0, 0.87); }
 
+/*noinspection ALL*/
 .lime-50{ -fx-background-color: #f9fbe7; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .lime-100{ -fx-background-color: #f0f4c3; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .lime-200{ -fx-background-color: #e6ee9c; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .lime-300{ -fx-background-color: #dce775; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .lime-400{ -fx-background-color: #d4e157; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .lime-500{ -fx-background-color: #cddc39; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .lime-600{ -fx-background-color: #c0ca33; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .lime-700{ -fx-background-color: #afb42b; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .lime-800{ -fx-background-color: #9e9d24; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .lime-900{ -fx-background-color: #827717; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .lime-A100{ -fx-background-color: #f4ff81; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .lime-A200{ -fx-background-color: #eeff41; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .lime-A400{ -fx-background-color: #c6ff00; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .lime-A700{ -fx-background-color: #aeea00; -fx-text-fill: rgba(0, 0, 0, 0.87); }
 
+/*noinspection ALL*/
 .yellow-50{ -fx-background-color: #fffde7; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .yellow-100{ -fx-background-color: #fff9c4; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .yellow-200{ -fx-background-color: #fff59d; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .yellow-300{ -fx-background-color: #fff176; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .yellow-400{ -fx-background-color: #ffee58; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .yellow-500{ -fx-background-color: #ffeb3b; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .yellow-600{ -fx-background-color: #fdd835; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .yellow-700{ -fx-background-color: #fbc02d; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .yellow-800{ -fx-background-color: #f9a825; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .yellow-900{ -fx-background-color: #f57f17; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .yellow-A100{ -fx-background-color: #ffff8d; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .yellow-A200{ -fx-background-color: #ffff00; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .yellow-A400{ -fx-background-color: #ffea00; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .yellow-A700{ -fx-background-color: #ffd600; -fx-text-fill: rgba(0, 0, 0, 0.87); }
 
+/*noinspection ALL*/
 .amber-50{ -fx-background-color: #fff8e1; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .amber-100{ -fx-background-color: #ffecb3; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .amber-200{ -fx-background-color: #ffe082; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .amber-300{ -fx-background-color: #ffd54f; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .amber-400{ -fx-background-color: #ffca28; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .amber-500{ -fx-background-color: #ffc107; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .amber-600{ -fx-background-color: #ffb300; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .amber-700{ -fx-background-color: #ffa000; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .amber-800{ -fx-background-color: #ff8f00; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .amber-900{ -fx-background-color: #ff6f00; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .amber-A100{ -fx-background-color: #ffe57f; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .amber-A200{ -fx-background-color: #ffd740; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .amber-A400{ -fx-background-color: #ffc400; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .amber-A700{ -fx-background-color: #ffab00; -fx-text-fill: rgba(0, 0, 0, 0.87); }
 
+/*noinspection ALL*/
 .orange-50{ -fx-background-color: #fff3e0; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .orange-100{ -fx-background-color: #ffe0b2; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .orange-200{ -fx-background-color: #ffcc80; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .orange-300{ -fx-background-color: #ffb74d; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .orange-400{ -fx-background-color: #ffa726; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .orange-500{ -fx-background-color: #ff9800; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .orange-600{ -fx-background-color: #fb8c00; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .orange-700{ -fx-background-color: #f57c00; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .orange-800{ -fx-background-color: #ef6c00; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .orange-900{ -fx-background-color: #e65100; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .orange-A100{ -fx-background-color: #ffd180; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .orange-A200{ -fx-background-color: #ffab40; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .orange-A400{ -fx-background-color: #ff9100; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .orange-A700{ -fx-background-color: #ff6d00; -fx-text-fill: rgba(0, 0, 0, 0.87); }
 
+/*noinspection ALL*/
 .deep-orange-50{ -fx-background-color: #fbe9e7; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .deep-orange-100{ -fx-background-color: #ffccbc; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .deep-orange-200{ -fx-background-color: #ffab91; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .deep-orange-300{ -fx-background-color: #ff8a65; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .deep-orange-400{ -fx-background-color: #ff7043; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .deep-orange-500{ -fx-background-color: #ff5722; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .deep-orange-600{ -fx-background-color: #f4511e; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .deep-orange-700{ -fx-background-color: #e64a19; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .deep-orange-800{ -fx-background-color: #d84315; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .deep-orange-900{ -fx-background-color: #bf360c; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .deep-orange-A100{ -fx-background-color: #ff9e80; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .deep-orange-A200{ -fx-background-color: #ff6e40; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .deep-orange-A400{ -fx-background-color: #ff3d00; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .deep-orange-A700{ -fx-background-color: #dd2c00; -fx-text-fill: rgba(255, 255, 255, 0.87); }
 
+/*noinspection ALL*/
 .brown-50{ -fx-background-color: #efebe9; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .brown-100{ -fx-background-color: #d7ccc8; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .brown-200{ -fx-background-color: #bcaaa4; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .brown-300{ -fx-background-color: #a1887f; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .brown-400{ -fx-background-color: #8d6e63; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .brown-500{ -fx-background-color: #795548; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .brown-600{ -fx-background-color: #6d4c41; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .brown-700{ -fx-background-color: #5d4037; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .brown-800{ -fx-background-color: #4e342e; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .brown-900{ -fx-background-color: #3e2723; -fx-text-fill: rgba(255, 255, 255, 0.87); }
 
+/*noinspection ALL*/
 .grey-50{ -fx-background-color: #fafafa; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .grey-100{ -fx-background-color: #f5f5f5; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .grey-200{ -fx-background-color: #eeeeee; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .grey-300{ -fx-background-color: #e0e0e0; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .grey-400{ -fx-background-color: #bdbdbd; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .grey-500{ -fx-background-color: #9e9e9e; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .grey-600{ -fx-background-color: #757575; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .grey-700{ -fx-background-color: #616161; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .grey-800{ -fx-background-color: #424242; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .grey-900{ -fx-background-color: #212121; -fx-text-fill: rgba(255, 255, 255, 0.87); }
 
+/*noinspection ALL*/
 .blue-grey-50{ -fx-background-color: #eceff1; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .blue-grey-100{ -fx-background-color: #cfd8dc; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .blue-grey-200{ -fx-background-color: #b0bec5; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .blue-grey-300{ -fx-background-color: #90a4ae; -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+/*noinspection ALL*/
 .blue-grey-400{ -fx-background-color: #78909c; -fx-text-fill: #FFF; }
+
+/*noinspection ALL*/
 .blue-grey-500{ -fx-background-color: #607d8b; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .blue-grey-600{ -fx-background-color: #546e7a; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .blue-grey-700{ -fx-background-color: #455a64; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .blue-grey-800{ -fx-background-color: #37474f; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .blue-grey-900{ -fx-background-color: #263238; -fx-text-fill: rgba(255, 255, 255, 0.87); }
 
+/*noinspection ALL*/
 .black{ -fx-background-color: #000000; -fx-text-fill: rgba(255, 255, 255, 0.87); }
+
+/*noinspection ALL*/
 .white{ -fx-background-color: #ffffff; -fx-text-fill: rgba(0, 0, 0, 0.87); }
 
 
@@ -581,46 +1074,67 @@
  *                                                                         *
  **************************************************************************/
 
-.display4{	
+/*noinspection ALL*/
+.display4{
 	-fx-font-family: "Roboto Light";
 	-fx-font-size: 112.0;
 }
+
+/*noinspection ALL*/
 .display3{
 	-fx-font-family: "Roboto";
 	-fx-font-size: 56.0;
 }
+
+/*noinspection ALL*/
 .display2{
 	-fx-font-family: "Roboto";
 	-fx-font-size: 45.0;
 }
+
+/*noinspection ALL*/
 .display1{
 	-fx-font-family: "Roboto";
 	-fx-font-size: 34.0;
 }
+
+/*noinspection ALL*/
 .headline{
 	-fx-font-family: "Roboto";
 	-fx-font-size: 24.0;
 }
+
+/*noinspection ALL*/
 .title{
 	-fx-font-family: "Roboto Medium";
 	-fx-font-size: 20.0;
 }
+
+/*noinspection ALL*/
 .subhead{
 	-fx-font-family: "Roboto";
 	-fx-font-size: 15.0;
 }
+
+/*noinspection ALL*/
 .body2{
 	-fx-font-family: "Roboto Medium";
 	-fx-font-size: 13.0;
 }
+
+/*noinspection ALL*/
 .body1{
 	-fx-font-family: "Roboto";
 	-fx-font-size: 13.0;
 }
+
+/*noinspection ALL*/
 .caption{
 	-fx-font-family: "Roboto";
 	-fx-font-size: 12.0;
 }
+
+/*noinspection ALL*/
 .button{
 	-fx-font-family: "Roboto Medium";
 	-fx-font-size: 14.0;

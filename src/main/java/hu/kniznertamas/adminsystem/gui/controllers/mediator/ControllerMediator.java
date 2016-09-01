@@ -119,7 +119,7 @@ public class ControllerMediator implements IMediateControllers {
 
 	@Override
 	public void showNewDataView() {
-		mainController.showNewDataView();;		
+		mainController.showNewDataView();
 	}
 
 	@Override

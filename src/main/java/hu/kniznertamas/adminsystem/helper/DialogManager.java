@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 
 public class DialogManager {
 	
-	private static Map<String, String> classes;
+	private static final Map<String, String> classes;
 	
 	static {
 		classes = new HashMap<>();
@@ -21,18 +21,18 @@ public class DialogManager {
 		classes.put("error", "dialog-error");
 	}
 	
-	public static void showDialog(String header, String body, String buttonText, String style) {
+	public static void showDialog(String header, String body, @SuppressWarnings("SameParameterValue") String buttonText, String style) {
 		JFXDialog dialog = new JFXDialog();
     	JFXDialogLayout content = new JFXDialogLayout();
     	content.setHeading(new Label(header));
     	content.setBody(new Label(body));
     	JFXButton b = new JFXButton(buttonText);
-    	b.getStyleClass().add("dialog-accept");
+    	b.getStyleClass().add(classes.get(style));
     	b.setOnAction(event -> dialog.close());
     	content.setActions(b);
     	dialog.setContent(content);
     	dialog.setDialogContainer(ControllerMediator.getInstance().getRoot());
-    	dialog.show();;
+    	dialog.show();
 	}
 	
 }

@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 
+@SuppressWarnings("ALL")
 public class UserController implements Initializable {
 
     private final GenericDao<UsersEntity> userDao;

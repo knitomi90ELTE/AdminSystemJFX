@@ -1,29 +1,12 @@
 package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 
-import java.net.URL;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.ResourceBundle;
-
-import org.controlsfx.control.PopOver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
-
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
-import hu.kniznertamas.adminsystem.db.dao.DaoType;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
-import hu.kniznertamas.adminsystem.db.entity.BalanceEntity;
-import hu.kniznertamas.adminsystem.db.entity.NamedEntity;
-import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
-import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
-import hu.kniznertamas.adminsystem.db.entity.StatusEntity;
-import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
+import hu.kniznertamas.adminsystem.db.entity.*;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.gui.elements.NumberTextField;
 import hu.kniznertamas.adminsystem.gui.elements.PopupAbstractt;
@@ -34,6 +17,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import org.controlsfx.control.PopOver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class NewBalanceController extends PopupAbstractt implements Initializable {
 
@@ -201,7 +193,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
         List<UsersEntity> allUsers = usersDao.findAll();
         userBox.setItems(FXCollections.observableArrayList(allUsers));
         userBox.getSelectionModel().selectFirst();
-        EntityHelper.<UsersEntity>initComboBoxWithEntity(userBox);
+        EntityHelper.initComboBoxWithEntity(userBox);
     }
 
     private void initProjectBox() {
@@ -212,7 +204,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
         List<ProjectsEntity> allProjects = projectsDao.findAll();
         projectBox.setItems(FXCollections.observableArrayList(allProjects));
         projectBox.getSelectionModel().selectFirst();
-        EntityHelper.<ProjectsEntity>initComboBoxWithEntity(projectBox);
+        EntityHelper.initComboBoxWithEntity(projectBox);
     }
 
     private void initModelNameBox() {

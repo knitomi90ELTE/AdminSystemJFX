@@ -64,6 +64,7 @@ public class NewUploadController extends PopupAbstractt implements Initializable
 		if ("".equals(hoursField.getText()))
 			return false;
 		try {
+			//noinspection ResultOfMethodCallIgnored
 			Integer.parseInt(hoursField.getText());
 		} catch (NumberFormatException e) {
 			return false;
@@ -99,7 +100,7 @@ public class NewUploadController extends PopupAbstractt implements Initializable
 		List<UsersEntity> allUsers = userDao.findAll();
 		userBox.setItems(FXCollections.observableArrayList(allUsers));
 		//EntityHelper.initComboBoxWithUserEntity(userBox);
-		EntityHelper.<UsersEntity>initComboBoxWithEntity(userBox);
+		EntityHelper.initComboBoxWithEntity(userBox);
 		userBox.getSelectionModel().selectFirst();
 	}
 
@@ -108,7 +109,7 @@ public class NewUploadController extends PopupAbstractt implements Initializable
 		List<ProjectsEntity> allProjects = projectsDao.findAll();
 		projectBox.setItems(FXCollections.observableArrayList(allProjects));
 		//EntityHelper.initComboBoxWithProjectsEntity(projectBox);
-		EntityHelper.<ProjectsEntity>initComboBoxWithEntity(projectBox);
+		EntityHelper.initComboBoxWithEntity(projectBox);
 		projectBox.getSelectionModel().selectFirst();
 	}
 

@@ -1,9 +1,11 @@
+/*noinspection ALL*/
 .root{
 	-fx-font-family: Roboto;	
     src:"/resources/roboto/Roboto-Regular.ttf";
 }
 /* Burgers Demo */
 
+/*noinspection ALL*/
 .jfx-hamburger{
 	-fx-spacing: 5;
 	-fx-cursor: hand;
@@ -19,10 +21,12 @@
 
 /* Input Demo */
 
+/*noinspection ALL*/
 .text-field {
     -fx-max-width: 300;
 }
 
+/*noinspection ALL*/
 .jfx-text-field, .jfx-password-field{
 	-fx-background-color: WHITE;
     -fx-font-weight: BOLD;
@@ -33,32 +37,40 @@
     -fx-max-width: 300;
 }
 
-
-
+/*noinspection ALL*/
 .jfx-decorator {
 	-fx-decorator-color: RED;
 }
+
+/*noinspection ALL*/
 .jfx-decorator .jfx-decorator-buttons-container{
 	-fx-background-color:-fx-decorator-color;
 }
+
+/*noinspection ALL*/
 .jfx-decorator .resize-border{
 	-fx-border-color:-fx-decorator-color;
 	-fx-border-width: 0 4 4 4;
 }
 
+/*noinspection ALL*/
 .jfx-text-area, .text-area{
 	-fx-font-weight: BOLD;
 }
 
+/*noinspection ALL*/
 .jfx-text-field:error, .jfx-password-field:error, .jfx-text-area:error{
 	-fx-focus-color: #D34336;
 	-fx-unfocus-color: #D34336;
 }
 
+/*noinspection ALL*/
 .jfx-text-field .errorLabel, .jfx-password-field .errorLabel , .jfx-text-area .errorLabel{
 	-fx-text-fill : #D34336;
 	-fx-font-size: 0.75em;
 }
+
+/*noinspection ALL*/
 .jfx-text-field .errorIcon, .jfx-password-field .errorIcon, .jfx-text-area .errorIcon{
 	-fx-text-fill : #D34336;
 	-fx-font-size: 1em;
@@ -69,14 +81,17 @@
 
 /* Progress Bar Demo */
 
+/*noinspection ALL*/
 .progress-bar > .bar {
 	-fx-min-width: 500;
 }
 
+/*noinspection ALL*/
 .jfx-progress-bar > .bar {
 	-fx-min-width: 500;
 }
 
+/*noinspection ALL*/
 .jfx-progress-bar{
 	-fx-track-color: #C8C8C8 ;
 	-fx-progress-color: #0F9D58;
@@ -84,31 +99,37 @@
 }
 
 /* Icons Demo */
+/*noinspection ALL*/
 .icon{
 	-fx-text-fill: #FE774D;
 	-fx-padding: 10;
 	-fx-cursor: hand;
 }
+
+/*noinspection ALL*/
 .icons-rippler{
 	-fx-rippler-fill: BLUE;
 	-fx-mask-type: CIRCLE;
 }
+
+/*noinspection ALL*/
 .icons-rippler:hover{
 	-fx-cursor: hand;
 }
 
+/*noinspection ALL*/
 .icons-badge {
 	-fx-badge-fill: BLUE;
-	-fx-badge-scale: 3.0;
+	-fx-badge-scale: 3px;
 	-fx-mask-type: CIRCLE;
 }
 
-
-
+/*noinspection ALL*/
 .jfx-check-box{
     -fx-font-weight: BOLD;
 }
 
+/*noinspection ALL*/
 .custom-jfx-check-box{
     -fx-checked-color: RED;
     -fx-unchecked-color: BLACK;
@@ -116,12 +137,13 @@
 
 
 /* Button */
+/*noinspection ALL*/
 .button{
 	-fx-padding: 0.7em 0.57em;
     -fx-font-size: 14px;
 }
 
-
+/*noinspection ALL*/
 .button-raised{
 	-fx-padding: 0.7em 0.57em;
     -fx-font-size: 14px;
@@ -134,6 +156,7 @@
 	 
 
 /* The main scrollbar **track** CSS class  */
+/*noinspection ALL*/
 .mylistview .scroll-bar:horizontal .track,
 .mylistview .scroll-bar:vertical .track{
 	-fx-background-color:transparent;
@@ -143,6 +166,7 @@
 }
 
 /* The increment and decrement button CSS class of scrollbar */
+/*noinspection ALL*/
 .mylistview .scroll-bar:horizontal .increment-button ,
 .mylistview .scroll-bar:horizontal .decrement-button {
     -fx-background-color:transparent;
@@ -152,6 +176,7 @@
 
 /* The increment and decrement button CSS class of scrollbar */
 
+/*noinspection ALL*/
 .mylistview .scroll-bar:vertical .increment-button ,
 .mylistview .scroll-bar:vertical .decrement-button {
     -fx-background-color:transparent;
@@ -160,6 +185,7 @@
 
 }
 
+/*noinspection ALL*/
 .mylistview  .scroll-bar .increment-arrow,
 .mylistview  .scroll-bar .decrement-arrow{
 	-fx-shape:" ";	
@@ -167,6 +193,7 @@
 }
 
 /* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+/*noinspection ALL*/
 .mylistview .scroll-bar:horizontal .thumb,
 .mylistview .scroll-bar:vertical .thumb {
     -fx-background-color:derive(black,90%);
@@ -174,7 +201,7 @@
 	-fx-background-radius: 2em;
 }
 
-
+/*noinspection ALL*/
 .jfx-list-cell-container{
 	-fx-alignment: center-left;
 }
@@ -187,36 +214,43 @@
 	-fx-background-color: rgba(0,0,255,0.2);
 }
 
+/*noinspection ALL*/
 .jfx-list-cell {
 	-fx-background-insets: 0.0 ; 
 	-fx-text-fill: BLACK; 
 }
+
+/*noinspection ALL*/
 .jfx-list-cell:odd, .jfx-list-cell:even {
 	-fx-background-color:  WHITE;
 }
-.jfx-list-cell:filled:hover { 
+
+/*noinspection ALL*/
+.jfx-list-cell:filled:hover {
 	-fx-text-fill: black;
 }
 
+/*noinspection ALL*/
 .jfx-list-cell .jfx-rippler{
 	-fx-rippler-fill:BLUE;
 }
 
-
+/*noinspection ALL*/
 .jfx-list-view {
 	-fx-background-insets: 0;
-  	-fx-cell-horizontal-margin: 0.0;
-  	-fx-cell-vertical-margin: 5.0;
-  	-fx-vertical-gap : 10;
+  	-fx-cell-horizontal-margin: 0px;
+  	-fx-cell-vertical-margin: 5px;
+  	-fx-vertical-gap : 10px;
   	-fx-expanded : false;  	
   	-fx-pref-width:200;
 }
 
-
- .jfx-toggle-button{
+/*noinspection ALL*/
+.jfx-toggle-button{
   		-fx-toggle-color: RED;
  }
 
+/*noinspection ALL*/
 .jfx-tool-bar{
 	-fx-font-size: 20;
 	-fx-font-weight: BOLD;
@@ -233,24 +267,29 @@
 -fx-text-fill: WHITE;
 }
 
+/*noinspection ALL*/
 .jfx-popup-container{
 	-fx-background-color: WHITE;
 }
 
+/*noinspection ALL*/
 .jfx-snackbar-content {
 	-fx-background-color: #323232;
     -fx-padding: 5;
     -fx-spacing: 5;	
 }
 
+/*noinspection ALL*/
 .jfx-snackbar-toast {
 	-fx-text-fill: WHITE;	
 }
 
+/*noinspection ALL*/
 .jfx-snackbar-action {
 	-fx-text-fill: #ff4081;	
 }
 
+/*noinspection ALL*/
 .jfx-list-cell-content-container {
 	-fx-alignment: center-left;
 }
@@ -258,23 +297,30 @@
   	-fx-text-fill: BLACK ;
 }
 
+/*noinspection ALL*/
 .combo-box-popup .list-view .jfx-list-cell:odd:selected .jfx-list-cell-container,
 .combo-box-popup .list-view .jfx-list-cell:even:selected .jfx-list-cell-container { 
 	-fx-background-color: rgba(0.0,0.0,255.0,0.2);
 }
 
+/*noinspection ALL*/
 .combo-box-popup .list-view .jfx-list-cell {
 	-fx-background-insets: 0.0 ; 
 	-fx-text-fill: BLACK; 
 }
-.combo-box-popup .list-view .jfx-list-cell:odd, 
+
+/*noinspection ALL*/
+.combo-box-popup .list-view .jfx-list-cell:odd,
 .combo-box-popup .list-view .jfx-list-cell:even {
 	-fx-background-color:  WHITE;
 }
-.combo-box-popup .list-view .jfx-list-cell:filled:hover { 
+
+/*noinspection ALL*/
+.combo-box-popup .list-view .jfx-list-cell:filled:hover {
 	-fx-text-fill: black;
 }
 
+/*noinspection ALL*/
 .combo-box-popup .list-view .jfx-list-cell .jfx-rippler {
 	-fx-rippler-fill: #5264AE;
 }
@@ -292,30 +338,37 @@
  * TREE TABLE CSS
  */
 
+/*noinspection ALL*/
 .tree-table-view{
 	-fx-tree-table-color: rgba(255, 0, 0, 0.2);
 	-fx-tree-table-rippler-color : rgba(255, 0, 0, 0.4);
 }
- .tree-table-view:focused .tree-table-row-cell:selected {
+
+/*noinspection ALL*/
+.tree-table-view:focused .tree-table-row-cell:selected {
 	-fx-background-color: -fx-tree-table-color  ;
 	-fx-table-cell-border-color: -fx-tree-table-color;
 	-fx-text-fill: BLACK;
 }
 
- .tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell{
+/*noinspection ALL*/
+.tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell{
 	-fx-text-fill: BLACK;
 }
 
+/*noinspection ALL*/
 .tree-table-view .jfx-rippler {
 	-fx-rippler-fill: -fx-tree-table-rippler-color;
 }
 
+/*noinspection ALL*/
 .tree-table-view .column-header ,
 .tree-table-view .column-header-background,
 .tree-table-view .column-header-background .filler{
 	-fx-background-color:TRANSPARENT;
 }
 
+/*noinspection ALL*/
 .tree-table-view .column-header{
 	-fx-border-width : 0 1 0 1;
 	-fx-border-color: #F3F3F3;
@@ -326,32 +379,39 @@
 	-fx-padding : 16 0 16 0 ;
 }
 
-.tree-table-view .column-header .arrow, .tree-table-view .column-header .sort-order-dot{ 
+/*noinspection ALL*/
+.tree-table-view .column-header .arrow, .tree-table-view .column-header .sort-order-dot{
 	-fx-background-color : #949494;
 }
 
+/*noinspection ALL*/
 .tree-table-view .column-header:last-visible {
 	-fx-border-width: 0 2 0 1;
 }
 
+/*noinspection ALL*/
 .tree-table-view .column-header-background{
 	-fx-border-width : 0 0.0 1 0;
 	-fx-border-color:#F3F3F3;
 }
 
+/*noinspection ALL*/
 .tree-table-view .tree-table-cell{
 	-fx-border-width:0 0 0 0;
 	-fx-padding : 16 0 16 0 ;
 }
 
+/*noinspection ALL*/
 .tree-table-view .column-overlay{
 	-fx-background-color: -fx-tree-table-color;
 }
 
+/*noinspection ALL*/
 .tree-table-view .column-resize-line, .tree-table-view .column-drag-header{
 	-fx-background-color: -fx-tree-table-rippler-color;
 }
 
+/*noinspection ALL*/
 .tree-table-view:focused {
   -fx-background-color: -fx-tree-table-color,-fx-box-border,-fx-control-inner-background;
   -fx-background-insets: -1.4, 0, 1;
@@ -360,20 +420,24 @@
   -fx-padding: 1; /* 0.083333em; */
 }
 
+/*noinspection ALL*/
 .tree-table-row-cell > .tree-disclosure-node > .arrow {
     -fx-background-color: -fx-text-fill;
     -fx-padding: 0.333333em 0.229em 0.333333em 0.229em; /* 4 */
     -fx-shape: "M 0 -3.5 L 4 0 L 0 3.5 z";
 }
+
+/*noinspection ALL*/
 .tree-table-row-cell .jfx-text-field{
     -fx-focus-color: rgba(240,40,40);
 }
 
+/*noinspection ALL*/
 .tree-table-row-group{
 	-fx-background-color:rgba(230,230,230);
 }
 
-
+/*noinspection ALL*/
 .animated-option-button {
 	-fx-pref-width:50px;
 	-fx-background-color:#44B449;
@@ -385,23 +449,26 @@
 	-fx-border-width: 4px;
 }
 
+/*noinspection ALL*/
 .animated-option-sub-button {
 	-fx-background-color:#43609C; 
 }
+
+/*noinspection ALL*/
 .animated-option-sub-button2 {
 	-fx-background-color: rgb(203,104,96); 
 }
 
+/*noinspection ALL*/
 .tree-table-view .menu-item:focused{
 	-fx-background-color:-fx-tree-table-color;
 	
 }
 .tree-table-view .menu-item .label{
 	-fx-padding: 5 0 5 0;
-} 
+}
 
-
-
+/*noinspection ALL*/
 .jfx-combo-box .combo-box-button-container {
 	-fx-border-color:rgb(180, 180, 180);	
 	-fx-border-width: 0 0 2 0;

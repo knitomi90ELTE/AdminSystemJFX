@@ -33,7 +33,7 @@
 	<center>
 		<VBox spacing="10.0">
 			<HBox spacing="10.0">
-				<Label text="Munkák" alignment="CENTER_LEFT"/>
+				<Label text="Munkák"/>
 				<JFXButton onAction="#onDeleteAction" prefHeight="36.0"
 					prefWidth="200.0" text="Kijelölt törlése" />
 				<padding>

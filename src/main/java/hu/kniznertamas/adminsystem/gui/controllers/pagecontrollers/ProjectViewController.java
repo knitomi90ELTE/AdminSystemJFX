@@ -51,7 +51,7 @@ public class ProjectViewController implements Initializable {
 			GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
 		    List<ProjectsEntity> allProjects = projectsDao.findAll();
 		    comboBox.setItems(FXCollections.observableArrayList(allProjects));
-		    EntityHelper.<ProjectsEntity>initComboBoxWithEntity(comboBox);
+		    EntityHelper.initComboBoxWithEntity(comboBox);
 		    comboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> ControllerMediator.getInstance().loadProjectDataToController(newValue));
 		});
     }
