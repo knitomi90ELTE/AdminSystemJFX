@@ -2,7 +2,7 @@
 <!DOCTYPE persistence>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
 
-    <persistence-unit name="remotePersistenceUnit">
+    <!-- persistence-unit name="remotePersistenceUnit">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>hu.kniznertamas.adminsystem.db.entity.BalanceEntity</class>
         <class>hu.kniznertamas.adminsystem.db.entity.ProjectsEntity</class>
@@ -15,7 +15,7 @@
             <property name="javax.persistence.jdbc.user" value="knitomi"/>
             <property name="javax.persistence.jdbc.password" value="leadstar"/>
         </properties>
-    </persistence-unit>
+    <persistence-unit name=""></persistence-unit-->
 
     <persistence-unit name="remotePersistenceUnit_DEV">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>

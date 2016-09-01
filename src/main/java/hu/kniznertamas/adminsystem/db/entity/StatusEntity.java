@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "status")
-public class StatusEntity extends PersistentEntity {
+public class StatusEntity extends PersistentEntity implements NamedEntity {
 
     private String name;
 

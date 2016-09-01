@@ -16,8 +16,10 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
 import hu.kniznertamas.adminsystem.db.dao.DaoManager;
+import hu.kniznertamas.adminsystem.db.dao.DaoType;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.BalanceEntity;
+import hu.kniznertamas.adminsystem.db.entity.NamedEntity;
 import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.StatusEntity;
@@ -199,7 +201,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
         List<UsersEntity> allUsers = usersDao.findAll();
         userBox.setItems(FXCollections.observableArrayList(allUsers));
         userBox.getSelectionModel().selectFirst();
-        EntityHelper.initComboBoxWithUserEntity(userBox);
+        EntityHelper.<UsersEntity>initComboBoxWithEntity(userBox);
     }
 
     private void initProjectBox() {
@@ -210,7 +212,7 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
         List<ProjectsEntity> allProjects = projectsDao.findAll();
         projectBox.setItems(FXCollections.observableArrayList(allProjects));
         projectBox.getSelectionModel().selectFirst();
-        EntityHelper.initComboBoxWithProjectsEntity(projectBox);
+        EntityHelper.<ProjectsEntity>initComboBoxWithEntity(projectBox);
     }
 
     private void initModelNameBox() {

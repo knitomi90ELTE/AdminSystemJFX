@@ -10,6 +10,7 @@ import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.BalanceEntity;
 import hu.kniznertamas.adminsystem.db.entity.ExtendedBalanceEntity;
 import hu.kniznertamas.adminsystem.db.entity.ExtendedUploadEntity;
+import hu.kniznertamas.adminsystem.db.entity.NamedEntity;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.StatusEntity;
 import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
@@ -57,34 +58,14 @@ public class EntityHelper {
         }
         return extendedList;
     }
-
-    public static void initComboBoxWithUserEntity(JFXComboBox<UsersEntity> comboBox) {
-        comboBox.setCellFactory(new Callback<ListView<UsersEntity>, ListCell<UsersEntity>>() {
+    
+    public static <T extends NamedEntity> void initComboBoxWithEntity(JFXComboBox<T> comboBox) {
+    	comboBox.setCellFactory(new Callback<ListView<T>, ListCell<T>>() {
             @Override
-            public ListCell<UsersEntity> call(ListView<UsersEntity> param) {
-                return new ListCell<UsersEntity>() {
+            public ListCell<T> call(ListView<T> param) {
+                return new ListCell<T>() {
                     @Override
-                    public void updateItem(UsersEntity item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (!empty) {
-                            setText(item.getName());
-                            setGraphic(null);
-                        } else {
-                            setText(null);
-                        }
-                    }
-                };
-            }
-        });
-    }
-
-    public static void initComboBoxWithProjectsEntity(JFXComboBox<ProjectsEntity> comboBox) {
-        comboBox.setCellFactory(new Callback<ListView<ProjectsEntity>, ListCell<ProjectsEntity>>() {
-            @Override
-            public ListCell<ProjectsEntity> call(ListView<ProjectsEntity> param) {
-                return new ListCell<ProjectsEntity>() {
-                    @Override
-                    public void updateItem(ProjectsEntity item, boolean empty) {
+                    public void updateItem(T item, boolean empty) {
                         super.updateItem(item, empty);
                         if (!empty) {
                             setText(item.getName());

@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class UsersEntity extends PersistentEntity {
+public class UsersEntity extends PersistentEntity implements NamedEntity {
 
     private String name;
     private Integer wage;

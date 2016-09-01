@@ -98,7 +98,8 @@ public class NewUploadController extends PopupAbstractt implements Initializable
 		GenericDao<UsersEntity> userDao = DaoManager.getInstance().getUserDao();
 		List<UsersEntity> allUsers = userDao.findAll();
 		userBox.setItems(FXCollections.observableArrayList(allUsers));
-		EntityHelper.initComboBoxWithUserEntity(userBox);
+		//EntityHelper.initComboBoxWithUserEntity(userBox);
+		EntityHelper.<UsersEntity>initComboBoxWithEntity(userBox);
 		userBox.getSelectionModel().selectFirst();
 	}
 
@@ -106,7 +107,8 @@ public class NewUploadController extends PopupAbstractt implements Initializable
 		GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
 		List<ProjectsEntity> allProjects = projectsDao.findAll();
 		projectBox.setItems(FXCollections.observableArrayList(allProjects));
-		EntityHelper.initComboBoxWithProjectsEntity(projectBox);
+		//EntityHelper.initComboBoxWithProjectsEntity(projectBox);
+		EntityHelper.<ProjectsEntity>initComboBoxWithEntity(projectBox);
 		projectBox.getSelectionModel().selectFirst();
 	}
 
