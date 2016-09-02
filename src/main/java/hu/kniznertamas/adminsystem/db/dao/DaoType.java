@@ -8,5 +8,4 @@ public enum DaoType {
 	UPLOAD,
 	USER
 	
-	
 }

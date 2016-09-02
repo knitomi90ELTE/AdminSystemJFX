@@ -8,6 +8,7 @@ import hu.kniznertamas.adminsystem.gui.controllers.MainController;
 import hu.kniznertamas.adminsystem.gui.controllers.dailytables.BalanceTableController;
 import hu.kniznertamas.adminsystem.gui.controllers.dailytables.UploadTableController;
 import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.DailyViewController;
+import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.FinancesController;
 import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.OpenItemsViewController;
 import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.ProjectViewController;
 import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.UserViewController;
@@ -16,32 +17,43 @@ import hu.kniznertamas.adminsystem.gui.controllers.projecttables.HoursTableContr
 import javafx.scene.layout.StackPane;
 
 interface IMediateControllers {
-    void registerControllerUser(UserViewController controller);
-    void registerControllerUploadTable(UploadTableController controller);
-    void registerControllerBalanceTable(BalanceTableController controller);
-    void registerControllerProjects(ProjectViewController controller);
-    void registerControllerHoursTable(HoursTableController controller);
-    void registerControllerFinancesTable(FinancesTableController controller);
-    void registerControllerOpenItemsController(OpenItemsViewController controller);
-    void registerControllerMainController(MainController controller);
+	void registerControllerUser(UserViewController controller);
 
-    //Alkalmazottak nézet frissítése
-    void loadUserDataToController(UsersEntity usersEntity);
-    //Munkák nézet frissítése
-    void loadProjectDataToController(ProjectsEntity projectsEntity);
-    //Napi nézet frissítése
-    void refreshDailyTableData(LocalDate currentDate);
+	void registerControllerUploadTable(UploadTableController controller);
 
-    void registerControllerDailyView(DailyViewController dailyViewController);
+	void registerControllerBalanceTable(BalanceTableController controller);
 
-    void refreshOpenItemsTable();
+	void registerControllerProjects(ProjectViewController controller);
 
-    LocalDate getCurrentDate();
-    
-    void showBasicView();
-    void showNewDataView();
-    
-    StackPane getRoot();
+	void registerControllerHoursTable(HoursTableController controller);
 
+	void registerControllerFinancesTable(FinancesTableController controller);
+
+	void registerControllerOpenItemsController(OpenItemsViewController controller);
+
+	void registerControllerFinances(FinancesController controller);
+
+	void registerControllerDailyView(DailyViewController dailyViewController);
+
+	void registerControllerMainController(MainController controller);
+
+	// Alkalmazottak nézet frissítése
+	void loadUserDataToController(UsersEntity usersEntity);
+
+	// Munkák nézet frissítése
+	void loadProjectDataToController(ProjectsEntity projectsEntity);
+
+	// Napi nézet frissítése
+	void refreshDailyTableData(LocalDate currentDate);
+
+	void refreshOpenItemsTable();
+
+	LocalDate getCurrentDate();
+
+	void showBasicView();
+
+	void showNewDataView();
+
+	StackPane getRoot();
 
 }

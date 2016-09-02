@@ -21,7 +21,7 @@ public class DialogManager {
 		classes.put("error", "dialog-error");
 	}
 	
-	public static void showDialog(String header, String body, @SuppressWarnings("SameParameterValue") String buttonText, String style) {
+	public static void showDialog(String header, String body, String buttonText, String style) {
 		JFXDialog dialog = new JFXDialog();
     	JFXDialogLayout content = new JFXDialogLayout();
     	content.setHeading(new Label(header));

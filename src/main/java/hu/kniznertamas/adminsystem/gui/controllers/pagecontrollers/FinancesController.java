@@ -16,6 +16,7 @@ import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.BalanceEntity;
 import hu.kniznertamas.adminsystem.db.entity.ExtendedBalanceEntity;
 import hu.kniznertamas.adminsystem.db.entity.StatusEntity;
+import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -36,16 +37,16 @@ public class FinancesController implements Initializable {
     private static final Logger LOGGER = LoggerFactory.getLogger(FinancesController.class);
 
     public FinancesController() {
+    	ControllerMediator.getInstance().registerControllerFinances(this);
         balanceDao = DaoManager.getInstance().getBalanceDao();
         statusDao = DaoManager.getInstance().getStatusDao();
     }
 
-    private void initStatusBox() {
+    public void initStatusBox() {
         List<StatusEntity> statusList = statusDao.findAll();
         statusBox.setItems(FXCollections.observableArrayList(statusList));
         statusBox.getSelectionModel().selectFirst();
         statusBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> loadDataToTable());
-
     }
 
     private void loadDataToTable(){
@@ -59,7 +60,7 @@ public class FinancesController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        initStatusBox();
-        loadDataToTable();
+        //initStatusBox();
+        //loadDataToTable();
     }
 }

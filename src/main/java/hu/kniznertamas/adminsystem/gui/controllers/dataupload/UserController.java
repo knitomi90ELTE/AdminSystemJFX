@@ -18,8 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 
-@SuppressWarnings("ALL")
-public class UserController implements Initializable {
+public class UserController implements Initializable, DataUpload {
 
     private final GenericDao<UsersEntity> userDao;
 
@@ -43,14 +42,14 @@ public class UserController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        initUserTable();
+    	initDataTable();
     }
 
-    private void initUserTable() {
+    public void initDataTable() {
         userTable.setItems(FXCollections.observableArrayList(userDao.findAll()));
     }
 
-    private boolean validForm() {
+    public boolean validForm() {
         if("".equals(nameField.getText())) return false;
         if("".equals(wageField.getText())) return false;
         try{
@@ -62,12 +61,10 @@ public class UserController implements Initializable {
     }
 
     @FXML
-    private void onSaveAction() {
-        if(!validForm()){
-            LOGGER.info("Hiba a bevitt adatokban!");
-            DialogManager.showDialog("Hiba", "Hiba a bevitt adatokban!", "Ok", "error");
-            clearFields();
-            return;
+    public void onSaveAction() {
+        if(!Validation.isValid(this)) {
+        	LOGGER.info("Hiba a bevitt adatokban!");
+        	return;
         }
         UsersEntity newUser = new UsersEntity();
         newUser.setName(nameField.getText());
@@ -75,23 +72,23 @@ public class UserController implements Initializable {
         newUser.setNote((noteField.getText().length() == 0) ? "" : noteField.getText());
         userDao.create(newUser);
         clearFields();
-        initUserTable();
+        initDataTable();
         DialogManager.showDialog("Mentés", "Sikeres mentés!", "Ok", "accept");
         LOGGER.info("Sikeres mentés! {}", newUser.getName());
     }
 
     @FXML
-    private void onDeleteAction() {
+    public void onDeleteAction() {
         UsersEntity selected = userTable.getSelectionModel().getSelectedItem();
         if(selected == null) {
         	return;
         }
         userDao.delete(userDao.findById(selected.getId()));
         LOGGER.info("Sikeres törlés! {}", selected.getName());
-        initUserTable();
+        initDataTable();
     }
 
-    private void clearFields(){
+    public void clearFields(){
         nameField.setText("");
         wageField.setText("");
         noteField.setText("");

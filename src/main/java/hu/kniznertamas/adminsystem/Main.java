@@ -5,6 +5,8 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.jfoenix.controls.JFXDecorator;
+
+import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.helper.FXMLLoaderHelper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

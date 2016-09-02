@@ -18,7 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 
-public class ProjectController implements Initializable {
+public class ProjectController implements Initializable, DataUpload {
 
     private final GenericDao<ProjectsEntity> projectDao;
 
@@ -42,18 +42,17 @@ public class ProjectController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        initProjectsTable();
+    	initDataTable();
     }
 
-    private void initProjectsTable() {
+    public void initDataTable() {
         projectTable.setItems(FXCollections.observableArrayList(projectDao.findAll()));
     }
 
-    private boolean validForm() {
+    public boolean validForm() {
         if ("".equals(nameField.getText())) return false;
         if ("".equals(retentionField.getText())) return false;
         try {
-            //noinspection ResultOfMethodCallIgnored
             Integer.parseInt(retentionField.getText());
         } catch (NumberFormatException e) {
             return false;
@@ -62,12 +61,10 @@ public class ProjectController implements Initializable {
     }
 
     @FXML
-    private void onSaveAction() {
-        if (!validForm()) {
-            LOGGER.info("Hiba a bevitt adatokban!");
-            DialogManager.showDialog("Hiba", "Hiba a bevitt adatokban!", "Ok", "error");
-            clearFields();
-            return;
+    public void onSaveAction() {
+        if(!Validation.isValid(this)) {
+        	LOGGER.info("Hiba a bevitt adatokban!");
+        	return;
         }
         ProjectsEntity newProject = new ProjectsEntity();
         newProject.setName(nameField.getText());
@@ -75,23 +72,23 @@ public class ProjectController implements Initializable {
         newProject.setNote((noteField.getText().length() == 0) ? "" : noteField.getText());
         projectDao.create(newProject);
         clearFields();
-        initProjectsTable();
+        initDataTable();
         DialogManager.showDialog("Mentés", "Sikeres mentés!", "Ok", "accept");
         LOGGER.info("Sikeres mentés! {}", newProject.getName());
     }
 
     @FXML
-    private void onDeleteAction() {
+    public void onDeleteAction() {
         ProjectsEntity selected = projectTable.getSelectionModel().getSelectedItem();
         if(selected == null) {
         	return;
         }
         projectDao.delete(projectDao.findById(selected.getId()));
         LOGGER.info("Sikeres törlés! {}", selected.getName());
-        initProjectsTable();
+        initDataTable();
     }
 
-    private void clearFields() {
+    public void clearFields() {
         nameField.setText("");
         retentionField.setText("");
         noteField.setText("");

@@ -15,7 +15,6 @@ import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.helper.EntityHelper;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,7 +39,7 @@ public class UserViewController implements Initializable {
 	private JFXComboBox<UsersEntity> comboBox;
 
 	public UserViewController() {
-		loadUsers();
+		// loadUsers();
 	}
 
 	@Override
@@ -60,14 +59,11 @@ public class UserViewController implements Initializable {
 		userTable.refresh();
 	}
 
-	private void loadUsers() {
-		Platform.runLater(() -> {
-			GenericDao<UsersEntity> usersDao = DaoManager.getInstance().getUserDao();
-			List<UsersEntity> allUsers = usersDao.findAll();
-			comboBox.setItems(FXCollections.observableArrayList(allUsers));
-			comboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue,
-					newValue) -> ControllerMediator.getInstance().loadUserDataToController(newValue));
-		});
+	public void loadUsers() {
+		GenericDao<UsersEntity> usersDao = DaoManager.getInstance().getUserDao();
+		List<UsersEntity> allUsers = usersDao.findAll();
+		comboBox.setItems(FXCollections.observableArrayList(allUsers));
+		comboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> ControllerMediator.getInstance().loadUserDataToController(newValue));
 	}
 
 }

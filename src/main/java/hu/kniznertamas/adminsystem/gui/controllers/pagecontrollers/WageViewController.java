@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXComboBox;
 
+import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.helper.WageEntityHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,7 +42,7 @@ public class WageViewController implements Initializable {
 
     @FXML
     private void loadTableAction() {
-
+    	ControllerMediator.getInstance().loadAllData();
     }
 
 

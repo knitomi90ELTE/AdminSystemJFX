@@ -32,7 +32,7 @@ public class DailyViewController implements Initializable {
         datePicker.setValue(ld);
         currentDate = ld;
         ControllerMediator.getInstance().registerControllerDailyView(this);
-        updateTables();
+        //updateTables();
     }
 
     public void decreaseDate() {
@@ -54,12 +54,7 @@ public class DailyViewController implements Initializable {
         updateTables();
     }
 
-    @SuppressWarnings({"unused", "EmptyMethod"})
-	private void updateData(boolean updateTables, boolean setValue, LocalDate ld) {
-        //TODO: fenti metódusok refaktorálása, mert csúnya
-    }
-
-    private void updateTables() {
+    public void updateTables() {
         LOGGER.info("Updating tables {}", currentDate.toString());
         ControllerMediator.getInstance().refreshDailyTableData(currentDate);
     }
