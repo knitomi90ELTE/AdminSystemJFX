@@ -38,7 +38,6 @@ public class OpenItemsViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ControllerMediator.getInstance().registerControllerOpenItemsController(this);
-        //initOpenItemsTable();
     }
 
     public void initOpenItemsTable() {

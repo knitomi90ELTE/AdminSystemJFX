@@ -42,7 +42,7 @@ public class WageViewController implements Initializable {
 
     @FXML
     private void loadTableAction() {
-    	ControllerMediator.getInstance().loadAllData();
+    	wageTable.refresh();
     }
 
 

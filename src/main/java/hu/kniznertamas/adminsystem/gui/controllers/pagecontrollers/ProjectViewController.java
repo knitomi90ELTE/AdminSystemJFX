@@ -31,7 +31,7 @@ public class ProjectViewController implements Initializable {
 	private JFXComboBox<ProjectsEntity> comboBox;
 
 	public ProjectViewController() {
-		// loadProjects();
+
 	}
 
 	@Override

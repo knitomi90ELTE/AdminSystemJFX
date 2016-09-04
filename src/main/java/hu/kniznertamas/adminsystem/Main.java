@@ -3,6 +3,8 @@ package hu.kniznertamas.adminsystem;
 import java.io.IOException;
 import java.util.Locale;
 
+import hu.kniznertamas.adminsystem.helper.Spinner;
+import javafx.concurrent.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,6 +45,24 @@ public class Main extends Application {
 		FXMLLoader loader = FXMLLoaderHelper.getContentNode("/view/Main.fxml");
 		try {
 			setStageProperties(primaryStage, loader.load());
+			primaryStage.show();
+
+            Spinner sp = new Spinner();
+            sp.activateProgressBar(new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    for (int i = 0; i < 10; i++) {
+                        updateProgress(i, 10);
+                        Thread.sleep(200);
+                    }
+                    updateProgress(10, 10);
+					for(int i = 0;  i < 5; i++) {
+                        Thread.sleep(1000);
+                    }
+                    return null;
+                }
+            });
+
 		} catch (IOException e) {
 			LOGGER.error(e.getMessage());
 		}
@@ -57,7 +77,6 @@ public class Main extends Application {
 		scene.getStylesheets().add(getClass().getResource("/style/jfoenix-design.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Adminisztrációs rendszer");
-		primaryStage.show();
 	}
 	
 	public static void main(String[] args) {

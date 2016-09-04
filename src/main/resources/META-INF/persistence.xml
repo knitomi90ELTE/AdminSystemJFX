@@ -2,21 +2,6 @@
 <!DOCTYPE persistence>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
 
-    <!-- persistence-unit name="remotePersistenceUnit">
-        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>hu.kniznertamas.adminsystem.db.entity.BalanceEntity</class>
-        <class>hu.kniznertamas.adminsystem.db.entity.ProjectsEntity</class>
-        <class>hu.kniznertamas.adminsystem.db.entity.StatusEntity</class>
-        <class>hu.kniznertamas.adminsystem.db.entity.UploadEntity</class>
-        <class>hu.kniznertamas.adminsystem.db.entity.UsersEntity</class>
-        <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://kniznertamas.hopto.org:3306/kniznerasztalos?useUnicode=yes&amp;characterEncoding=UTF-8"/>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.user" value="knitomi"/>
-            <property name="javax.persistence.jdbc.password" value="leadstar"/>
-        </properties>
-    <persistence-unit name=""></persistence-unit-->
-
     <persistence-unit name="remotePersistenceUnit_DEV">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>hu.kniznertamas.adminsystem.db.entity.BalanceEntity</class>
@@ -27,8 +12,8 @@
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://kniznertamas.hopto.org:3306/kniznerasztalos_dev?useUnicode=yes&amp;characterEncoding=UTF-8"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.user" value="knitomi"/>
-            <property name="javax.persistence.jdbc.password" value="leadstar"/>
+            <property name="javax.persistence.jdbc.user" value="appuser"/>
+            <property name="javax.persistence.jdbc.password" value="password"/>
         </properties>
     </persistence-unit>
 </persistence>

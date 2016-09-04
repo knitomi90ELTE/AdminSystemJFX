@@ -32,7 +32,6 @@ public class DailyViewController implements Initializable {
         datePicker.setValue(ld);
         currentDate = ld;
         ControllerMediator.getInstance().registerControllerDailyView(this);
-        //updateTables();
     }
 
     public void decreaseDate() {

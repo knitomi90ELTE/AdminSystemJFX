@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuItem?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.HBox?>
 
-<MenuBar xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="hu.kniznertamas.adminsystem.gui.controllers.MenuBarController">
-	<Menu text="Fájl">
-		<MenuItem text="Új hozzáadása" onAction="#addNewData" />
-		<MenuItem text="Alapnézet" onAction="#showMain" />
-	</Menu>
-</MenuBar>
+<HBox alignment="TOP_RIGHT" spacing="10.0" style="-fx-background-color: #283593;" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.MenuBarController">
+    <JFXButton onAction="#addNewData" text="Adatfelvitel" />
+    <JFXButton onAction="#showMain" text="Főoldal" />
+</HBox>

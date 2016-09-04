@@ -39,7 +39,7 @@ public class UserViewController implements Initializable {
 	private JFXComboBox<UsersEntity> comboBox;
 
 	public UserViewController() {
-		// loadUsers();
+
 	}
 
 	@Override
