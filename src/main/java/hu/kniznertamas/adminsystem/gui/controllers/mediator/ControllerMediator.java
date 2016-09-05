@@ -1,6 +1,9 @@
 package hu.kniznertamas.adminsystem.gui.controllers.mediator;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
@@ -14,10 +17,15 @@ import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.ProjectViewCo
 import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.UserViewController;
 import hu.kniznertamas.adminsystem.gui.controllers.projecttables.FinancesTableController;
 import hu.kniznertamas.adminsystem.gui.controllers.projecttables.HoursTableController;
+import hu.kniznertamas.adminsystem.helper.DialogManager;
 import javafx.application.Platform;
 import javafx.scene.layout.StackPane;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ControllerMediator implements IMediateControllers {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ControllerMediator.class);
 
     private UserViewController userViewController;
     private UploadTableController uploadTableController;
@@ -135,11 +143,46 @@ public class ControllerMediator implements IMediateControllers {
     }
 
     public void loadAllData() {
-    	Platform.runLater(() -> userViewController.loadUsers());
-    	Platform.runLater(() -> projectViewController.loadProjects());
+        /*Platform.runLater(() -> userViewController.loadUsers());
+        Platform.runLater(() -> projectViewController.loadProjects());
     	Platform.runLater(() -> dailyViewController.updateTables());
     	Platform.runLater(() -> openItemsViewController.initOpenItemsTable());
-    	Platform.runLater(() -> financesController.initStatusBox());
+    	Platform.runLater(() -> financesController.initStatusBox());*/
+        ExecutorService service = Executors.newFixedThreadPool(5);
+        try {
+            service.invokeAll(createTasks());
+            //DialogManager.showDialog("Hiba", "Váratlan hiba történt, kérlek indítsd újra az alkalmazást!", "Rendben", "error");
+        } catch (InterruptedException e) {
+            LOGGER.error("Exception while loading data {}", e.getMessage());
+        } finally {
+            service.shutdown();
+        }
+
+    }
+
+    private List<Callable<Void>> createTasks() {
+        List<Callable<Void>> tasks = new ArrayList<>();
+        tasks.add(() -> {
+            userViewController.loadUsers();
+            return null;
+        });
+        tasks.add(() -> {
+            projectViewController.loadProjects();
+            return null;
+        });
+        tasks.add(() -> {
+            dailyViewController.updateTables();
+            return null;
+        });
+        tasks.add(() -> {
+            openItemsViewController.initOpenItemsTable();
+            return null;
+        });
+        tasks.add(() -> {
+            financesController.initStatusBox();
+            return null;
+        });
+        return tasks;
     }
 
 }

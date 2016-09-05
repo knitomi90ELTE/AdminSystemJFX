@@ -3,6 +3,7 @@ package hu.kniznertamas.adminsystem;
 import java.io.IOException;
 import java.util.Locale;
 
+import hu.kniznertamas.adminsystem.gui.controllers.MainController;
 import hu.kniznertamas.adminsystem.helper.Spinner;
 import javafx.concurrent.Task;
 import org.slf4j.Logger;
@@ -44,23 +45,11 @@ public class Main extends Application {
 	private void showPrimaryStage(Stage primaryStage) {
 		LOGGER.info("Initializing primary stage...");
 		FXMLLoader loader = FXMLLoaderHelper.getContentNode("/view/Main.fxml");
-		try {
+        try {
 			setStageProperties(primaryStage, loader.load());
 			primaryStage.show();
-
-            Spinner sp = new Spinner();
-            sp.activateProgressBar(new Task<Void>() {
-                @Override
-                protected Void call() throws Exception {
-                    Thread.sleep(2000);
-                    ControllerMediator.getInstance().loadAllData();
-                    updateProgress(9, 10);
-                    Thread.sleep(2000);
-                    updateProgress(10, 10);
-                    return null;
-                }
-            });
-
+            MainController mc = loader.getController();
+            mc.showBasicView();
 		} catch (IOException e) {
 			LOGGER.error(e.getMessage());
 		}
@@ -69,6 +58,7 @@ public class Main extends Application {
 	private void setStageProperties(Stage primaryStage, Parent pageToLoad) {
 		JFXDecorator decorator = new JFXDecorator(primaryStage, pageToLoad);
 		decorator.setCustomMaximize(true);
+        decorator.setMaximized(true);
 		Scene scene = new Scene(decorator);
 		scene.getStylesheets().add(getClass().getResource("/style/jfoenix-fonts.css").toExternalForm());
 		scene.getStylesheets().add(getClass().getResource("/style/main.css").toExternalForm());
