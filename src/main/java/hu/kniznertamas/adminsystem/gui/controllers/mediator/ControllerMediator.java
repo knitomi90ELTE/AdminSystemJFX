@@ -135,11 +135,11 @@ public class ControllerMediator implements IMediateControllers {
     }
 
     public void loadAllData() {
-        userViewController.loadUsers();
-        projectViewController.loadProjects();
-        dailyViewController.updateTables();
-        openItemsViewController.initOpenItemsTable();
-        financesController.initStatusBox();
+    	Platform.runLater(() -> userViewController.loadUsers());
+    	Platform.runLater(() -> projectViewController.loadProjects());
+    	Platform.runLater(() -> dailyViewController.updateTables());
+    	Platform.runLater(() -> openItemsViewController.initOpenItemsTable());
+    	Platform.runLater(() -> financesController.initStatusBox());
     }
 
 }

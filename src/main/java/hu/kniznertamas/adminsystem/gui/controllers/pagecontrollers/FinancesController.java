@@ -45,8 +45,8 @@ public class FinancesController implements Initializable {
     public void initStatusBox() {
         List<StatusEntity> statusList = statusDao.findAll();
         statusBox.setItems(FXCollections.observableArrayList(statusList));
-        statusBox.getSelectionModel().selectFirst();
         statusBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> loadDataToTable());
+        statusBox.getSelectionModel().selectFirst();
     }
 
     private void loadDataToTable(){

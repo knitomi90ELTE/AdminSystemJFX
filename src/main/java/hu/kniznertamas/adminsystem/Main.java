@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import com.jfoenix.controls.JFXDecorator;
 
+import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.helper.FXMLLoaderHelper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -51,14 +52,11 @@ public class Main extends Application {
             sp.activateProgressBar(new Task<Void>() {
                 @Override
                 protected Void call() throws Exception {
-                    for (int i = 0; i < 10; i++) {
-                        updateProgress(i, 10);
-                        Thread.sleep(200);
-                    }
+                    Thread.sleep(2000);
+                    ControllerMediator.getInstance().loadAllData();
+                    updateProgress(9, 10);
+                    Thread.sleep(2000);
                     updateProgress(10, 10);
-					for(int i = 0;  i < 5; i++) {
-                        Thread.sleep(1000);
-                    }
                     return null;
                 }
             });
