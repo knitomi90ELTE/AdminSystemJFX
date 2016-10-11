@@ -3,7 +3,12 @@ package hu.kniznertamas.adminsystem.gui.controllers.mediator;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
@@ -17,11 +22,8 @@ import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.ProjectViewCo
 import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.UserViewController;
 import hu.kniznertamas.adminsystem.gui.controllers.projecttables.FinancesTableController;
 import hu.kniznertamas.adminsystem.gui.controllers.projecttables.HoursTableController;
-import hu.kniznertamas.adminsystem.helper.DialogManager;
 import javafx.application.Platform;
 import javafx.scene.layout.StackPane;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class ControllerMediator implements IMediateControllers {
 

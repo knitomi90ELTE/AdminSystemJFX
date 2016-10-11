@@ -3,15 +3,12 @@ package hu.kniznertamas.adminsystem;
 import java.io.IOException;
 import java.util.Locale;
 
-import hu.kniznertamas.adminsystem.gui.controllers.MainController;
-import hu.kniznertamas.adminsystem.helper.Spinner;
-import javafx.concurrent.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.jfoenix.controls.JFXDecorator;
 
-import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import hu.kniznertamas.adminsystem.gui.controllers.MainController;
 import hu.kniznertamas.adminsystem.helper.FXMLLoaderHelper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

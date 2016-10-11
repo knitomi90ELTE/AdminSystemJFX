@@ -1,12 +1,12 @@
 package hu.kniznertamas.adminsystem.gui.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
 import hu.kniznertamas.adminsystem.helper.Spinner;
 import javafx.concurrent.Task;
 import javafx.fxml.Initializable;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class BasicViewController implements Initializable {
 
