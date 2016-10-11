@@ -70,3 +70,4 @@ target/
 .classpath
 
 .project
+/bin/

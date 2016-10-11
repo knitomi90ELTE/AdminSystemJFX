@@ -30,10 +30,6 @@ public class FinancesTableController implements Initializable {
     private final GenericDao<StatusEntity> statusDao;
     private final GenericDao<ProjectsEntity> projectsDao;
 
-    //Megjeleníteni:
-    //összes bevétel, kiadás
-    //
-
     @FXML
     private Label expensesLabel;
 

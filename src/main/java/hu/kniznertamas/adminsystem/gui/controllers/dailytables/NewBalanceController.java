@@ -12,6 +12,8 @@ import hu.kniznertamas.adminsystem.gui.elements.NumberTextField;
 import hu.kniznertamas.adminsystem.gui.elements.PopupAbstractt;
 import hu.kniznertamas.adminsystem.helper.CallbackInterface;
 import hu.kniznertamas.adminsystem.helper.EntityHelper;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -103,10 +105,11 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
                 hidePaidPicker();
             }
         });
+        paidBox.setSelected(true);
     }
 
     private void initPaidPicker() {
-        paidPicker = new JFXDatePicker(LocalDate.now());
+        paidPicker = new JFXDatePicker(ControllerMediator.getInstance().getCurrentDate());
         paidPicker.setPrefHeight(36.0);
         paidPicker.setPrefWidth(200.0);
     }
@@ -128,14 +131,10 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     }
     
     private void initTextFields() {
-        /*nettoField.setText("0");
-        bruttoField.setText("0");
-        afaValueField.setText("0");
-        noteField.setText("");*/
 
         nettoField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (bruttoField.isFocused() || "".equals(nettoField.getText())) return;
-            double multi = 1.0 + (((customAfaAdded) ? Double.parseDouble(customAfa.getText()) : Double.parseDouble(afaBox.getSelectionModel().getSelectedItem())) / 100);
+            double multi = getMultiplier();
             double bruttoValue = (Integer.parseInt(nettoField.getText())) * multi;
             bruttoField.setText(Integer.toString((int) bruttoValue));
             setAfaValueField();
@@ -143,12 +142,22 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
 
         bruttoField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (nettoField.isFocused() || "".equals(bruttoField.getText())) return;
-            double multi = 1.0 + (((customAfaAdded) ? Double.parseDouble(customAfa.getText()) : Double.parseDouble(afaBox.getSelectionModel().getSelectedItem())) / 100);
+            double multi = getMultiplier();
             double nettoValue = (Integer.parseInt(bruttoField.getText())) / multi;
             nettoField.setText(Integer.toString((int) nettoValue));
             setAfaValueField();
         });
     }
+
+	private double getMultiplier() {
+		double multi = 1.0;
+		if(customAfaAdded && !"".equals(customAfa.getText())) {
+			multi += (Double.parseDouble(customAfa.getText()) / 100);
+		} else {
+			multi += (Double.parseDouble(afaBox.getSelectionModel().getSelectedItem()) / 100);
+		}
+		return multi;
+	}
 
     private void setAfaValueField() {
         afaValueField.setText(Integer.toString(Integer.parseInt(bruttoField.getText()) - Integer.parseInt(nettoField.getText())));
@@ -231,11 +240,14 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
         customAfa.prefHeight(36.0);
         customAfa.setPromptText("Egyedi ÁFA");
         customAfa.setText("0");
+        customAfa.textProperty().addListener((observable, oldValue, newValue) -> {
+        	reloadNettoField();
+		});
     }
 
     private void initAfaBox() {
         afaBox.getItems().addAll("0", "27", "egyéb");
-        afaBox.getSelectionModel().select(1);
+        afaBox.getSelectionModel().select(0);
         afaBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if ("egyéb".equals(newValue)) {
                 if (!customAfaAdded) {
@@ -248,7 +260,14 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
                     customAfaAdded = false;
                 }
             }
+            reloadNettoField();
         });
+    }
+    
+    private void reloadNettoField() {
+    	String nettoValue = nettoField.getText();
+        nettoField.setText("");
+        nettoField.setText(nettoValue);
     }
 
     @FXML

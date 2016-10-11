@@ -3,8 +3,10 @@ package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,7 +23,11 @@ import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.util.Callback;
 
 public class BalanceTableController implements Initializable {
 
@@ -40,12 +46,26 @@ public class BalanceTableController implements Initializable {
         ControllerMediator.getInstance().registerControllerBalanceTable(this);
     }
 
-    public void refreshTableData(LocalDate currentDate){
+    private void initCellFactory() {
+    	balanceTable.setRowFactory(row -> new TableRow<ExtendedBalanceEntity>(){
+    	    @Override
+    	    public void updateItem(ExtendedBalanceEntity item, boolean empty){
+    	    	if(empty) return;
+    	        List<Integer> incomeIndexes = Arrays.asList(3, 17, 18);
+    	        if(incomeIndexes.contains(item.getStatusId())) {
+    	        	setStyle("-fx-background-color: rgba(0, 255, 0, 0.3)");
+    	        }
+    	    }
+    	});
+	}
+
+	public void refreshTableData(LocalDate currentDate){
         Stream<BalanceEntity> balanceList = balanceDao.findAll().stream();
         List<BalanceEntity> filteredList = balanceList.filter(item -> (item.getCompleted() != null) && item.getCompleted().equals(Date.valueOf(currentDate))).collect(Collectors.toList());
         List<ExtendedBalanceEntity> extendedList = EntityHelper.createExtendedBalanceEntityList(filteredList);
         LOGGER.info("Data: {}", extendedList);
         balanceTable.setItems(FXCollections.observableArrayList(extendedList));
+        initCellFactory();
         balanceTable.refresh();
     }
 

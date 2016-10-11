@@ -63,7 +63,7 @@
     </JFXComboBox>
     <JFXComboBox fx:id="statusIdBox" prefHeight="36.0" prefWidth="200.0" GridPane.columnIndex="1"
                  GridPane.rowIndex="9"/>
-    <JFXCheckBox fx:id="cashBox" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+    <JFXCheckBox fx:id="cashBox" GridPane.columnIndex="1" GridPane.rowIndex="10" selected="true"/>
     <JFXTextField fx:id="noteField" prefHeight="36.0" prefWidth="200.0" promptText="Megjegyzés" GridPane.columnIndex="1"
                GridPane.rowIndex="11"/>
     <JFXButton onAction="#onSaveAction" prefHeight="36.0" prefWidth="200.0" text="Mentés" GridPane.columnIndex="0"
