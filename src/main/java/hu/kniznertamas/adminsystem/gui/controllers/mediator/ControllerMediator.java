@@ -145,15 +145,9 @@ public class ControllerMediator implements IMediateControllers {
     }
 
     public void loadAllData() {
-        /*Platform.runLater(() -> userViewController.loadUsers());
-        Platform.runLater(() -> projectViewController.loadProjects());
-    	Platform.runLater(() -> dailyViewController.updateTables());
-    	Platform.runLater(() -> openItemsViewController.initOpenItemsTable());
-    	Platform.runLater(() -> financesController.initStatusBox());*/
         ExecutorService service = Executors.newFixedThreadPool(5);
         try {
             service.invokeAll(createTasks());
-            //DialogManager.showDialog("Hiba", "Váratlan hiba történt, kérlek indítsd újra az alkalmazást!", "Rendben", "error");
         } catch (InterruptedException e) {
             LOGGER.error("Exception while loading data {}", e.getMessage());
         } finally {
