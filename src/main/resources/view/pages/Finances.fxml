@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <VBox prefHeight="768.0" prefWidth="1366.0" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.FinancesController">
-
     <HBox spacing="10.0">
         <Label text="Szűrés:" />
         <JFXComboBox fx:id="statusBox" />
@@ -15,7 +14,6 @@
             <Insets left="5.0" top="5.0" />
         </VBox.margin>
     </HBox>
-
     <TableView fx:id="balanceTable" prefHeight="700.0">
         <columns>
             <TableColumn prefWidth="100.0" text="Nettó">
@@ -70,5 +68,4 @@
             </TableColumn>
         </columns>
     </TableView>
-
 </VBox>

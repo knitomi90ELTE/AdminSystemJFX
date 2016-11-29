@@ -20,22 +20,18 @@
             <Font size="30.0" />
         </font>
     </Text>
-
     <Label text="Alkalmazott" GridPane.columnIndex="0" GridPane.rowIndex="1" />
     <Label text="Munka" GridPane.columnIndex="0" GridPane.rowIndex="2" />
     <Label text="Óraszám" GridPane.columnIndex="0" GridPane.rowIndex="3" />
     <Label text="Dátum" GridPane.columnIndex="0" GridPane.rowIndex="4" />
     <Label text="Megjegyzés" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-
     <JFXComboBox fx:id="userBox" prefHeight="36.0" promptText="Alkalmazott" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     <JFXComboBox fx:id="projectBox" prefHeight="36.0" promptText="Munka" GridPane.columnIndex="1" GridPane.rowIndex="2" />
     <NumberTextField fx:id="hoursField" prefHeight="36.0" prefWidth="200.0" promptText="Óraszám" GridPane.columnIndex="1" GridPane.rowIndex="3" />
     <JFXDatePicker fx:id="createdPicker" prefHeight="36.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
     <JFXTextField fx:id="noteField" prefHeight="36.0" prefWidth="200.0" promptText="Megjegyzés" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-
     <JFXButton onAction="#onSaveAction" prefHeight="36.0" prefWidth="200.0" text="Mentés" GridPane.columnIndex="0" GridPane.rowIndex="6" buttonType="RAISED"/>
     <JFXButton onAction="#onCancelAction" prefHeight="36.0" prefWidth="200.0" text="Mégse" GridPane.columnIndex="1" GridPane.rowIndex="6" buttonType="RAISED"/>
-
     <padding>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
     </padding>
@@ -52,5 +48,4 @@
         <RowConstraints />
         <RowConstraints />
     </rowConstraints>
-
 </GridPane>

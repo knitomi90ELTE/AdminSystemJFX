@@ -26,20 +26,17 @@
             <Font size="30.0"/>
         </font>
     </Text>
-
     <Label text="Nettó" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
     <Label text="Bruttó" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
     <Label text="ÁFA" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
     <Label text="ÁFA értéke" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
     <Label text="Dátum" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-
     <Label text="Teljesített" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
     <Label text="Típus" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
     <Label fx:id="modelIDLabel" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
     <Label text="Megnevezés" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
     <Label text="Készpénzes" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
     <Label text="Megjegyzés" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
-
     <NumberTextField fx:id="nettoField" prefHeight="36.0" promptText="Nettó érték" GridPane.columnIndex="1"
                GridPane.rowIndex="1" text="0"/>
     <NumberTextField fx:id="bruttoField" prefHeight="36.0" promptText="Bruttó érték" GridPane.columnIndex="1"
@@ -86,5 +83,4 @@
         <RowConstraints/>
         <RowConstraints/>
     </rowConstraints>
-
 </GridPane>

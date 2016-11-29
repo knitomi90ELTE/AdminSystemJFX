@@ -20,7 +20,6 @@
          <padding>
             <Insets top="5.0" />
          </padding>
-
         </HBox>
     </top>
     <center>
@@ -29,5 +28,4 @@
             <fx:include source="../dailytables/BalanceTable.fxml" />
         </VBox>
     </center>
-
 </BorderPane>
