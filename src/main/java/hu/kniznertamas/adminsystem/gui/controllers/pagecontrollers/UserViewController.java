@@ -1,8 +1,6 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -18,11 +16,10 @@ import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
 import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 
-public class UserViewController implements Initializable {
+public class UserViewController {
 
     @Autowired
     private GenericDao<UsersEntity> usersDao;
@@ -44,15 +41,6 @@ public class UserViewController implements Initializable {
 
     @FXML
     private JFXComboBox<UsersEntity> comboBox;
-
-    public UserViewController() {
-
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     public void loadUserData(UsersEntity usersEntity) {
         nameLabel.setText("Név: " + usersEntity.getName());

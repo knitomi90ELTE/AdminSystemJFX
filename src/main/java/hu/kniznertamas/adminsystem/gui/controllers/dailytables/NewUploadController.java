@@ -1,10 +1,8 @@
 package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 
-import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import org.controlsfx.control.PopOver;
 import org.slf4j.Logger;
@@ -27,9 +25,8 @@ import hu.kniznertamas.adminsystem.helper.CallbackInterface;
 import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 
-public class NewUploadController extends PopupAbstractt implements Initializable {
+public class NewUploadController extends PopupAbstractt {
 
     @Autowired
     private GenericDao<UsersEntity> usersDao;
@@ -69,11 +66,7 @@ public class NewUploadController extends PopupAbstractt implements Initializable
 
     private static final Logger LOGGER = LoggerFactory.getLogger(NewUploadController.class);
 
-    public NewUploadController() {
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void init() {
         initDate();
         loadUsers();
         loadProjects();

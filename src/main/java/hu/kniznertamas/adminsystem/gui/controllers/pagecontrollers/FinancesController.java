@@ -1,8 +1,6 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -19,10 +17,9 @@ import hu.kniznertamas.adminsystem.db.entity.StatusEntity;
 import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 
-public class FinancesController implements Initializable {
+public class FinancesController {
 
     @FXML
     private JFXComboBox<StatusEntity> statusBox;
@@ -37,10 +34,6 @@ public class FinancesController implements Initializable {
     private GenericDao<StatusEntity> statusDao;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FinancesController.class);
-
-    public FinancesController() {
-
-    }
 
     public void initStatusBox() {
         List<StatusEntity> statusList = statusDao.findAll();
@@ -60,8 +53,4 @@ public class FinancesController implements Initializable {
         balanceTable.refresh();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 }

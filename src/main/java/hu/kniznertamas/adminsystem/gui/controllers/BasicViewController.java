@@ -1,8 +1,5 @@
 package hu.kniznertamas.adminsystem.gui.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.DailyViewController;
@@ -12,9 +9,8 @@ import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.ProjectViewCo
 import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.UserViewController;
 import hu.kniznertamas.adminsystem.helper.Spinner;
 import javafx.concurrent.Task;
-import javafx.fxml.Initializable;
 
-public class BasicViewController implements Initializable {
+public class BasicViewController {
 
     @Autowired
     private UserViewController userViewController;
@@ -30,15 +26,6 @@ public class BasicViewController implements Initializable {
 
     @Autowired
     private FinancesController financesController;
-
-    public BasicViewController() {
-
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        loadDataToBasicView();
-    }
 
     private void loadDataToBasicView() {
         Spinner sp = new Spinner();

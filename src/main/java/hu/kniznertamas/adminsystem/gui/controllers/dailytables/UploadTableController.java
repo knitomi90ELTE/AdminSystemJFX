@@ -1,10 +1,8 @@
 package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 
-import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,10 +18,9 @@ import hu.kniznertamas.adminsystem.gui.elements.PopOverElement;
 import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 
-public class UploadTableController implements Initializable {
+public class UploadTableController {
 
     @FXML
     private TableView<ExtendedUploadEntity> uploadTable;
@@ -41,15 +38,6 @@ public class UploadTableController implements Initializable {
     private BalanceTableController balanceTableController;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UploadTableController.class);
-
-    public UploadTableController() {
-
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     @FXML
     private void addNewAction() {

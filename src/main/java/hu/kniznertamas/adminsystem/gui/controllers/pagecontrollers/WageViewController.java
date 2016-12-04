@@ -1,15 +1,12 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXComboBox;
+
 import hu.kniznertamas.adminsystem.helper.WageEntityHelper;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 
-public class WageViewController implements Initializable {
+public class WageViewController {
 
     @FXML
     private JFXComboBox<String> yearPicker;
@@ -24,8 +21,7 @@ public class WageViewController implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void init() {
         initYearPicker();
         initMonthPicker();
     }
@@ -40,8 +36,7 @@ public class WageViewController implements Initializable {
 
     @FXML
     private void loadTableAction() {
-    	wageTable.refresh();
+        wageTable.refresh();
     }
-
 
 }

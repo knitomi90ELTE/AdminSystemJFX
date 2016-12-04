@@ -1,8 +1,6 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,10 +13,9 @@ import hu.kniznertamas.adminsystem.gui.controllers.projecttables.HoursTableContr
 import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-public class ProjectViewController implements Initializable {
+public class ProjectViewController {
 
     @FXML
     private Label nameLabel;
@@ -43,15 +40,6 @@ public class ProjectViewController implements Initializable {
 
     @Autowired
     private FinancesTableController financesTableController;
-
-    public ProjectViewController() {
-
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     public void loadProjectData(ProjectsEntity projectsEntity) {
         nameLabel.setText("Név: " + projectsEntity.getName());

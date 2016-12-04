@@ -1,8 +1,6 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
-import java.net.URL;
 import java.time.LocalDate;
-import java.util.ResourceBundle;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +11,8 @@ import com.jfoenix.controls.JFXDatePicker;
 import hu.kniznertamas.adminsystem.gui.controllers.dailytables.BalanceTableController;
 import hu.kniznertamas.adminsystem.gui.controllers.dailytables.UploadTableController;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 
-public class DailyViewController implements Initializable {
+public class DailyViewController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DailyViewController.class);
 
@@ -30,12 +27,7 @@ public class DailyViewController implements Initializable {
 
     private LocalDate currentDate;
 
-    public DailyViewController() {
-
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void init() {
         LocalDate ld = LocalDate.now();
         datePicker.setValue(ld);
         currentDate = ld;

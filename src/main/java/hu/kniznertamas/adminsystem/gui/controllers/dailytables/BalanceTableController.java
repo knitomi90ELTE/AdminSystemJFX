@@ -1,11 +1,9 @@
 package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 
-import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,11 +20,10 @@ import hu.kniznertamas.adminsystem.gui.elements.PopOverElement;
 import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 
-public class BalanceTableController implements Initializable {
+public class BalanceTableController {
 
     @FXML
     private TableView<ExtendedBalanceEntity> balanceTable;
@@ -47,15 +44,6 @@ public class BalanceTableController implements Initializable {
 
     @Autowired
     private DailyViewController dailyViewController;
-
-    public BalanceTableController() {
-
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     private void initCellFactory() {
         balanceTable.setRowFactory(row -> new TableRow<ExtendedBalanceEntity>() {

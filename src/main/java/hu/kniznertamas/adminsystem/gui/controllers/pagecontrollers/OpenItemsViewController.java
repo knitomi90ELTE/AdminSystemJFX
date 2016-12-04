@@ -1,8 +1,6 @@
 package hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers;
 
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -18,10 +16,9 @@ import hu.kniznertamas.adminsystem.gui.elements.PopOverElement;
 import hu.kniznertamas.adminsystem.helper.EntityHelper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 
-public class OpenItemsViewController implements Initializable {
+public class OpenItemsViewController {
 
     @FXML
     private TableView<ExtendedBalanceEntity> openItemsTable;
@@ -30,15 +27,6 @@ public class OpenItemsViewController implements Initializable {
     private GenericDao<BalanceEntity> balanceDao;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OpenItemsViewController.class);
-
-    public OpenItemsViewController() {
-
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     public void initOpenItemsTable() {
         Stream<BalanceEntity> balanceList = balanceDao.findAll().stream();

@@ -1,26 +1,13 @@
 package hu.kniznertamas.adminsystem.gui.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 
-public class MenuBarController implements Initializable {
+public class MenuBarController {
 
     @Autowired
     private MainController mainController;
-
-    public MenuBarController() {
-
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     @FXML
     private void addNewData() {
