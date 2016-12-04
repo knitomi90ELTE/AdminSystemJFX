@@ -6,21 +6,29 @@ import java.util.ResourceBundle;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.jfoenix.controls.JFXDatePicker;
 
-import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import hu.kniznertamas.adminsystem.gui.controllers.dailytables.BalanceTableController;
+import hu.kniznertamas.adminsystem.gui.controllers.dailytables.UploadTableController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 public class DailyViewController implements Initializable {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(DailyViewController.class);
+
+    @Autowired
+    private UploadTableController uploadTableController;
+
+    @Autowired
+    private BalanceTableController balanceTableController;
+
     @FXML
     private JFXDatePicker datePicker;
 
     private LocalDate currentDate;
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(DailyViewController.class);
 
     public DailyViewController() {
 
@@ -31,7 +39,6 @@ public class DailyViewController implements Initializable {
         LocalDate ld = LocalDate.now();
         datePicker.setValue(ld);
         currentDate = ld;
-        ControllerMediator.getInstance().registerControllerDailyView(this);
     }
 
     public void decreaseDate() {
@@ -55,7 +62,8 @@ public class DailyViewController implements Initializable {
 
     public void updateTables() {
         LOGGER.info("Updating tables {}", currentDate.toString());
-        ControllerMediator.getInstance().refreshDailyTableData(currentDate);
+        uploadTableController.refreshTableData(currentDate);
+        balanceTableController.refreshTableData(currentDate);
     }
 
     public LocalDate getCurrentDate() {

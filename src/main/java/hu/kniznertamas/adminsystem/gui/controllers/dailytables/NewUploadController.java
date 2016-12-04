@@ -2,24 +2,25 @@ package hu.kniznertamas.adminsystem.gui.controllers.dailytables;
 
 import java.net.URL;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.PopOver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
-import hu.kniznertamas.adminsystem.db.dao.DaoManager;
 import hu.kniznertamas.adminsystem.db.dao.GenericDao;
 import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
-import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import hu.kniznertamas.adminsystem.gui.controllers.pagecontrollers.DailyViewController;
 import hu.kniznertamas.adminsystem.gui.elements.NumberTextField;
 import hu.kniznertamas.adminsystem.gui.elements.PopupAbstractt;
 import hu.kniznertamas.adminsystem.helper.CallbackInterface;
@@ -29,6 +30,24 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 public class NewUploadController extends PopupAbstractt implements Initializable {
+
+    @Autowired
+    private GenericDao<UsersEntity> usersDao;
+
+    @Autowired
+    private GenericDao<ProjectsEntity> projectsDao;
+
+    @Autowired
+    private GenericDao<UploadEntity> uploadDao;
+
+    @Autowired
+    private DailyViewController dailyViewController;
+
+    @Autowired
+    private BalanceTableController balanceTableController;
+
+    @Autowired
+    private UploadTableController uploadTableController;
 
     @FXML
     private JFXComboBox<UsersEntity> userBox;
@@ -61,8 +80,9 @@ public class NewUploadController extends PopupAbstractt implements Initializable
     }
 
     private boolean validForm() {
-        if ("".equals(hoursField.getText()))
+        if ("".equals(hoursField.getText())) {
             return false;
+        }
         try {
             Double.parseDouble(hoursField.getText());
         } catch (NumberFormatException e) {
@@ -78,32 +98,34 @@ public class NewUploadController extends PopupAbstractt implements Initializable
             return;
         }
         UploadEntity newUpload = new UploadEntity();
-        newUpload.setUserId((userBox.getSelectionModel().getSelectedItem()).getId());
-        newUpload.setProjectId((projectBox.getSelectionModel().getSelectedItem()).getId());
+        newUpload.setUserId(userBox.getSelectionModel().getSelectedItem().getId());
+        newUpload.setProjectId(projectBox.getSelectionModel().getSelectedItem().getId());
         newUpload.setHour(Double.parseDouble(hoursField.getText()));
         newUpload.setCreated(Date.valueOf(createdPicker.getValue()));
-        newUpload.setNote((noteField.getText().length() == 0) ? "" : noteField.getText());
-        GenericDao<UploadEntity> uploadDao = DaoManager.getInstance().getUploadDao();
+        newUpload.setNote(noteField.getText().length() == 0 ? "" : noteField.getText());
         uploadDao.create(newUpload);
         LOGGER.info("Saved entity: {}", newUpload);
-        ControllerMediator.getInstance().refreshDailyTableData(createdPicker.getValue());
+        refreshDailyTableData(createdPicker.getValue());
         onCancelAction();
     }
 
+    public void refreshDailyTableData(LocalDate currentDate) {
+        uploadTableController.refreshTableData(currentDate);
+        balanceTableController.refreshTableData(currentDate);
+    }
+
     private void initDate() {
-        createdPicker.setValue(ControllerMediator.getInstance().getCurrentDate());
+        createdPicker.setValue(dailyViewController.getCurrentDate());
     }
 
     private void loadUsers() {
-        GenericDao<UsersEntity> userDao = DaoManager.getInstance().getUserDao();
-        List<UsersEntity> allUsers = userDao.findAll();
+        List<UsersEntity> allUsers = usersDao.findAll();
         userBox.setItems(FXCollections.observableArrayList(allUsers));
         EntityHelper.initComboBoxWithEntity(userBox);
         userBox.getSelectionModel().selectFirst();
     }
 
     private void loadProjects() {
-        GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
         List<ProjectsEntity> allProjects = projectsDao.findAll();
         projectBox.setItems(FXCollections.observableArrayList(allProjects));
         EntityHelper.initComboBoxWithEntity(projectBox);

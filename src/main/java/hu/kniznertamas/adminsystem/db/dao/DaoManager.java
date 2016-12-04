@@ -1,11 +1,14 @@
 package hu.kniznertamas.adminsystem.db.dao;
 
+import org.springframework.stereotype.Component;
+
 import hu.kniznertamas.adminsystem.db.entity.BalanceEntity;
 import hu.kniznertamas.adminsystem.db.entity.ProjectsEntity;
 import hu.kniznertamas.adminsystem.db.entity.StatusEntity;
 import hu.kniznertamas.adminsystem.db.entity.UploadEntity;
 import hu.kniznertamas.adminsystem.db.entity.UsersEntity;
 
+@Component
 public class DaoManager {
 
 	private GenericDao<BalanceEntity> balanceDao;
@@ -49,8 +52,7 @@ public class DaoManager {
 		return userDao;
 	}
 
-	
-	//TIPP: guava class instance map, spring "canHandle"
+	// TIPP: guava class instance map, spring "canHandle"
 	@SuppressWarnings("rawtypes")
 	public GenericDao getDaoByType(DaoType type) {
 		GenericDao dao = null;

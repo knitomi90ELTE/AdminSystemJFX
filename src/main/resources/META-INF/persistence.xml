@@ -9,7 +9,7 @@
         <class>hu.kniznertamas.adminsystem.db.entity.UploadEntity</class>
         <class>hu.kniznertamas.adminsystem.db.entity.UsersEntity</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://kniznertamas.com/kniznerasztalos?useUnicode=yes&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://kniznertamas.com/kniznerasztalos_dev?useUnicode=yes&amp;characterEncoding=UTF-8"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.user" value="appuser"/>
             <property name="javax.persistence.jdbc.password" value="3LZqJsDXFcS4WVDJdPGU3p4DC7cLvGEh"/>

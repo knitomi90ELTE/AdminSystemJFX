@@ -12,65 +12,66 @@ import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
 
 class DefaultDao<T extends PersistentEntity> implements GenericDao<T> {
 
-    private final Class<T> CLASS;
-    private final EntityManagerFactory EMF;
+	private final Class<T> CLASS;
+	private final EntityManagerFactory EMF;
 
-    private final boolean ENV_DEV = true;
+	private final boolean ENV_DEV = true;
 
-    DefaultDao(Class<T> CLASS) {
-        this.CLASS = CLASS;
-        this.EMF = ENV_DEV ? Persistence.createEntityManagerFactory("remotePersistenceUnit_DEV") : Persistence.createEntityManagerFactory("remotePersistenceUnit");
-    }
+	DefaultDao(Class<T> CLASS) {
+		this.CLASS = CLASS;
+		this.EMF = ENV_DEV ? Persistence.createEntityManagerFactory("remotePersistenceUnit_DEV")
+				: Persistence.createEntityManagerFactory("remotePersistenceUnit");
+	}
 
-    @Override
-    public void create(T entity) {
-        EntityManager entityManager = getEntityManager();
-        entityManager.getTransaction().begin();
-        entityManager.persist(entity);
-        entityManager.getTransaction().commit();
-    }
+	@Override
+	public void create(T entity) {
+		EntityManager entityManager = getEntityManager();
+		entityManager.getTransaction().begin();
+		entityManager.persist(entity);
+		entityManager.getTransaction().commit();
+	}
 
-    @Override
-    public void update(T entity) {
-        EntityManager entityManager = getEntityManager();
-        entityManager.getTransaction().begin();
-        entityManager.merge(entity);
-        entityManager.getTransaction().commit();
-    }
+	@Override
+	public void update(T entity) {
+		EntityManager entityManager = getEntityManager();
+		entityManager.getTransaction().begin();
+		entityManager.merge(entity);
+		entityManager.getTransaction().commit();
+	}
 
-    @Override
-    public void delete(T entity) {
-        EntityManager entityManager = getEntityManager();
-        entity = entityManager.merge(entity);
-        entityManager.getTransaction().begin();
-        entityManager.remove(entity);
-        entityManager.getTransaction().commit();
-    }
+	@Override
+	public void delete(T entity) {
+		EntityManager entityManager = getEntityManager();
+		entity = entityManager.merge(entity);
+		entityManager.getTransaction().begin();
+		entityManager.remove(entity);
+		entityManager.getTransaction().commit();
+	}
 
-    @Override
-    public List<T> findAll() {
-        return findEntities(true, -1, -1);
-    }
+	@Override
+	public List<T> findAll() {
+		return findEntities(true, -1, -1);
+	}
 
-    @Override
-    public T findById(Integer id) {
-        return getEntityManager().find(CLASS, id);
-    }
+	@Override
+	public T findById(Integer id) {
+		return getEntityManager().find(CLASS, id);
+	}
 
-    private EntityManager getEntityManager() {
-        return EMF.createEntityManager();
-    }
+	private EntityManager getEntityManager() {
+		return EMF.createEntityManager();
+	}
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private List<T> findEntities(boolean all, int firstResult, int maxResult) {
-        EntityManager entityManager = getEntityManager();
-        CriteriaQuery criteriaQuery = entityManager.getCriteriaBuilder().createQuery();
-        criteriaQuery.select(criteriaQuery.from(CLASS));
-        Query query = entityManager.createQuery(criteriaQuery);
-        if (!all) {
-            query.setFirstResult(firstResult);
-            query.setMaxResults(maxResult);
-        }
-        return query.getResultList();
-    }
+		EntityManager entityManager = getEntityManager();
+		CriteriaQuery criteriaQuery = entityManager.getCriteriaBuilder().createQuery();
+		criteriaQuery.select(criteriaQuery.from(CLASS));
+		Query query = entityManager.createQuery(criteriaQuery);
+		if (!all) {
+			query.setFirstResult(firstResult);
+			query.setMaxResults(maxResult);
+		}
+		return query.getResultList();
+	}
 }

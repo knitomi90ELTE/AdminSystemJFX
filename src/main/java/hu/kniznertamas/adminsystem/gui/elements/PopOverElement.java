@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.controlsfx.control.PopOver;
 
-import hu.kniznertamas.adminsystem.Main;
 import hu.kniznertamas.adminsystem.db.entity.PersistentEntity;
 import hu.kniznertamas.adminsystem.helper.CallbackInterface;
 import hu.kniznertamas.adminsystem.helper.FXMLLoaderHelper;
@@ -31,6 +30,6 @@ public class PopOverElement<T extends PopupAbstractt> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        popOver.show(Main.getInstance().getPrimaryStage());
+        // popOver.show(main.getPrimaryStage());
     }
 }

@@ -3,11 +3,15 @@ package hu.kniznertamas.adminsystem.gui.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import hu.kniznertamas.adminsystem.gui.controllers.mediator.ControllerMediator;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 public class MenuBarController implements Initializable {
+
+    @Autowired
+    private MainController mainController;
 
     public MenuBarController() {
 
@@ -20,12 +24,12 @@ public class MenuBarController implements Initializable {
 
     @FXML
     private void addNewData() {
-        ControllerMediator.getInstance().showNewDataView();
+        mainController.showNewDataView();
     }
 
     @FXML
     private void showMain() {
-    	ControllerMediator.getInstance().showBasicView();
+        mainController.showBasicView();
     }
 
 }
