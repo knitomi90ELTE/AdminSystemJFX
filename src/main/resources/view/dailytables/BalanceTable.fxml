@@ -27,6 +27,11 @@
                 <Insets left="10.0"/>
             </HBox.margin>
         </JFXButton>
+        <JFXButton onAction="#editSelectedAction" text="Szerkesztés" buttonType="RAISED">
+            <HBox.margin>
+                <Insets left="10.0"/>
+            </HBox.margin>
+        </JFXButton>
         <padding>
             <Insets left="10.0" top="10.0"/>
         </padding>

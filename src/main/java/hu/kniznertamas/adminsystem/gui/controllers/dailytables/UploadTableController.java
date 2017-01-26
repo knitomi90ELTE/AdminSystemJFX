@@ -42,13 +42,15 @@ public class UploadTableController implements Initializable {
     }
 
     @FXML
-    private void addNewAction(){
-        new PopOverElement<NewUploadController>("/view/dailytables/NewUploadView.fxml", null, () -> refreshTableData(ControllerMediator.getInstance().getCurrentDate()));
+    private void addNewAction() {
+        new PopOverElement<NewUploadController>("/view/dailytables/NewUploadView.fxml", null,
+                () -> refreshTableData(ControllerMediator.getInstance().getCurrentDate()));
     }
 
-    public void refreshTableData(LocalDate currentDate){
+    public void refreshTableData(LocalDate currentDate) {
         Stream<UploadEntity> uploadList = uploadDao.findAll().stream();
-        List<UploadEntity> filteredList = uploadList.filter(item -> item.getCreated().equals(Date.valueOf(currentDate))).collect(Collectors.toList());
+        List<UploadEntity> filteredList = uploadList.filter(item -> item.getCreated().equals(Date.valueOf(currentDate)))
+                .collect(Collectors.toList());
         List<ExtendedUploadEntity> extendedList = EntityHelper.createExtendedUploadEntityList(filteredList);
         LOGGER.info("Data: {}", extendedList);
         uploadTable.setItems(FXCollections.observableArrayList(extendedList));
@@ -58,11 +60,22 @@ public class UploadTableController implements Initializable {
     @FXML
     private void removeSelectedAction() {
         ExtendedUploadEntity eue = uploadTable.getSelectionModel().getSelectedItem();
-        if(eue == null) {
-        	return;
+        if (eue == null) {
+            return;
         }
         LOGGER.info("Removing entity: {}", eue.getId());
         uploadDao.delete(uploadDao.findById(eue.getId()));
         ControllerMediator.getInstance().refreshDailyTableData(eue.getCreated().toLocalDate());
     }
+
+    @FXML
+    private void editSelectedAction() {
+        ExtendedUploadEntity eue = uploadTable.getSelectionModel().getSelectedItem();
+        if (eue == null) {
+            return;
+        }
+        new PopOverElement<NewUploadController>("/view/dailytables/NewUploadView.fxml", eue,
+                () -> refreshTableData(ControllerMediator.getInstance().getCurrentDate()));
+    }
+
 }

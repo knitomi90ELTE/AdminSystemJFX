@@ -19,7 +19,8 @@ class DefaultDao<T extends PersistentEntity> implements GenericDao<T> {
 
     DefaultDao(Class<T> CLASS) {
         this.CLASS = CLASS;
-        this.EMF = ENV_DEV ? Persistence.createEntityManagerFactory("remotePersistenceUnit_DEV") : Persistence.createEntityManagerFactory("remotePersistenceUnit");
+        this.EMF = ENV_DEV ? Persistence.createEntityManagerFactory("remotePersistenceUnit_DEV")
+                : Persistence.createEntityManagerFactory("remotePersistenceUnit");
     }
 
     @Override
@@ -62,7 +63,7 @@ class DefaultDao<T extends PersistentEntity> implements GenericDao<T> {
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
-	private List<T> findEntities(boolean all, int firstResult, int maxResult) {
+    private List<T> findEntities(boolean all, int firstResult, int maxResult) {
         EntityManager entityManager = getEntityManager();
         CriteriaQuery criteriaQuery = entityManager.getCriteriaBuilder().createQuery();
         criteriaQuery.select(criteriaQuery.from(CLASS));

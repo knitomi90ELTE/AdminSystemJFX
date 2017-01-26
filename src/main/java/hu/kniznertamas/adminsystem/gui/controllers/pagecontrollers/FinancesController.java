@@ -37,7 +37,7 @@ public class FinancesController implements Initializable {
     private static final Logger LOGGER = LoggerFactory.getLogger(FinancesController.class);
 
     public FinancesController() {
-    	ControllerMediator.getInstance().registerControllerFinances(this);
+        ControllerMediator.getInstance().registerControllerFinances(this);
         balanceDao = DaoManager.getInstance().getBalanceDao();
         statusDao = DaoManager.getInstance().getStatusDao();
     }
@@ -45,13 +45,15 @@ public class FinancesController implements Initializable {
     public void initStatusBox() {
         List<StatusEntity> statusList = statusDao.findAll();
         statusBox.setItems(FXCollections.observableArrayList(statusList));
-        statusBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> loadDataToTable());
-        //statusBox.getSelectionModel().selectFirst();
+        statusBox.getSelectionModel().selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> loadDataToTable());
     }
 
-    private void loadDataToTable(){
+    private void loadDataToTable() {
         Stream<BalanceEntity> balanceList = balanceDao.findAll().stream();
-        List<BalanceEntity> filteredList = balanceList.filter(item -> item.getStatusId().equals(statusBox.getSelectionModel().getSelectedItem().getId())).collect(Collectors.toList());
+        List<BalanceEntity> filteredList = balanceList
+                .filter(item -> item.getStatusId().equals(statusBox.getSelectionModel().getSelectedItem().getId()))
+                .collect(Collectors.toList());
         List<ExtendedBalanceEntity> extendedList = EntityHelper.createExtendedBalanceEntityList(filteredList);
         LOGGER.info("Data: {}", extendedList);
         balanceTable.setItems(FXCollections.observableArrayList(extendedList));

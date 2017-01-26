@@ -8,12 +8,16 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class PersistentEntity {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 }

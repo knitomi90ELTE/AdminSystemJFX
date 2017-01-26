@@ -47,6 +47,7 @@ public class NewUploadController extends PopupAbstractt implements Initializable
 
     private PopOver parent;
     private CallbackInterface callbackFunction;
+    private UploadEntity currentEntity = null;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(NewUploadController.class);
 
@@ -61,8 +62,9 @@ public class NewUploadController extends PopupAbstractt implements Initializable
     }
 
     private boolean validForm() {
-        if ("".equals(hoursField.getText()))
+        if ("".equals(hoursField.getText())) {
             return false;
+        }
         try {
             Double.parseDouble(hoursField.getText());
         } catch (NumberFormatException e) {
@@ -77,15 +79,30 @@ public class NewUploadController extends PopupAbstractt implements Initializable
             hoursField.setText("HIBÁS ÉRTÉK");
             return;
         }
-        UploadEntity newUpload = new UploadEntity();
-        newUpload.setUserId((userBox.getSelectionModel().getSelectedItem()).getId());
-        newUpload.setProjectId((projectBox.getSelectionModel().getSelectedItem()).getId());
-        newUpload.setHour(Double.parseDouble(hoursField.getText()));
-        newUpload.setCreated(Date.valueOf(createdPicker.getValue()));
-        newUpload.setNote((noteField.getText().length() == 0) ? "" : noteField.getText());
+
         GenericDao<UploadEntity> uploadDao = DaoManager.getInstance().getUploadDao();
-        uploadDao.create(newUpload);
-        LOGGER.info("Saved entity: {}", newUpload);
+        if (currentEntity != null) {
+            UploadEntity editedUpload = uploadDao.findById(currentEntity.getId());
+            LOGGER.info("EDIT");
+            editedUpload.setUserId(userBox.getSelectionModel().getSelectedItem().getId());
+            editedUpload.setProjectId(projectBox.getSelectionModel().getSelectedItem().getId());
+            editedUpload.setHour(Double.parseDouble(hoursField.getText()));
+            editedUpload.setCreated(Date.valueOf(createdPicker.getValue()));
+            editedUpload.setNote(noteField.getText().length() == 0 ? "" : noteField.getText());
+            uploadDao.update(editedUpload);
+            LOGGER.info("Edited entity: {}", editedUpload);
+
+        } else {
+            UploadEntity newUpload = new UploadEntity();
+            newUpload.setUserId(userBox.getSelectionModel().getSelectedItem().getId());
+            newUpload.setProjectId(projectBox.getSelectionModel().getSelectedItem().getId());
+            newUpload.setHour(Double.parseDouble(hoursField.getText()));
+            newUpload.setCreated(Date.valueOf(createdPicker.getValue()));
+            newUpload.setNote(noteField.getText().length() == 0 ? "" : noteField.getText());
+            LOGGER.info("CREATE");
+            uploadDao.create(newUpload);
+            LOGGER.info("Saved entity: {}", newUpload);
+        }
         ControllerMediator.getInstance().refreshDailyTableData(createdPicker.getValue());
         onCancelAction();
     }
@@ -117,7 +134,18 @@ public class NewUploadController extends PopupAbstractt implements Initializable
 
     @Override
     public void loadEntityToFields(PersistentEntity entity) {
-
+        if (entity == null) {
+            return;
+        }
+        UploadEntity uploadEntity = (UploadEntity) entity;
+        currentEntity = uploadEntity;
+        GenericDao<UsersEntity> userDao = DaoManager.getInstance().getUserDao();
+        userBox.getSelectionModel().select(userDao.findById(uploadEntity.getUserId()));
+        GenericDao<ProjectsEntity> projectsDao = DaoManager.getInstance().getProjectsDao();
+        projectBox.getSelectionModel().select(projectsDao.findById(uploadEntity.getProjectId()));
+        hoursField.setText(uploadEntity.getHour().toString());
+        createdPicker.setValue(uploadEntity.getCreated().toLocalDate());
+        noteField.setText(uploadEntity.getNote());
     }
 
     @Override

@@ -46,8 +46,9 @@ public class BalanceTableController implements Initializable {
         balanceTable.setRowFactory(row -> new TableRow<ExtendedBalanceEntity>() {
             @Override
             public void updateItem(ExtendedBalanceEntity item, boolean empty) {
-                if (empty)
+                if (empty) {
                     return;
+                }
                 List<Integer> incomeIndexes = Arrays.asList(3, 17, 18);
                 if (incomeIndexes.contains(item.getStatusId())) {
                     setStyle("-fx-background-color: rgba(0, 255, 0, 0.3)");
@@ -59,7 +60,8 @@ public class BalanceTableController implements Initializable {
     public void refreshTableData(LocalDate currentDate) {
         Stream<BalanceEntity> balanceList = balanceDao.findAll().stream();
         List<BalanceEntity> filteredList = balanceList
-                .filter(item -> (item.getCompleted() != null) && item.getCompleted().equals(Date.valueOf(currentDate))).collect(Collectors.toList());
+                .filter(item -> item.getCompleted() != null && item.getCompleted().equals(Date.valueOf(currentDate)))
+                .collect(Collectors.toList());
         List<ExtendedBalanceEntity> extendedList = EntityHelper.createExtendedBalanceEntityList(filteredList);
         LOGGER.info("Data: {}", extendedList);
         balanceTable.setItems(FXCollections.observableArrayList(extendedList));
@@ -84,6 +86,18 @@ public class BalanceTableController implements Initializable {
         LOGGER.info("Removing entity: {}", ebe.getId());
         balanceDao.delete(balanceDao.findById(ebe.getId()));
         ControllerMediator.getInstance().refreshDailyTableData(ebe.getCreated().toLocalDate());
+    }
+
+    @FXML
+    private void editSelectedAction() {
+        ExtendedBalanceEntity ebe = balanceTable.getSelectionModel().getSelectedItem();
+        if (ebe == null) {
+            return;
+        }
+        new PopOverElement<NewBalanceController>("/view/dailytables/NewBalanceView.fxml", ebe, () -> {
+            refreshTableData(ControllerMediator.getInstance().getCurrentDate());
+            ControllerMediator.getInstance().refreshOpenItemsTable();
+        });
     }
 
 }

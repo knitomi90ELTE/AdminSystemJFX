@@ -136,19 +136,21 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     private void initTextFields() {
 
         nettoField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (bruttoField.isFocused() || "".equals(nettoField.getText()))
+            if (bruttoField.isFocused() || "".equals(nettoField.getText())) {
                 return;
+            }
             double multi = getMultiplier();
-            double bruttoValue = (Integer.parseInt(nettoField.getText())) * multi;
+            double bruttoValue = Integer.parseInt(nettoField.getText()) * multi;
             bruttoField.setText(Integer.toString((int) bruttoValue));
             setAfaValueField();
         });
 
         bruttoField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (nettoField.isFocused() || "".equals(bruttoField.getText()))
+            if (nettoField.isFocused() || "".equals(bruttoField.getText())) {
                 return;
+            }
             double multi = getMultiplier();
-            double nettoValue = (Integer.parseInt(bruttoField.getText())) / multi;
+            double nettoValue = Integer.parseInt(bruttoField.getText()) / multi;
             nettoField.setText(Integer.toString((int) nettoValue));
             setAfaValueField();
         });
@@ -157,20 +159,22 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     private double getMultiplier() {
         double multi = 1.0;
         if (customAfaAdded && !"".equals(customAfa.getText())) {
-            multi += (Double.parseDouble(customAfa.getText()) / 100);
+            multi += Double.parseDouble(customAfa.getText()) / 100;
         } else {
-            multi += (Double.parseDouble(afaBox.getSelectionModel().getSelectedItem()) / 100);
+            multi += Double.parseDouble(afaBox.getSelectionModel().getSelectedItem()) / 100;
         }
         return multi;
     }
 
     private void setAfaValueField() {
-        afaValueField.setText(Integer.toString(Integer.parseInt(bruttoField.getText()) - Integer.parseInt(nettoField.getText())));
+        afaValueField.setText(
+                Integer.toString(Integer.parseInt(bruttoField.getText()) - Integer.parseInt(nettoField.getText())));
     }
 
     private void showUserBox() {
-        if (mainGridPane.getChildren().contains(userBox))
+        if (mainGridPane.getChildren().contains(userBox)) {
             return;
+        }
         if (mainGridPane.getChildren().contains(projectBox)) {
             mainGridPane.getChildren().removeAll(projectBox);
         }
@@ -180,8 +184,9 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     }
 
     private void showProjectBox() {
-        if (mainGridPane.getChildren().contains(projectBox))
+        if (mainGridPane.getChildren().contains(projectBox)) {
             return;
+        }
         if (mainGridPane.getChildren().contains(userBox)) {
             mainGridPane.getChildren().removeAll(userBox);
         }
@@ -287,36 +292,32 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
     }
 
     private void modifyEntity() {
-        tempEntity.setNetto(Integer.parseInt(nettoField.getText()));
-        tempEntity.setBrutto(Integer.parseInt(bruttoField.getText()));
-        tempEntity.setAfa(Integer.parseInt((customAfaAdded) ? customAfa.getText() : afaBox.getSelectionModel().getSelectedItem()));
-        tempEntity.setAfaValue(Integer.parseInt(afaValueField.getText()));
-        tempEntity.setCreated(Date.valueOf(createdPicker.getValue()));
-        tempEntity.setCompleted((paidBox.isSelected()) ? Date.valueOf(paidPicker.getValue()) : null);
-        tempEntity.setStatusId((statusIdBox.getSelectionModel().getSelectedItem()).getId());
-        tempEntity.setCash(cashBox.isSelected());
-        tempEntity.setNote(noteField.getText());
+        GenericDao<BalanceEntity> balanceDao = DaoManager.getInstance().getBalanceDao();
+        BalanceEntity editedEntity = balanceDao.findById(tempEntity.getId());
+        editedEntity.setNetto(Integer.parseInt(nettoField.getText()));
+        editedEntity.setBrutto(Integer.parseInt(bruttoField.getText()));
+        editedEntity.setAfa(
+                Integer.parseInt(customAfaAdded ? customAfa.getText() : afaBox.getSelectionModel().getSelectedItem()));
+        editedEntity.setAfaValue(Integer.parseInt(afaValueField.getText()));
+        editedEntity.setCreated(Date.valueOf(createdPicker.getValue()));
+        editedEntity.setCompleted(paidBox.isSelected() ? Date.valueOf(paidPicker.getValue()) : null);
+        editedEntity.setStatusId(statusIdBox.getSelectionModel().getSelectedItem().getId());
+        editedEntity.setCash(cashBox.isSelected());
+        editedEntity.setNote(noteField.getText());
         String modelName = modelNameBox.getSelectionModel().getSelectedItem();
-        switch (modelName) {
-        case "Alkalmazott":
-            tempEntity.setModelName("user");
-            tempEntity.setModelId((userBox.getSelectionModel().getSelectedItem()).getId());
-            break;
-        case "Munka":
-            tempEntity.setModelName("project");
-            tempEntity.setModelId((projectBox.getSelectionModel().getSelectedItem()).getId());
-            break;
-        case "Egyéb":
-            tempEntity.setModelName(null);
-            tempEntity.setModelId(null);
-            break;
-        default:
-            break;
+        if ("Alkalmazott".equals(modelName)) {
+            editedEntity.setModelName("user");
+            editedEntity.setModelId(userBox.getSelectionModel().getSelectedItem().getId());
+        } else if ("Munka".equals(modelName)) {
+            editedEntity.setModelName("project");
+            editedEntity.setModelId(projectBox.getSelectionModel().getSelectedItem().getId());
+        } else if ("Egyéb".equals(modelName)) {
+            editedEntity.setModelName(null);
+            editedEntity.setModelId(null);
         }
 
-        GenericDao<BalanceEntity> balanceDao = DaoManager.getInstance().getBalanceDao();
-        balanceDao.update(tempEntity);
-        LOGGER.info("Modified entity: {}", tempEntity.getId());
+        balanceDao.update(editedEntity);
+        LOGGER.info("Modified entity: {}", editedEntity.getId());
         ControllerMediator.getInstance().refreshDailyTableData(createdPicker.getValue());
         onCancelAction();
     }
@@ -332,21 +333,15 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
 
     private BalanceEntity setModelProperties(BalanceEntity balanceEntity) {
         String modelName = modelNameBox.getSelectionModel().getSelectedItem();
-        switch (modelName) {
-        case "Alkalmazott":
+        if ("Alkalmazott".equals(modelName)) {
             balanceEntity.setModelName("user");
-            balanceEntity.setModelId((userBox.getSelectionModel().getSelectedItem()).getId());
-            break;
-        case "Munka":
+            balanceEntity.setModelId(userBox.getSelectionModel().getSelectedItem().getId());
+        } else if ("Munka".equals(modelName)) {
             balanceEntity.setModelName("project");
-            balanceEntity.setModelId((projectBox.getSelectionModel().getSelectedItem()).getId());
-            break;
-        case "Egyéb":
+            balanceEntity.setModelId(projectBox.getSelectionModel().getSelectedItem().getId());
+        } else if ("Egyéb".equals(modelName)) {
             balanceEntity.setModelName(null);
             balanceEntity.setModelId(null);
-            break;
-        default:
-            break;
         }
         return balanceEntity;
     }
@@ -355,11 +350,12 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
         BalanceEntity balanceEntity = new BalanceEntity();
         balanceEntity.setNetto(Integer.parseInt(nettoField.getText()));
         balanceEntity.setBrutto(Integer.parseInt(bruttoField.getText()));
-        balanceEntity.setAfa(Integer.parseInt((customAfaAdded) ? customAfa.getText() : afaBox.getSelectionModel().getSelectedItem()));
+        balanceEntity.setAfa(
+                Integer.parseInt(customAfaAdded ? customAfa.getText() : afaBox.getSelectionModel().getSelectedItem()));
         balanceEntity.setAfaValue(Integer.parseInt(afaValueField.getText()));
         balanceEntity.setCreated(Date.valueOf(createdPicker.getValue()));
-        balanceEntity.setCompleted((paidBox.isSelected()) ? Date.valueOf(paidPicker.getValue()) : null);
-        balanceEntity.setStatusId((statusIdBox.getSelectionModel().getSelectedItem()).getId());
+        balanceEntity.setCompleted(paidBox.isSelected() ? Date.valueOf(paidPicker.getValue()) : null);
+        balanceEntity.setStatusId(statusIdBox.getSelectionModel().getSelectedItem().getId());
         balanceEntity.setCash(cashBox.isSelected());
         balanceEntity.setNote(noteField.getText());
         balanceEntity = setModelProperties(balanceEntity);
@@ -392,23 +388,20 @@ public class NewBalanceController extends PopupAbstractt implements Initializabl
             paidBox.selectedProperty().setValue(true);
             paidPicker.setValue(tempEntity.getCompleted().toLocalDate());
         }
-        switch (tempEntity.getModelName()) {
-        case "Alkalmazott":
+        String modelName = tempEntity.getModelName();
+        if ("user".equals(modelName)) {
             modelNameBox.getSelectionModel().select(0);
             GenericDao<UsersEntity> userDao = DaoManager.getInstance().getUserDao();
             userBox.getSelectionModel().select(userDao.findById(tempEntity.getModelId()));
             showUserBox();
-            break;
-        case "Munka":
+        } else if ("project".equals(modelName)) {
             modelNameBox.getSelectionModel().select(1);
             GenericDao<ProjectsEntity> projectDao = DaoManager.getInstance().getProjectsDao();
             projectBox.getSelectionModel().select(projectDao.findById(tempEntity.getModelId()));
             showProjectBox();
-            break;
-        case "egyéb":
+        } else if (modelName == null) {
             modelNameBox.getSelectionModel().select(2);
             hideBoxes();
-            break;
         }
         cashBox.selectedProperty().setValue(tempEntity.getCash());
         noteField.setText(tempEntity.getNote());
